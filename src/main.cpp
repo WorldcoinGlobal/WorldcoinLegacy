@@ -2815,12 +2815,18 @@ bool InitBlockIndex() {
     // Only add the genesis block if not reindexing (in which case we reuse the one already on disk)
     if (!fReindex) {
         // Genesis Block:
-        // CBlock(hash=12a765e31ffd4059bada, PoW=0000050c34a64b415b6b, ver=1, hashPrevBlock=00000000000000000000, hashMerkleRoot=97ddfbbae6, nTime=1317972665, nBits=1e0ffff0, nNonce=2084524493, vtx=1)
-        //   CTransaction(hash=97ddfbbae6, ver=1, vin.size=1, vout.size=1, nLockTime=0)
-        //     CTxIn(COutPoint(0000000000, -1), coinbase 04ffff001d0104404e592054696d65732030352f4f63742f32303131205374657665204a6f62732c204170706c65e280997320566973696f6e6172792c2044696573206174203536)
-        //     CTxOut(nValue=50.00000000, scriptPubKey=040184710fa689ad5023690c80f3a4)
-        //   vMerkleTree: 97ddfbbae6
-
+		// block.GetHash() = 7231b064d3e620c55960abce2963ea19e1c3ffb6f5ff70e975114835a7024107
+		// hashGenesisBlock = 7231b064d3e620c55960abce2963ea19e1c3ffb6f5ff70e975114835a7024107
+		// block.hashMerkleRoot = 4fe8c1ba0a102fea0643287bb22ce7469ecb9b690362013f269a423fefa77b6e
+		// CBlock(hash=7231b064d3e620c55960, PoW=ecab9c4d0cff0d84a093, ver=1, hashPrevBlock=00000000000000000000,
+		//     hashMerkleRoot=4fe8c1ba0a, nTime=1368503907, nBits=1e0ffff0, nNonce=102158625, vtx=1)
+		//   CTransaction(hash=4fe8c1ba0a, ver=1, vin.size=1, vout.size=1, nLockTime=0)
+		//     CTxIn(COutPoint(0000000000, -1), coinbase 04ffff001d01044c534d61792031332c20323031332031313a3334706d204544543a20552e532e2063727564652066757475726573207765726520757020302e332070657263656e74206174202439352e343120612062617272656c)
+		//     CTxOut(nValue=50.00000000, scriptPubKey=040184710fa689ad5023690c80f3a4)
+		//   vMerkleTree: 4fe8c1ba0a
+		
+		
+		
         // Genesis block
         const char* pszTimestamp = "May 13, 2013 11:34pm EDT: U.S. crude futures were up 0.3 percent at $95.41 a barrel";
         CTransaction txNew;
