@@ -10,16 +10,15 @@ What is Worldcoin?
 ----------------
 
 Worldcoin is a lite version of Bitcoin using scrypt as a proof-of-work algorithm.
- - 2.5 minute block targets
- - subsidy halves in 840k blocks (~4 years)
- - ~84 million total coins
+ - 30 second block targets
+ - 20160 blocks to retarget difficulty
+ - starts at 64 coins per block
+ - subsidy is reduced 1% every week to a minimum reward of 1 WDC per block
+ - ~280 million total coins
 
-The rest is the same as Bitcoin.
- - 50 coins per block
- - 2016 blocks to retarget difficulty
 
 For more information, as well as an immediately useable, binary version of
-the Worldcoin client sofware, see http://www.worldcoin.org.
+the Worldcoin client software, see http://www.worldcoinfoundation.org.
 
 License
 -------
@@ -37,8 +36,8 @@ If it is a simple/trivial/non-controversial change, then one of the Worldcoin
 development team members simply pulls it.
 
 If it is a *more complicated or potentially controversial* change, then the patch
-submitter will be asked to start a discussion (if they haven't already) on the
-[mailing list](http://sourceforge.net/mailarchive/forum.php?forum_name=bitcoin-development).
+submitter will be asked to start a discussion (if they haven't already) on irc at
+irc.freenode.net #worldcoin
 
 The patch will be accepted if there is broad consensus that it is a good thing.
 Developers should expect to rework and resubmit patches if the code doesn't
@@ -68,7 +67,7 @@ Unit tests for the core code are in `src/test/`. To compile and run them:
 
 Unit tests for the GUI code are in `src/qt/test/`. To compile and run them:
 
-    qmake BITCOIN_QT_TEST=1 -o Makefile.test bitcoin-qt.pro
+    qmake WORLDCOIN_QT_TEST=1 -o Makefile.test worldcoin-qt.pro
     make -f Makefile.test
     ./worldcoin-qt_test
 
