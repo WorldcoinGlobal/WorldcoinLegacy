@@ -31,7 +31,10 @@ static const int PROTOCOL_VERSION = 70002;
 static const int INIT_PROTO_VERSION = 209;
 
 // disconnect from peers older than this proto version
-static const int MIN_PEER_PROTO_VERSION = 70002;
+//  This is set to 70002 in LTC repo that we forked.  We will want to do the 
+//  same, a few months after v0.8 is live for WDC.
+//  TODO: ~May-01-2014 - Set to 70002
+static const int MIN_PEER_PROTO_VERSION = 60002;
 
 // nTime field added to CAddress, starting with this version;
 // if possible, avoid requesting addresses nodes older than this
