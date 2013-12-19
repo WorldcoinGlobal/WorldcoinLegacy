@@ -1,8 +1,9 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2009-2012 The worldcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include "irc.h"
 #include "db.h"
 #include "net.h"
 #include "init.h"
@@ -15,14 +16,11 @@
 #endif
 
 #ifdef USE_UPNP
-#include <miniupnpc/miniwget.h>
-#include <miniupnpc/miniupnpc.h>
-#include <miniupnpc/upnpcommands.h>
-#include <miniupnpc/upnperrors.h>
+#include <miniwget.h>
+#include <miniupnpc.h>
+#include <upnpcommands.h>
+#include <upnperrors.h>
 #endif
-
-// Dump addresses to peers.dat every 15 minutes (900s)
-#define DUMP_ADDRESSES_INTERVAL 900
 
 using namespace std;
 using namespace boost;
@@ -340,6 +338,7 @@ bool GetMyExternalIP2(const CService& addrConnect, const char* pszGet, const cha
     return error("GetMyExternalIP() : connection closed");
 }
 
+// We now get our external IP from the IRC server first and only use this as a backup 
 bool GetMyExternalIP(CNetAddr& ipRet)
 {
     CService addrConnect;
@@ -402,7 +401,7 @@ bool GetMyExternalIP(CNetAddr& ipRet)
 void ThreadGetMyExternalIP(void* parg)
 {
     // Make this thread recognisable as the external IP detection thread
-    RenameThread("bitcoin-ext-ip");
+    RenameThread("worldcoin-ext-ip");
 
     CNetAddr addrLocalHost;
     if (GetMyExternalIP(addrLocalHost))
@@ -618,7 +617,6 @@ void CNode::copyStats(CNodeStats &stats)
     X(nMisbehavior);
     X(nSendBytes);
     X(nRecvBytes);
-    X(nBlocksRequested);
     stats.fSyncNode = (this == pnodeSync);
 }
 #undef X
@@ -1196,7 +1194,13 @@ static const char *strMainNetDNSSeed[][2] = {
     // {"worldcoinpool.org", "dnsseed.worldcoinpool.org"},
     // {"xurious.com", "dnsseed.ltc.xurious.com"},
     // {"koin-project.com", "dnsseed.koin-project.com"},
-     {"wdc.theblocksfactory.com", "94.23.31.223"},
+    // {"wdc.theblocksfactory.com", "94.23.31.223"},
+	 {"seednode1.worldcoinfoundation.org", "seednode1.worldcoinfoundation.org"},
+	 {"seednode2.worldcoinfoundation.org", "seednode2.worldcoinfoundation.org"},
+	 {"seednode3.worldcoinfoundation.org", "seednode3.worldcoinfoundation.org"},
+	 {"seednode4.worldcoinfoundation.org", "seednode4.worldcoinfoundation.org"},
+	 {"seednode5.worldcoinfoundation.org", "seednode5.worldcoinfoundation.org"},
+	 {"seednode6.worldcoinfoundation.org", "seednode6.worldcoinfoundation.org"},
     {NULL, NULL}
 };
 
@@ -1251,8 +1255,10 @@ void ThreadDNSAddressSeed()
 
 unsigned int pnSeed[] =
 {
-    0x5E171FDF //wdc.theblocksfactory.com
+    //0x5E171FDF //wdc.theblocksfactory.com
+	0xA2F337A6
 };
+
 
 void DumpAddresses()
 {
@@ -1557,9 +1563,6 @@ void ThreadMessageHandler()
         CNode* pnodeTrickle = NULL;
         if (!vNodesCopy.empty())
             pnodeTrickle = vNodesCopy[GetRand(vNodesCopy.size())];
-
-        bool fSleep = true;
-
         BOOST_FOREACH(CNode* pnode, vNodesCopy)
         {
             if (pnode->fDisconnect)
@@ -1569,18 +1572,8 @@ void ThreadMessageHandler()
             {
                 TRY_LOCK(pnode->cs_vRecvMsg, lockRecv);
                 if (lockRecv)
-                {
                     if (!ProcessMessages(pnode))
                         pnode->CloseSocketDisconnect();
-
-                    if (pnode->nSendSize < SendBufferSize())
-                    {
-                        if (!pnode->vRecvGetData.empty() || (!pnode->vRecvMsg.empty() && pnode->vRecvMsg[0].complete()))
-                        {
-                            fSleep = false;
-                        }
-                    }
-                }
             }
             boost::this_thread::interruption_point();
 
@@ -1599,8 +1592,7 @@ void ThreadMessageHandler()
                 pnode->Release();
         }
 
-        if (fSleep)
-            MilliSleep(100);
+        MilliSleep(100);
     }
 }
 
@@ -1787,6 +1779,9 @@ void StartNode(boost::thread_group& threadGroup)
     MapPort(GetBoolArg("-upnp", USE_UPNP));
 #endif
 
+    // Get addresses from IRC and advertise ours
+    threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "irc", &ThreadIRCSeed));
+
     // Send and receive from sockets, accept connections
     threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "net", &ThreadSocketHandler));
 
@@ -1800,12 +1795,13 @@ void StartNode(boost::thread_group& threadGroup)
     threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "msghand", &ThreadMessageHandler));
 
     // Dump network addresses
-    threadGroup.create_thread(boost::bind(&LoopForever<void (*)()>, "dumpaddr", &DumpAddresses, DUMP_ADDRESSES_INTERVAL * 1000));
+    threadGroup.create_thread(boost::bind(&LoopForever<void (*)()>, "dumpaddr", &DumpAddresses, 10000));
 }
 
 bool StopNode()
 {
     printf("StopNode()\n");
+    GenerateWorldcoins(false, NULL);
     MapPort(false);
     nTransactionsUpdated++;
     if (semOutbound)

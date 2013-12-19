@@ -23,7 +23,7 @@
       <enum>QTabWidget::North</enum>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="tabMain">
       <attribute name="title">
@@ -59,7 +59,7 @@
           </widget>
          </item>
          <item>
-          <widget class="BitcoinAmountField" name="transactionFee"/>
+          <widget class="WorldcoinAmountField" name="transactionFee"/>
          </item>
          <item>
           <spacer name="horizontalSpacer_1_Main">
@@ -77,7 +77,7 @@
         </layout>
        </item>
        <item>
-        <widget class="QCheckBox" name="bitcoinAtStartup">
+        <widget class="QCheckBox" name="worldcoinAtStartup">
          <property name="toolTip">
           <string>Automatically start Worldcoin after logging in to the system.</string>
          </property>
@@ -378,6 +378,36 @@
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="tabMining">
+      <attribute name="title">
+       <string>Mining</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_Display">
+       <item>
+        <widget class="QCheckBox" name="autoMining">
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="text">
+          <string>&amp;Start mining Worldcoins on application start</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_Mining">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
    <item>
@@ -460,19 +490,20 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>BitcoinAmountField</class>
+   <class>WorldcoinAmountField</class>
    <extends>QSpinBox</extends>
-   <header>bitcoinamountfield.h</header>
-  </customwidget>
-  <customwidget>
-   <class>QValueComboBox</class>
-   <extends>QComboBox</extends>
-   <header>qvaluecombobox.h</header>
+   <header>worldcoinamountfield.h</header>
+   <container>1</container>
   </customwidget>
   <customwidget>
    <class>QValidatedLineEdit</class>
    <extends>QLineEdit</extends>
    <header>qvalidatedlineedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QValueComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qvaluecombobox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

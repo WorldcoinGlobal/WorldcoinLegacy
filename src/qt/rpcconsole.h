@@ -8,7 +8,7 @@ namespace Ui {
 }
 class ClientModel;
 
-/** Local Bitcoin RPC console. */
+/** Local Worldcoin RPC console. */
 class RPCConsole: public QDialog
 {
     Q_OBJECT
@@ -35,7 +35,7 @@ private slots:
     void on_tabWidget_currentChanged(int index);
     /** open the debug.log from the current datadir */
     void on_openDebugLogfileButton_clicked();
-    /** display messagebox with program parameters (same as bitcoin-qt --help) */
+    /** display messagebox with program parameters (same as worldcoin-qt --help) */
     void on_showCLOptionsButton_clicked();
 
 public slots:
@@ -61,6 +61,7 @@ private:
     int historyPtr;
 
     void startExecutor();
+    void ConfigureMessagesTab();
 };
 
 #endif // RPCCONSOLE_H

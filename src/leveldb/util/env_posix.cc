@@ -320,39 +320,8 @@ class PosixMmapFile : public WritableFile {
     return Status::OK();
   }
 
-  Status SyncDirIfManifest() {
-    const char* f = filename_.c_str();
-    const char* sep = strrchr(f, '/');
-    Slice basename;
-    std::string dir;
-    if (sep == NULL) {
-      dir = ".";
-      basename = f;
-    } else {
-      dir = std::string(f, sep - f);
-      basename = sep + 1;
-    }
-    Status s;
-    if (basename.starts_with("MANIFEST")) {
-      int fd = open(dir.c_str(), O_RDONLY);
-      if (fd < 0) {
-        s = IOError(dir, errno);
-      } else {
-        if (fsync(fd) < 0) {
-          s = IOError(dir, errno);
-        }
-        close(fd);
-      }
-    }
-    return s;
-  }
-
   virtual Status Sync() {
-    // Ensure new files referred to by the manifest are in the filesystem.
-    Status s = SyncDirIfManifest();
-    if (!s.ok()) {
-      return s;
-    }
+    Status s;
 
     if (pending_sync_) {
       // Some unmapped data was not synced
@@ -417,7 +386,7 @@ class PosixEnv : public Env {
   PosixEnv();
   virtual ~PosixEnv() {
     fprintf(stderr, "Destroying Env::Default()\n");
-    abort();
+    exit(1);
   }
 
   virtual Status NewSequentialFile(const std::string& fname,
@@ -498,7 +467,7 @@ class PosixEnv : public Env {
       result = IOError(fname, errno);
     }
     return result;
-  }
+  };
 
   virtual Status CreateDir(const std::string& name) {
     Status result;
@@ -506,7 +475,7 @@ class PosixEnv : public Env {
       result = IOError(name, errno);
     }
     return result;
-  }
+  };
 
   virtual Status DeleteDir(const std::string& name) {
     Status result;
@@ -514,7 +483,7 @@ class PosixEnv : public Env {
       result = IOError(name, errno);
     }
     return result;
-  }
+  };
 
   virtual Status GetFileSize(const std::string& fname, uint64_t* size) {
     Status s;
@@ -620,7 +589,7 @@ class PosixEnv : public Env {
   void PthreadCall(const char* label, int result) {
     if (result != 0) {
       fprintf(stderr, "pthread %s: %s\n", label, strerror(result));
-      abort();
+      exit(1);
     }
   }
 
