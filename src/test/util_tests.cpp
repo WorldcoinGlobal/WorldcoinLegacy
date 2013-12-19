@@ -106,7 +106,7 @@ BOOST_AUTO_TEST_CASE(util_DateTimeStrFormat)
 /*These are platform-dependant and thus removed to avoid useless test failures
     BOOST_CHECK_EQUAL(DateTimeStrFormat("%Y-%m-%d %H:%M:%S", 0), "1970-01-01 00:00:00");
     BOOST_CHECK_EQUAL(DateTimeStrFormat("%Y-%m-%d %H:%M:%S", 0x7FFFFFFF), "2038-01-19 03:14:07");
-    // Formats used within Bitcoin
+    // Formats used within Worldcoin
     BOOST_CHECK_EQUAL(DateTimeStrFormat("%Y-%m-%d %H:%M:%S", 1317425777), "2011-09-30 23:36:17");
     BOOST_CHECK_EQUAL(DateTimeStrFormat("%Y-%m-%d %H:%M", 1317425777), "2011-09-30 23:36");
 */
@@ -154,10 +154,10 @@ BOOST_AUTO_TEST_CASE(util_GetArg)
     BOOST_CHECK_EQUAL(GetArg("inttest1", -1), 12345);
     BOOST_CHECK_EQUAL(GetArg("inttest2", -1), 81985529216486895LL);
     BOOST_CHECK_EQUAL(GetArg("inttest3", -1), -1);
-    BOOST_CHECK_EQUAL(GetBoolArg("booltest1"), true);
-    BOOST_CHECK_EQUAL(GetBoolArg("booltest2"), false);
-    BOOST_CHECK_EQUAL(GetBoolArg("booltest3"), false);
-    BOOST_CHECK_EQUAL(GetBoolArg("booltest4"), true);
+    BOOST_CHECK_EQUAL(GetBoolArg("booltest1", false), true);
+    BOOST_CHECK_EQUAL(GetBoolArg("booltest2", false), false);
+    BOOST_CHECK_EQUAL(GetBoolArg("booltest3", false), false);
+    BOOST_CHECK_EQUAL(GetBoolArg("booltest4", false), true);
 }
 
 BOOST_AUTO_TEST_CASE(util_WildcardMatch)
@@ -321,17 +321,6 @@ BOOST_AUTO_TEST_CASE(util_seed_insecure_rand)
         for (i=0;i<10000;i++) count += insecure_rand()%mod==0;
         BOOST_CHECK_EQUAL(count,exp_count[mod-2]);
     }
-}
-
-BOOST_AUTO_TEST_CASE(util_TimingResistantEqual)
-{
-    BOOST_CHECK(TimingResistantEqual(std::string(""), std::string("")));
-    BOOST_CHECK(!TimingResistantEqual(std::string("abc"), std::string("")));
-    BOOST_CHECK(!TimingResistantEqual(std::string(""), std::string("abc")));
-    BOOST_CHECK(!TimingResistantEqual(std::string("a"), std::string("aa")));
-    BOOST_CHECK(!TimingResistantEqual(std::string("aa"), std::string("a")));
-    BOOST_CHECK(TimingResistantEqual(std::string("abc"), std::string("abc")));
-    BOOST_CHECK(!TimingResistantEqual(std::string("abc"), std::string("aba")));
 }
 
 BOOST_AUTO_TEST_SUITE_END()

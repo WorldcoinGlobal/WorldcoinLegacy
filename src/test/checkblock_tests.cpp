@@ -44,7 +44,7 @@ BOOST_AUTO_TEST_CASE(May15)
     // Putting a 1MB binary file in the git repository is not a great
     // idea, so this test is only run if you manually download
     // test/data/Mar12Fork.dat from
-    // http://sourceforge.net/projects/bitcoin/files/Bitcoin/blockchain/Mar12Fork.dat/download
+    // http://sourceforge.net/projects/worldcoin/files/worldcoin/blockchain/Mar12Fork.dat/download
     unsigned int tMay15 = 1368576000;
     SetMockTime(tMay15); // Test as if it was right at May 15
 
@@ -52,8 +52,6 @@ BOOST_AUTO_TEST_CASE(May15)
     if (read_block("Mar12Fork.dat", forkingBlock))
     {
         CValidationState state;
-        forkingBlock.nTime = tMay15-1; // Invalidates PoW
-        BOOST_CHECK(!forkingBlock.CheckBlock(state, false, false));
 
         // After May 15'th, big blocks are OK:
         forkingBlock.nTime = tMay15; // Invalidates PoW

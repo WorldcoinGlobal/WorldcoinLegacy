@@ -1,10 +1,10 @@
 // Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2009-2012 The worldcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "main.h"
-#include "bitcoinrpc.h"
+#include "worldcoinrpc.h"
 
 using namespace json_spirit;
 using namespace std;
@@ -65,8 +65,9 @@ Object blockToJSON(const CBlock& block, const CBlockIndex* blockindex)
 
     if (blockindex->pprev)
         result.push_back(Pair("previousblockhash", blockindex->pprev->GetBlockHash().GetHex()));
-    if (blockindex->pnext)
-        result.push_back(Pair("nextblockhash", blockindex->pnext->GetBlockHash().GetHex()));
+    CBlockIndex *pnext = blockindex->GetNextInMainChain();
+    if (pnext)
+        result.push_back(Pair("nextblockhash", pnext->GetBlockHash().GetHex()));
     return result;
 }
 
@@ -143,19 +144,13 @@ Value getblockhash(const Array& params, bool fHelp)
 
 Value getblock(const Array& params, bool fHelp)
 {
-    if (fHelp || params.size() < 1 || params.size() > 2)
+    if (fHelp || params.size() != 1)
         throw runtime_error(
-            "getblock <hash> [verbose=true]\n"
-            "If verbose is false, returns a string that is serialized, hex-encoded data for block <hash>.\n"
-            "If verbose is true, returns an Object with information about block <hash>."
-        );
+            "getblock <hash>\n"
+            "Returns details of a block with given block-hash.");
 
     std::string strHash = params[0].get_str();
     uint256 hash(strHash);
-
-    bool fVerbose = true;
-    if (params.size() > 1)
-        fVerbose = params[1].get_bool();
 
     if (mapBlockIndex.count(hash) == 0)
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Block not found");
@@ -163,14 +158,6 @@ Value getblock(const Array& params, bool fHelp)
     CBlock block;
     CBlockIndex* pblockindex = mapBlockIndex[hash];
     block.ReadFromDisk(pblockindex);
-
-    if (!fVerbose)
-    {
-        CDataStream ssBlock(SER_NETWORK, PROTOCOL_VERSION);
-        ssBlock << block;
-        std::string strHex = HexStr(ssBlock.begin(), ssBlock.end());
-        return strHex;
-    }
 
     return blockToJSON(block, pblockindex);
 }

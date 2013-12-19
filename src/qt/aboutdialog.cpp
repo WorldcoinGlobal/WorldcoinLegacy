@@ -1,8 +1,10 @@
 #include "aboutdialog.h"
 #include "ui_aboutdialog.h"
 
+#include <QDesktopWidget>
+
 #include "clientmodel.h"
-#include "clientversion.h"
+#include "dialog_move_handler.h"
 
 // Copyright year (2009-this)
 // Todo: update this when changing our copyright comments in the source
@@ -13,9 +15,14 @@ AboutDialog::AboutDialog(QWidget *parent) :
     ui(new Ui::AboutDialog)
 {
     ui->setupUi(this);
-
+    setWindowFlags(Qt::CustomizeWindowHint | Qt::FramelessWindowHint | Qt::Window);
+    ui->wCaption->installEventFilter(new DialogMoveHandler(this));
     // Set current copyright year
-    ui->copyrightLabel->setText(tr("Copyright") + QString(" &copy; 2009-%1 ").arg(COPYRIGHT_YEAR) + tr("The Bitcoin developers") + QString("<br>") + tr("Copyright") + QString(" &copy; ") + tr("2011-%1 The Worldcoin developers").arg(ABOUTDIALOG_COPYRIGHT_YEAR));
+    ui->copyrightLabel->setText(tr("Copyright") + QString(" &copy; 2013-%1 ").arg("2014") + tr("Worldcoin"));
+
+    // Center window (deleted)
+//    QRect scr = QApplication::desktop()->screenGeometry();
+//    move(scr.center() - rect().center());
 }
 
 void AboutDialog::setModel(ClientModel *model)

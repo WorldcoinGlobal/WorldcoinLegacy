@@ -9,7 +9,7 @@ namespace Ui {
 class WalletModel;
 class SendCoinsRecipient;
 
-/** A single entry in the dialog for sending bitcoins. */
+/** A single entry in the dialog for sending worldcoins. */
 class SendCoinsEntry : public QFrame
 {
     Q_OBJECT
@@ -39,9 +39,11 @@ public slots:
     void clear();
 
 signals:
+    void addEntry();
     void removeEntry(SendCoinsEntry *entry);
 
 private slots:
+    void on_addButton_clicked();
     void on_deleteButton_clicked();
     void on_payTo_textChanged(const QString &address);
     void on_addressBookButton_clicked();

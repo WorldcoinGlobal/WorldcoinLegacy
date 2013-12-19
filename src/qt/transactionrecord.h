@@ -14,8 +14,8 @@ class TransactionStatus
 {
 public:
     TransactionStatus():
-        confirmed(false), sortKey(""), maturity(Mature),
-        matures_in(0), status(Offline), depth(0), open_for(0), cur_num_blocks(-1)
+            confirmed(false), sortKey(""), maturity(Mature),
+            matures_in(0), status(Offline), depth(0), open_for(0), cur_num_blocks(-1)
     { }
 
     enum Maturity
@@ -74,7 +74,7 @@ public:
     };
 
     /** Number of confirmation needed for transaction */
-    static const int NumConfirmations = 6;
+    static const int NumConfirmations = 2;
 
     TransactionRecord():
             hash(), time(0), type(Other), address(""), debit(0), credit(0), idx(0)

@@ -20,7 +20,7 @@ enum BlockSource {
     BLOCK_SOURCE_NETWORK
 };
 
-/** Model for Bitcoin network client. */
+/** Model for Worldcoin network client. */
 class ClientModel : public QObject
 {
     Q_OBJECT
@@ -82,6 +82,7 @@ public slots:
     void updateTimer();
     void updateNumConnections(int numConnections);
     void updateAlert(const QString &hash, int status);
+    void updateNewsMessage(const QString &hash, int status);
 };
 
 #endif // CLIENTMODEL_H

@@ -1,4 +1,4 @@
-// Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2009-2012 The worldcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -155,8 +155,7 @@ public:
         BN_clear_free(&bn);
     }
 
-    void GetPrivKey(CPrivKey &privkey, bool fCompressed) {
-        EC_KEY_set_conv_form(pkey, fCompressed ? POINT_CONVERSION_COMPRESSED : POINT_CONVERSION_UNCOMPRESSED);
+    void GetPrivKey(CPrivKey &privkey) {
         int nSize = i2d_ECPrivateKey(pkey, NULL);
         assert(nSize);
         privkey.resize(nSize);
@@ -305,7 +304,7 @@ CPrivKey CKey::GetPrivKey() const {
     CECKey key;
     key.SetSecretBytes(vch);
     CPrivKey privkey;
-    key.GetPrivKey(privkey, fCompressed);
+    key.GetPrivKey(privkey);
     return privkey;
 }
 

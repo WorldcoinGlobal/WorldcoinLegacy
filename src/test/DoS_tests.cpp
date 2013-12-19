@@ -16,10 +16,10 @@
 #include <stdint.h>
 
 // Tests this internal-to-main.cpp method:
-extern bool AddOrphanTx(const CTransaction& tx);
+extern bool AddOrphanTx(const CDataStream& vMsg);
 extern unsigned int LimitOrphanTxSize(unsigned int nMaxOrphans);
-extern std::map<uint256, CTransaction> mapOrphanTransactions;
-extern std::map<uint256, std::set<uint256> > mapOrphanTransactionsByPrev;
+extern std::map<uint256, CDataStream*> mapOrphanTransactions;
+extern std::map<uint256, std::map<uint256, CDataStream*> > mapOrphanTransactionsByPrev;
 
 CService ip(uint32_t i)
 {
@@ -99,7 +99,7 @@ BOOST_AUTO_TEST_CASE(DoS_checknbits)
 {
     using namespace boost::assign; // for 'map_list_of()'
 
-    // Timestamps,nBits from the bitcoin block chain.
+    // Timestamps,nBits from the worldcoin block chain.
     // These are the block-chain checkpoint blocks
     typedef std::map<int64, unsigned int> BlockData;
     BlockData chainData =
@@ -133,11 +133,14 @@ BOOST_AUTO_TEST_CASE(DoS_checknbits)
 
 CTransaction RandomOrphan()
 {
-    std::map<uint256, CTransaction>::iterator it;
+    std::map<uint256, CDataStream*>::iterator it;
     it = mapOrphanTransactions.lower_bound(GetRandHash());
     if (it == mapOrphanTransactions.end())
         it = mapOrphanTransactions.begin();
-    return it->second;
+    const CDataStream* pvMsg = it->second;
+    CTransaction tx;
+    CDataStream(*pvMsg) >> tx;
+    return tx;
 }
 
 BOOST_AUTO_TEST_CASE(DoS_mapOrphans)
@@ -159,7 +162,9 @@ BOOST_AUTO_TEST_CASE(DoS_mapOrphans)
         tx.vout[0].nValue = 1*CENT;
         tx.vout[0].scriptPubKey.SetDestination(key.GetPubKey().GetID());
 
-        AddOrphanTx(tx);
+        CDataStream ds(SER_DISK, CLIENT_VERSION);
+        ds << tx;
+        AddOrphanTx(ds);
     }
 
     // ... and 50 that depend on other orphans:
@@ -176,7 +181,9 @@ BOOST_AUTO_TEST_CASE(DoS_mapOrphans)
         tx.vout[0].scriptPubKey.SetDestination(key.GetPubKey().GetID());
         SignSignature(keystore, txPrev, tx, 0);
 
-        AddOrphanTx(tx);
+        CDataStream ds(SER_DISK, CLIENT_VERSION);
+        ds << tx;
+        AddOrphanTx(ds);
     }
 
     // This really-big orphan should be ignored:
@@ -200,7 +207,9 @@ BOOST_AUTO_TEST_CASE(DoS_mapOrphans)
         for (unsigned int j = 1; j < tx.vin.size(); j++)
             tx.vin[j].scriptSig = tx.vin[0].scriptSig;
 
-        BOOST_CHECK(!AddOrphanTx(tx));
+        CDataStream ds(SER_DISK, CLIENT_VERSION);
+        ds << tx;
+        BOOST_CHECK(!AddOrphanTx(ds));
     }
 
     // Test LimitOrphanTxSize() function:
@@ -237,7 +246,9 @@ BOOST_AUTO_TEST_CASE(DoS_checkSig)
         tx.vout[0].nValue = 1*CENT;
         tx.vout[0].scriptPubKey.SetDestination(key.GetPubKey().GetID());
 
-        AddOrphanTx(tx);
+        CDataStream ds(SER_DISK, CLIENT_VERSION);
+        ds << tx;
+        AddOrphanTx(ds);
     }
 
     // Create a transaction that depends on orphans:
