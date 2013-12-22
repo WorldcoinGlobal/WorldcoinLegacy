@@ -17,7 +17,7 @@
     <message>
         <location line="+91"/>
         <source>&lt;b&gt;Worldcoin&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;美卡幣&lt;/b&gt;版本</translation>
+        <translation>&lt;b&gt;世界幣&lt;/b&gt;版本</translation>
     </message>
     <message>
         <location line="+170"/>
@@ -47,7 +47,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+0"/>
         <source>Dr. Kimoto Chan</source>
-        <translation>美卡幣開發人員</translation>
+        <translation>世界幣開發人員</translation>
     </message>
 </context>
 <context>
@@ -221,7 +221,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+1"/>
         <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR WORLDCOINS&lt;/b&gt;!</source>
-        <translation>警告: 如果將錢包加密後忘記密碼, 你會&lt;b&gt;失去其中所有的美卡幣&lt;/b&gt;!</translation>
+        <translation>警告: 如果將錢包加密後忘記密碼, 你會&lt;b&gt;失去其中所有的世界幣&lt;/b&gt;!</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -248,7 +248,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-56"/>
         <source>Worldcoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your worldcoins from being stolen by malware infecting your computer.</source>
-        <translation>美卡幣現在要關閉以完成加密程序. 請記住, 加密錢包無法完全防止入侵電腦的惡意程式偷取你的美卡幣.</translation>
+        <translation>世界幣現在要關閉以完成加密程序. 請記住, 加密錢包無法完全防止入侵電腦的惡意程式偷取你的世界幣.</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -374,7 +374,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-5"/>
         <source>The entered address &quot;%1&quot; is not a valid Worldcoin address.</source>
-        <translation>輸入的位址 &quot;%1&quot; 並不是有效的美卡幣位址.</translation>
+        <translation>輸入的位址 &quot;%1&quot; 並不是有效的世界幣位址.</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -393,7 +393,7 @@ This product includes software developed by the OpenSSL Project for use in the O
         <location filename="../guiutil.cpp" line="+442"/>
         <location line="+12"/>
         <source>Worldcoin-Qt</source>
-        <translation>美卡幣-Qt</translation>
+        <translation>世界幣-Qt</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -447,7 +447,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+85"/>
         <source>Worldcoin</source>
-        <translation type="unfinished">美卡幣</translation>
+        <translation type="unfinished">世界幣</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -600,7 +600,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+7"/>
         <source>Show information about Worldcoin</source>
-        <translation>顯示美卡幣相關資訊</translation>
+        <translation>顯示世界幣相關資訊</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -663,12 +663,12 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-341"/>
         <source>Send coins to a Worldcoin address</source>
-        <translation>付錢到美卡幣位址</translation>
+        <translation>付錢到世界幣位址</translation>
     </message>
     <message>
         <location line="+54"/>
         <source>Modify configuration options for Worldcoin</source>
-        <translation>修改美卡幣的設定選項</translation>
+        <translation>修改世界幣的設定選項</translation>
     </message>
     <message>
         <location line="+12"/>
@@ -702,7 +702,7 @@ This product includes software developed by the OpenSSL Project for use in the O
         <location line="+6"/>
         <location line="+619"/>
         <source>Worldcoin</source>
-        <translation>美卡幣</translation>
+        <translation>世界幣</translation>
     </message>
     <message>
         <location line="-625"/>
@@ -715,7 +715,7 @@ This product includes software developed by the OpenSSL Project for use in the O
         <location line="+2"/>
         <location line="+831"/>
         <source>&amp;About Worldcoin</source>
-        <translation>關於美卡幣</translation>
+        <translation>關於世界幣</translation>
     </message>
     <message>
         <location line="-821"/>
@@ -736,12 +736,12 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+7"/>
         <source>Sign messages with your Worldcoin addresses to prove you own them</source>
-        <translation>用美卡幣位址簽署訊息來證明那是你的</translation>
+        <translation>用世界幣位址簽署訊息來證明那是你的</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Verify messages to ensure they were signed with specified Worldcoin addresses</source>
-        <translation>驗證訊息來確認是用指定的美卡幣位址簽署的</translation>
+        <translation>驗證訊息來確認是用指定的世界幣位址簽署的</translation>
     </message>
     <message>
         <location line="+31"/>
@@ -771,13 +771,13 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+385"/>
         <source>Worldcoin client</source>
-        <translation>美卡幣客戶端軟體</translation>
+        <translation>世界幣客戶端軟體</translation>
     </message>
     <message numerus="yes">
         <location line="+109"/>
         <source>%n active connection(s) to Worldcoin network</source>
         <translation>
-            <numerusform>與美卡幣網路有 %n 個連線在使用中</numerusform>
+            <numerusform>與世界幣網路有 %n 個連線在使用中</numerusform>
         </translation>
     </message>
     <message>
@@ -904,7 +904,7 @@ Address: %4
         <location line="-80"/>
         <location line="+80"/>
         <source>URI can not be parsed! This can be caused by an invalid Worldcoin address or malformed URI parameters.</source>
-        <translation>無法解析 URI! 也許美卡幣位址無效或 URI 參數有誤.</translation>
+        <translation>無法解析 URI! 也許世界幣位址無效或 URI 參數有誤.</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -974,7 +974,7 @@ Address: %4
     <message>
         <location filename="../worldcoin.cpp" line="+109"/>
         <source>A fatal error occurred. Worldcoin can no longer continue safely and will quit.</source>
-        <translation>發生了致命的錯誤. 美卡幣程式無法再繼續安全執行, 只好結束.</translation>
+        <translation>發生了致命的錯誤. 世界幣程式無法再繼續安全執行, 只好結束.</translation>
     </message>
 </context>
 <context>
@@ -1083,12 +1083,12 @@ Address: %4
     <message>
         <location line="+31"/>
         <source>Automatically start Worldcoin after logging in to the system.</source>
-        <translation>在登入系統後自動啓動美卡幣.</translation>
+        <translation>在登入系統後自動啓動世界幣.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Start Worldcoin on system login</source>
-        <translation>系統登入時啟動美卡幣</translation>
+        <translation>系統登入時啟動世界幣</translation>
     </message>
     <message>
         <location line="+35"/>
@@ -1118,7 +1118,7 @@ Address: %4
     <message>
         <location line="+7"/>
         <source>Connect to the Worldcoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
-        <translation>透過 SOCKS 代理伺服器連線至美卡幣網路 (比如說要透過 Tor 連線).</translation>
+        <translation>透過 SOCKS 代理伺服器連線至世界幣網路 (比如說要透過 Tor 連線).</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1193,7 +1193,7 @@ Address: %4
     <message>
         <location line="+13"/>
         <source>The user interface language can be set here. This setting will take effect after restarting Worldcoin.</source>
-        <translation>可以在這裡設定使用者介面的語言. 這個設定在美卡幣程式重啓後才會生效.</translation>
+        <translation>可以在這裡設定使用者介面的語言. 這個設定在世界幣程式重啓後才會生效.</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -1208,7 +1208,7 @@ Address: %4
     <message>
         <location line="+9"/>
         <source>Whether to show Worldcoin addresses in the transaction list or not.</source>
-        <translation>是否要在交易列表中顯示美卡幣位址.</translation>
+        <translation>是否要在交易列表中顯示世界幣位址.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1275,7 +1275,7 @@ Address: %4
         <location line="-9"/>
         <location line="+9"/>
         <source>This setting will take effect after restarting Worldcoin.</source>
-        <translation>這個設定會在美卡幣程式重啓後生效.</translation>
+        <translation>這個設定會在世界幣程式重啓後生效.</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -1303,12 +1303,12 @@ Address: %4
     <message>
         <location line="+29"/>
         <source>Automatically start Worldcoin after logging in to the system.</source>
-        <translation type="unfinished">在登入系統後自動啓動美卡幣.</translation>
+        <translation type="unfinished">在登入系統後自動啓動世界幣.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Start Worldcoin on system login</source>
-        <translation type="unfinished">系統登入時啟動美卡幣</translation>
+        <translation type="unfinished">系統登入時啟動世界幣</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -1368,12 +1368,12 @@ Address: %4
     <message>
         <location line="+31"/>
         <source>The user interface language can be set here. This setting will take effect after restarting Worldcoin.</source>
-        <translation type="unfinished">可以在這裡設定使用者介面的語言. 這個設定在美卡幣程式重啓後才會生效.</translation>
+        <translation type="unfinished">可以在這裡設定使用者介面的語言. 這個設定在世界幣程式重啓後才會生效.</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>Whether to show Worldcoin addresses in the transaction list or not.</source>
-        <translation type="unfinished">是否要在交易列表中顯示美卡幣位址.</translation>
+        <translation type="unfinished">是否要在交易列表中顯示世界幣位址.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1403,7 +1403,7 @@ Address: %4
     <message>
         <location line="+23"/>
         <source>Connect to the Worldcoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
-        <translation type="unfinished">透過 SOCKS 代理伺服器連線至美卡幣網路 (比如說要透過 Tor 連線).</translation>
+        <translation type="unfinished">透過 SOCKS 代理伺服器連線至世界幣網路 (比如說要透過 Tor 連線).</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1651,7 +1651,7 @@ Address: %4
     <message>
         <location line="+7"/>
         <source>Show the Worldcoin-Qt help message to get a list with possible Worldcoin command-line options.</source>
-        <translation>顯示美卡幣-Qt的求助訊息, 來取得可用的命令列選項列表.</translation>
+        <translation>顯示世界幣-Qt的求助訊息, 來取得可用的命令列選項列表.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1726,12 +1726,12 @@ Address: %4
     <message>
         <location line="-104"/>
         <source>Worldcoin - Debug window</source>
-        <translation>美卡幣 - 除錯視窗</translation>
+        <translation>世界幣 - 除錯視窗</translation>
     </message>
     <message>
         <location line="+25"/>
         <source>Worldcoin Core</source>
-        <translation>美卡幣核心</translation>
+        <translation>世界幣核心</translation>
     </message>
     <message>
         <location line="+279"/>
@@ -1741,7 +1741,7 @@ Address: %4
     <message>
         <location line="+7"/>
         <source>Open the Worldcoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>從目前的資料目錄下開啓美卡幣的除錯紀錄檔. 當紀錄檔很大時可能要花好幾秒的時間.</translation>
+        <translation>從目前的資料目錄下開啓世界幣的除錯紀錄檔. 當紀錄檔很大時可能要花好幾秒的時間.</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -1751,7 +1751,7 @@ Address: %4
     <message>
         <location filename="../rpcconsole.cpp" line="-30"/>
         <source>Welcome to the Worldcoin RPC console.</source>
-        <translation>歡迎使用美卡幣 RPC 主控台.</translation>
+        <translation>歡迎使用世界幣 RPC 主控台.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1932,7 +1932,7 @@ Address: %4
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
         <source>Enter a Worldcoin address (e.g. MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
-        <translation>輸入美卡幣位址 (比如說 MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
+        <translation>輸入世界幣位址 (比如說 MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
 </context>
 <context>
@@ -2038,7 +2038,7 @@ Address: %4
     <message>
         <location line="+16"/>
         <source>Sign the message to prove you own this Worldcoin address</source>
-        <translation type="unfinished">簽署訊息是用來證明這個美卡幣位址是你的</translation>
+        <translation type="unfinished">簽署訊息是用來證明這個世界幣位址是你的</translation>
     </message>
     <message>
         <location line="+22"/>
@@ -2048,7 +2048,7 @@ Address: %4
     <message>
         <location filename="../signmessagepage.cpp" line="+28"/>
         <source>Enter a Worldcoin address (e.g. MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
-        <translation type="unfinished">輸入美卡幣位址 (比如說 MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
+        <translation type="unfinished">輸入世界幣位址 (比如說 MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2162,7 +2162,7 @@ Address: %4
     <message>
         <location line="+21"/>
         <source>Sign the message to prove you own this Worldcoin address</source>
-        <translation>簽署訊息是用來證明這個美卡幣位址是你的</translation>
+        <translation>簽署訊息是用來證明這個世界幣位址是你的</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2198,7 +2198,7 @@ Address: %4
     <message>
         <location line="+40"/>
         <source>Verify the message to ensure it was signed with the specified Worldcoin address</source>
-        <translation>驗證訊息是用來確認訊息是用指定的美卡幣位址簽署的</translation>
+        <translation>驗證訊息是用來確認訊息是用指定的世界幣位址簽署的</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2214,7 +2214,7 @@ Address: %4
         <location filename="../signverifymessagedialog.cpp" line="+4"/>
         <location line="+3"/>
         <source>Enter a Worldcoin address (e.g. MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
-        <translation>輸入美卡幣位址 (比如說 MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
+        <translation>輸入世界幣位址 (比如說 MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -2224,7 +2224,7 @@ Address: %4
     <message>
         <location line="+3"/>
         <source>Enter Worldcoin signature</source>
-        <translation>輸入美卡幣簽章</translation>
+        <translation>輸入世界幣簽章</translation>
     </message>
     <message>
         <location line="+92"/>
@@ -2298,7 +2298,7 @@ Address: %4
     <message>
         <location filename="../splashscreen.cpp" line="+24"/>
         <source>Dr. Kimoto Chan</source>
-        <translation>美卡幣開發人員</translation>
+        <translation>世界幣開發人員</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2858,7 +2858,7 @@ Address: %4
     <message>
         <location line="+16"/>
         <source>Verify the message to ensure it was signed with the specified Worldcoin address</source>
-        <translation type="unfinished">驗證訊息是用來確認訊息是用指定的美卡幣位址簽署的</translation>
+        <translation type="unfinished">驗證訊息是用來確認訊息是用指定的世界幣位址簽署的</translation>
     </message>
     <message>
         <location line="+22"/>
@@ -2868,12 +2868,12 @@ Address: %4
     <message>
         <location filename="../verifymessagepage.cpp" line="+28"/>
         <source>Enter a Worldcoin address (e.g. MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
-        <translation type="unfinished">輸入美卡幣位址 (比如說 MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
+        <translation type="unfinished">輸入世界幣位址 (比如說 MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Enter Worldcoin signature</source>
-        <translation type="unfinished">輸入美卡幣簽章</translation>
+        <translation type="unfinished">輸入世界幣簽章</translation>
     </message>
     <message>
         <location line="+12"/>
@@ -2933,7 +2933,7 @@ Address: %4
     <message>
         <location filename="../worldcoinstrings.cpp" line="+94"/>
         <source>Worldcoin version</source>
-        <translation>美卡幣版本</translation>
+        <translation>世界幣版本</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -3088,7 +3088,7 @@ alertnotify=echo %%s | mail -s &quot;Worldcoin Alert&quot; admin@foo.com
     <message>
         <location line="+3"/>
         <source>Cannot obtain a lock on data directory %s. Worldcoin is probably already running.</source>
-        <translation>無法鎖定資料目錄 %s. 也許美卡幣已經在執行了.</translation>
+        <translation>無法鎖定資料目錄 %s. 也許世界幣已經在執行了.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -3133,7 +3133,7 @@ alertnotify=echo %%s | mail -s &quot;Worldcoin Alert&quot; admin@foo.com
     <message>
         <location line="+3"/>
         <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Worldcoin will not work properly.</source>
-        <translation>警告: 請檢查電腦時間與日期是否正確! 美卡幣無法在時鐘不準的情況下正常運作.</translation>
+        <translation>警告: 請檢查電腦時間與日期是否正確! 世界幣無法在時鐘不準的情況下正常運作.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -3253,7 +3253,7 @@ alertnotify=echo %%s | mail -s &quot;Worldcoin Alert&quot; admin@foo.com
     <message>
         <location line="+1"/>
         <source>Failed to write to coin database</source>
-        <translation>寫入美卡幣資料庫失敗</translation>
+        <translation>寫入世界幣資料庫失敗</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3273,7 +3273,7 @@ alertnotify=echo %%s | mail -s &quot;Worldcoin Alert&quot; admin@foo.com
     <message>
         <location line="+1"/>
         <source>Generate coins (default: 0)</source>
-        <translation>生產美卡幣 (預設值: 0)</translation>
+        <translation>生產世界幣 (預設值: 0)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -3585,7 +3585,7 @@ alertnotify=echo %%s | mail -s &quot;Worldcoin Alert&quot; admin@foo.com
     <message>
         <location line="+93"/>
         <source>Wallet needed to be rewritten: restart Worldcoin to complete</source>
-        <translation>錢包需要重寫: 請重啟美卡幣來完成</translation>
+        <translation>錢包需要重寫: 請重啟世界幣來完成</translation>
     </message>
     <message>
         <location line="-95"/>
@@ -3645,7 +3645,7 @@ alertnotify=echo %%s | mail -s &quot;Worldcoin Alert&quot; admin@foo.com
     <message>
         <location line="-25"/>
         <source>Unable to bind to %s on this computer. Worldcoin is probably already running.</source>
-        <translation>無法和這台電腦上的 %s 繫結. 也許美卡幣已經在執行了.</translation>
+        <translation>無法和這台電腦上的 %s 繫結. 也許世界幣已經在執行了.</translation>
     </message>
     <message>
         <location line="+64"/>
