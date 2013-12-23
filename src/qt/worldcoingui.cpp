@@ -331,7 +331,6 @@ void WorldcoinGUI::createActions(bool fIsTestnet)
     connect(addressBookAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(addressBookAction, SIGNAL(triggered()), this, SLOT(gotoAddressBookPage()));
   //  connect(ui->bNewMessage, SIGNAL(clicked()), this, SLOT(showNormalIfMinimized()));
-  //  connect(ui->bNewMessage, SIGNAL(clicked()), this, SLOT(gotoServiceMessagesPage()));
 
     quitAction = new QAction(QIcon(":/icons/quit"), tr("E&xit"), this);
     quitAction->setStatusTip(tr("Quit application"));
@@ -948,7 +947,6 @@ void WorldcoinGUI::gotoVerifyMessageTab(QString addr)
     if(!addr.isEmpty())
         verifyMessagePage->setAddress_VM(addr);
 }
-
 
 void WorldcoinGUI::dragEnterEvent(QDragEnterEvent *event)
 {

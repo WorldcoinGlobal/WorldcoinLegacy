@@ -244,6 +244,7 @@ void OptionsDialog::on_resetButton_clicked()
 void OptionsDialog::on_applyButton_clicked()
 {
     mapper->submit();
+	QMessageBox::warning(this, tr("Warning"), tr("This setting will take effect after restarting Worldcoin."), QMessageBox::Ok);
     disableApplyButton();
 }
 
