@@ -1,4 +1,4 @@
-// Copyright (c) 2009-2012 The worldcoin developers
+// Copyright (c) 2009-2012 The Bitcoin Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -27,8 +27,6 @@ namespace Checkpoints
         int64 nTransactionsLastCheckpoint;
         double fTransactionsPerDay;
     };
-
-    bool fEnabled = true;
 
     // What makes a good checkpoint block?
     // + Is surrounded by blocks with reasonable timestamps
@@ -76,7 +74,8 @@ namespace Checkpoints
 
     bool CheckBlock(int nHeight, const uint256& hash)
     {
-        if (!fEnabled)
+        if (fTestNet) return true; // Testnet has no checkpoints
+        if (!GetBoolArg("-checkpoints", true))
             return true;
 
         const MapCheckpoints& checkpoints = *Checkpoints().mapCheckpoints;
@@ -119,7 +118,8 @@ namespace Checkpoints
 
     int GetTotalBlocksEstimate()
     {
-        if (!fEnabled)
+        if (fTestNet) return 0; // Testnet has no checkpoints
+        if (!GetBoolArg("-checkpoints", true))
             return 0;
 
         const MapCheckpoints& checkpoints = *Checkpoints().mapCheckpoints;
@@ -129,7 +129,8 @@ namespace Checkpoints
 
     CBlockIndex* GetLastCheckpoint(const std::map<uint256, CBlockIndex*>& mapBlockIndex)
     {
-        if (!fEnabled)
+        if (fTestNet) return NULL; // Testnet has no checkpoints
+        if (!GetBoolArg("-checkpoints", true))
             return NULL;
 
         const MapCheckpoints& checkpoints = *Checkpoints().mapCheckpoints;

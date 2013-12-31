@@ -60,7 +60,6 @@ void OptionsModel::Init()
         SoftSetArg("-socks", settings.value("nSocksVersion").toString().toStdString());
     if (!language.isEmpty())
         SoftSetArg("-lang", language.toStdString());
-
     bAllowSounds = settings.value("bAllowSounds", true).toBool();
     bCheckUpdatesAtStartup = settings.value("bCheckUpdatesAtStartup", false).toBool();
     bCheckUpdatesAtStartup = false;
@@ -275,6 +274,7 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
         case Fee:
             nTransactionFee = value.toLongLong();
             settings.setValue("nTransactionFee", nTransactionFee);
+            emit transactionFeeChanged(nTransactionFee);
             break;
         case DisplayUnit:
             nDisplayUnit = value.toInt();
