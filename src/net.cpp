@@ -15,10 +15,10 @@
 #endif
 
 #ifdef USE_UPNP
-#include <miniwget.h>
-#include <miniupnpc.h>
-#include <upnpcommands.h>
-#include <upnperrors.h>
+#include <miniupnpc/miniwget.h>
+#include <miniupnpc/miniupnpc.h>
+#include <miniupnpc/upnpcommands.h>
+#include <miniupnpc/upnperrors.h>
 #endif
 
 // Dump addresses to peers.dat every 15 minutes (900s)
@@ -1192,23 +1192,17 @@ void MapPort(bool)
 // The first name is used as information source for addrman.
 // The second name should resolve to a list of seed addresses.
 static const char *strMainNetDNSSeed[][2] = {
-    // {"worldcointools.com", "dnsseed.worldcointools.com"},
-    // {"worldcoinpool.org", "dnsseed.worldcoinpool.org"},
-    // {"xurious.com", "dnsseed.ltc.xurious.com"},
-    // {"koin-project.com", "dnsseed.koin-project.com"},
-    // {"wdc.theblocksfactory.com", "94.23.31.223"},
-	 {"seednode1.worldcoinfoundation.org", "seednode1.worldcoinfoundation.org"},
-	 {"seednode2.worldcoinfoundation.org", "seednode2.worldcoinfoundation.org"},
-	 {"seednode3.worldcoinfoundation.org", "seednode3.worldcoinfoundation.org"},
-	 {"seednode4.worldcoinfoundation.org", "seednode4.worldcoinfoundation.org"},
-	 {"seednode5.worldcoinfoundation.org", "seednode5.worldcoinfoundation.org"},
-	 {"seednode6.worldcoinfoundation.org", "seednode6.worldcoinfoundation.org"},
+	 {"worldcoincore.com", "seednode1.worldcoincore.com"},
+	 {"worldcoincore.com", "seednode2.worldcoincore.com"},
+	 {"worldcoincore.com", "seednode3.worldcoincore.com"},
+	 {"worldcoincore.com", "seednode4.worldcoincore.com"},
+	 {"worldcoincore.com", "seednode5.worldcoincore.com"},
+	 {"worldcoincore.com", "seednode6.worldcoincore.com"},
     {NULL, NULL}
 };
 
 static const char *strTestNetDNSSeed[][2] = {
-    // {"worldcointools.com", "testnet-seed.worldcointools.com"},
-    // {"weminemnc.com", "testnet-seed.weminemnc.com"},
+    {"worldcoincore.com", "testnet-seednode.worldcoincore.com"},
     {NULL, NULL}
 };
 
