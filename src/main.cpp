@@ -47,8 +47,10 @@ bool fReindex = false;
 bool fBenchmark = false;
 bool fTxIndex = false;
 unsigned int nCoinCacheSize = 5000;
-//bool fFirstCheck = false;
-//int fFirstCounter = 1;
+
+static const int64 nDiffChangeTarget = 600000;
+static const int64 patchBlockRewardDuration = 20160;
+static const int nSoftFork = 1187338;
 
 /** Fees smaller than this (in satoshi) are considered zero fee (for transaction creation) */
 int64 CTransaction::nMinTxFee = 100000;
@@ -1062,9 +1064,6 @@ uint256 static GetOrphanRoot(const CBlockHeader* pblock)
         pblock = mapOrphanBlocks[pblock->hashPrevBlock];
     return pblock->GetHash();
 }
-
-static const int64 nDiffChangeTarget = 600000;
-static const int64 patchBlockRewardDuration = 20160;
 
 int64 GetWDCSubsidy(int nHeight) {
 	// thanks to RealSolid for helping out with this code
@@ -2162,9 +2161,6 @@ bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerk
 	if (GetHash() != hashGenesisBlock)
 		if (fCheckPOW && !CheckProofOfWork(GetPoWHash(), nBits))
 			return state.DoS(50, error("CheckBlock() : proof of work failed"));
-    // Check timestamp
-    if (GetBlockTime() > GetAdjustedTime() + 2 * 60 * 60)
-        return state.Invalid(error("CheckBlock() : block timestamp too far in the future"));
 
     // First transaction must be coinbase, the rest must not be
     if (vtx.empty() || !vtx[0].IsCoinBase())
@@ -2231,6 +2227,14 @@ bool CBlock::AcceptBlock(CValidationState &state, CDiskBlockPos *dbp)
         // Check timestamp against prev
         if (GetBlockTime() <= pindexPrev->GetMedianTimePast())
             return state.Invalid(error("AcceptBlock() : block's timestamp is too early"));
+
+        // limit block in future accepted in chain to only a time window of 30 min
+        if (GetBlockTime() > GetAdjustedTime() + 15 * 60)
+            return error("AcceptBlock() : block's timestamp too far in the future");
+
+        // Check timestamp against prev it should not be more then 15 minutes outside blockchain time
+        if (((nHeight >= nSoftFork) || fTestNet) && (GetBlockTime() <= pindexPrev->GetBlockTime() - 15 * 60))
+            return error("AcceptBlock() : block's timestamp is too early compare to last block");
 
         // Check that all transactions are finalized
         BOOST_FOREACH(const CTransaction& tx, vtx)
