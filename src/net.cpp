@@ -1,9 +1,8 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2012 The worldcoin developers
+// Copyright (c) 2009-2012 The Bitcoin Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "irc.h"
 #include "db.h"
 #include "net.h"
 #include "init.h"
@@ -16,11 +15,14 @@
 #endif
 
 #ifdef USE_UPNP
-#include <miniwget.h>
-#include <miniupnpc.h>
-#include <upnpcommands.h>
-#include <upnperrors.h>
+#include <miniupnpc/miniwget.h>
+#include <miniupnpc/miniupnpc.h>
+#include <miniupnpc/upnpcommands.h>
+#include <miniupnpc/upnperrors.h>
 #endif
+
+// Dump addresses to peers.dat every 15 minutes (900s)
+#define DUMP_ADDRESSES_INTERVAL 900
 
 using namespace std;
 using namespace boost;
@@ -338,7 +340,6 @@ bool GetMyExternalIP2(const CService& addrConnect, const char* pszGet, const cha
     return error("GetMyExternalIP() : connection closed");
 }
 
-// We now get our external IP from the IRC server first and only use this as a backup 
 bool GetMyExternalIP(CNetAddr& ipRet)
 {
     CService addrConnect;
@@ -611,12 +612,13 @@ void CNode::copyStats(CNodeStats &stats)
     X(nTimeConnected);
     X(addrName);
     X(nVersion);
-    X(strSubVer);
+    X(cleanSubVer);
     X(fInbound);
     X(nStartingHeight);
     X(nMisbehavior);
     X(nSendBytes);
     X(nRecvBytes);
+    X(nBlocksRequested);
     stats.fSyncNode = (this == pnodeSync);
 }
 #undef X
@@ -1190,23 +1192,17 @@ void MapPort(bool)
 // The first name is used as information source for addrman.
 // The second name should resolve to a list of seed addresses.
 static const char *strMainNetDNSSeed[][2] = {
-    // {"worldcointools.com", "dnsseed.worldcointools.com"},
-    // {"worldcoinpool.org", "dnsseed.worldcoinpool.org"},
-    // {"xurious.com", "dnsseed.ltc.xurious.com"},
-    // {"koin-project.com", "dnsseed.koin-project.com"},
-    // {"wdc.theblocksfactory.com", "94.23.31.223"},
-	 {"seednode1.worldcoinfoundation.org", "seednode1.worldcoinfoundation.org"},
-	 {"seednode2.worldcoinfoundation.org", "seednode2.worldcoinfoundation.org"},
-	 {"seednode3.worldcoinfoundation.org", "seednode3.worldcoinfoundation.org"},
-	 {"seednode4.worldcoinfoundation.org", "seednode4.worldcoinfoundation.org"},
-	 {"seednode5.worldcoinfoundation.org", "seednode5.worldcoinfoundation.org"},
-	 {"seednode6.worldcoinfoundation.org", "seednode6.worldcoinfoundation.org"},
+	 {"worldcoincore.com", "seednode1.worldcoincore.com"},
+	 {"worldcoincore.com", "seednode2.worldcoincore.com"},
+	 {"worldcoincore.com", "seednode3.worldcoincore.com"},
+	 {"worldcoincore.com", "seednode4.worldcoincore.com"},
+	 {"worldcoincore.com", "seednode5.worldcoincore.com"},
+	 {"worldcoincore.com", "seednode6.worldcoincore.com"},
     {NULL, NULL}
 };
 
 static const char *strTestNetDNSSeed[][2] = {
-    // {"worldcointools.com", "testnet-seed.worldcointools.com"},
-    // {"weminemnc.com", "testnet-seed.weminemnc.com"},
+    {"worldcoincore.com", "testnet-seednode.worldcoincore.com"},
     {NULL, NULL}
 };
 
@@ -1258,7 +1254,6 @@ unsigned int pnSeed[] =
     //0x5E171FDF //wdc.theblocksfactory.com
 	0xA2F337A6
 };
-
 
 void DumpAddresses()
 {
@@ -1563,6 +1558,9 @@ void ThreadMessageHandler()
         CNode* pnodeTrickle = NULL;
         if (!vNodesCopy.empty())
             pnodeTrickle = vNodesCopy[GetRand(vNodesCopy.size())];
+
+        bool fSleep = true;
+
         BOOST_FOREACH(CNode* pnode, vNodesCopy)
         {
             if (pnode->fDisconnect)
@@ -1572,8 +1570,18 @@ void ThreadMessageHandler()
             {
                 TRY_LOCK(pnode->cs_vRecvMsg, lockRecv);
                 if (lockRecv)
+                {
                     if (!ProcessMessages(pnode))
                         pnode->CloseSocketDisconnect();
+
+                    if (pnode->nSendSize < SendBufferSize())
+                    {
+                        if (!pnode->vRecvGetData.empty() || (!pnode->vRecvMsg.empty() && pnode->vRecvMsg[0].complete()))
+                        {
+                            fSleep = false;
+                        }
+                    }
+                }
             }
             boost::this_thread::interruption_point();
 
@@ -1592,7 +1600,8 @@ void ThreadMessageHandler()
                 pnode->Release();
         }
 
-        MilliSleep(100);
+        if (fSleep)
+            MilliSleep(100);
     }
 }
 
@@ -1657,7 +1666,11 @@ bool BindListenPort(const CService &addrBind, string& strError)
     // and enable it by default or not. Try to enable it, if possible.
     if (addrBind.IsIPv6()) {
 #ifdef IPV6_V6ONLY
+#ifdef WIN32
+        setsockopt(hListenSocket, IPPROTO_IPV6, IPV6_V6ONLY, (const char*)&nOne, sizeof(int));
+#else
         setsockopt(hListenSocket, IPPROTO_IPV6, IPV6_V6ONLY, (void*)&nOne, sizeof(int));
+#endif
 #endif
 #ifdef WIN32
         int nProtLevel = 10 /* PROTECTION_LEVEL_UNRESTRICTED */;
@@ -1779,9 +1792,6 @@ void StartNode(boost::thread_group& threadGroup)
     MapPort(GetBoolArg("-upnp", USE_UPNP));
 #endif
 
-    // Get addresses from IRC and advertise ours
-    threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "irc", &ThreadIRCSeed));
-
     // Send and receive from sockets, accept connections
     threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "net", &ThreadSocketHandler));
 
@@ -1795,7 +1805,7 @@ void StartNode(boost::thread_group& threadGroup)
     threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "msghand", &ThreadMessageHandler));
 
     // Dump network addresses
-    threadGroup.create_thread(boost::bind(&LoopForever<void (*)()>, "dumpaddr", &DumpAddresses, 10000));
+    threadGroup.create_thread(boost::bind(&LoopForever<void (*)()>, "dumpaddr", &DumpAddresses, DUMP_ADDRESSES_INTERVAL * 1000));
 }
 
 bool StopNode()

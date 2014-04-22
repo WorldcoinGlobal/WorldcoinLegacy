@@ -4,45 +4,11 @@
 
 #include "net.h"
 #include "worldcoinrpc.h"
-#include "sendalert.h"
-#include "sendnews.h"
+#include "alert.h"
+#include "base58.h"
 
 using namespace json_spirit;
 using namespace std;
-
-Value sendalert(const Array& params, bool fHelp)
-{
-    if (fHelp || params.size() != 2)
-        throw runtime_error(
-            "sendalert(text, private key) \n"
-            "Send alert message to the Worldcoin network.");
-    string strMessage;
-    string sig;
-    strMessage = params[0].get_str();
-    sig = params[1].get_str();
-    CSendAlert sendAlert;
-    sendAlert.Test(strMessage, sig);
-    return (bool)true;
-}
-
-Value sendnews(const Array& params, bool fHelp)
-{
-    if (fHelp || params.size() != 4)
-        throw runtime_error(
-            "sendnews(header, text, status, private key) \n"
-            "Send news message to Worldcoin network.");
-    string strHeader;
-    string strMsg;
-    string strStatus;
-    string sig;
-    strHeader = params[0].get_str();
-    strMsg = params[1].get_str();
-    strStatus = params[2].get_str();
-    sig = params[3].get_str();
-    CSendNewsMessage sendNewsMessage;
-    sendNewsMessage.Test(strHeader, strMsg, strStatus, sig);
-    return (bool)true;
-}
 
 Value getconnectioncount(const Array& params, bool fHelp)
 {
@@ -89,9 +55,13 @@ Value getpeerinfo(const Array& params, bool fHelp)
         obj.push_back(Pair("lastrecv", (boost::int64_t)stats.nLastRecv));
         obj.push_back(Pair("bytessent", (boost::int64_t)stats.nSendBytes));
         obj.push_back(Pair("bytesrecv", (boost::int64_t)stats.nRecvBytes));
+        obj.push_back(Pair("blocksrequested", (boost::int64_t)stats.nBlocksRequested));
         obj.push_back(Pair("conntime", (boost::int64_t)stats.nTimeConnected));
         obj.push_back(Pair("version", stats.nVersion));
-        obj.push_back(Pair("subver", stats.strSubVer));
+        // Use the sanitized form of subver here, to avoid tricksy remote peers from
+        // corrupting or modifiying the JSON output by putting special characters in
+        // their ver message.
+        obj.push_back(Pair("subver", stats.cleanSubVer));
         obj.push_back(Pair("inbound", stats.fInbound));
         obj.push_back(Pair("startingheight", stats.nStartingHeight));
         obj.push_back(Pair("banscore", stats.nMisbehavior));
@@ -238,3 +208,32 @@ Value getaddednodeinfo(const Array& params, bool fHelp)
     return ret;
 }
 
+Value makekeypair(const Array& params, bool fHelp)
+{
+    if (fHelp || params.size() > 1)
+        throw runtime_error(
+            "makekeypair [prefix]\n"
+            "Make a public/private key pair.\n"
+            "[prefix] is optional preferred prefix for the public key.\n");
+
+    string strPrefix = "";
+    if (params.size() > 0)
+        strPrefix = params[0].get_str();
+ 
+    CKey key;
+    int nCount = 0;
+    do
+    {
+        key.MakeNewKey(false);
+        nCount++;
+    } while (nCount < 10000 && strPrefix != HexStr(key.GetPubKey()).substr(0, strPrefix.size()));
+
+    if (strPrefix != HexStr(key.GetPubKey()).substr(0, strPrefix.size()))
+        return Value::null;
+
+    CPrivKey vchPrivKey = key.GetPrivKey();
+    Object result;
+    result.push_back(Pair("PrivateKey", HexStr<CPrivKey::iterator>(vchPrivKey.begin(), vchPrivKey.end())));
+    result.push_back(Pair("PublicKey", HexStr(key.GetPubKey())));
+    return result;
+}

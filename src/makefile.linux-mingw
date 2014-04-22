@@ -71,7 +71,6 @@ OBJS= \
     obj/key.o \
     obj/db.o \
     obj/init.o \
-    obj/irc.o \
     obj/keystore.o \
     obj/main.o \
     obj/net.o \
@@ -93,15 +92,15 @@ OBJS= \
     obj/hash.o \
     obj/bloom.o \
     obj/leveldb.o \
-    obj/txdb.o \
-    obj/newsmessage.o \
-    obj/sendalert.o \
-    obj/sendnews.o
+    obj/txdb.o
+
+ifdef USE_SSE2
+DEFS += -DUSE_SSE2
+OBJS_SSE2= obj/scrypt-sse2.o
+OBJS += $(OBJS_SSE2)
+endif
 
 all: worldcoind.exe
-obj/scrypt.o: scrypt.c
-	i586-mingw32msvc-gcc -c $(CFLAGS) -o $@ $^
-
 
 DEFS += -I"$(CURDIR)/leveldb/include"
 DEFS += -I"$(CURDIR)/leveldb/helpers"
@@ -112,6 +111,9 @@ obj/build.h: FORCE
 	/bin/sh ../share/genbuild.sh obj/build.h
 version.cpp: obj/build.h
 DEFS += -DHAVE_BUILD_INFO
+
+obj/%-sse2.o: %-sse2.cpp
+	$(CXX) -c $(xCXXFLAGS) -msse2 -mstackrealign -o $@ $<
 
 obj/%.o: %.cpp $(HEADERS)
 	$(CXX) -c $(xCXXFLAGS) -o $@ $<

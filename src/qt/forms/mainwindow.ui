@@ -1281,7 +1281,6 @@ QProgressBar::chunk {
   <slot>showAddressBookRequested()</slot>
   <slot>showSendMegsRequested()</slot>
   <slot>transactionsSortOrderChanged()</slot>
-  <slot>showServiceMessages()</slot>
   <slot>addAddressBookRecordRequested()</slot>
   <slot>showSignMessageRequested()</slot>
   <slot>showMessageVerificationDialogRequested()</slot>

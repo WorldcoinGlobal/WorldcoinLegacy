@@ -21,7 +21,7 @@ USE_UPNP?=-
 USE_IPV6:=1
 
 DEPSDIR?=/usr/local
-BOOST_SUFFIX?=-mgw46-mt-sd-1_53
+BOOST_SUFFIX?=-mgw46-mt-sd-1_55
 
 INCLUDEPATHS?= \
  -I"$(CURDIR)" \
@@ -79,7 +79,6 @@ OBJS= \
     obj/key.o \
     obj/db.o \
     obj/init.o \
-    obj/irc.o \
     obj/keystore.o \
     obj/main.o \
     obj/net.o \
@@ -101,11 +100,13 @@ OBJS= \
     obj/bloom.o \
     obj/noui.o \
     obj/leveldb.o \
-    obj/txdb.o \
-    obj/newsmessage.o \
-    obj/sendalert.o \
-    obj/sendnews.o
+    obj/txdb.o
 
+ifdef USE_SSE2
+DEFS += -DUSE_SSE2
+OBJS_SSE2= obj/scrypt-sse2.o
+OBJS += $(OBJS_SSE2)
+endif
 
 all: worldcoind.exe
 
@@ -121,8 +122,8 @@ DEFS += $(addprefix -I,$(CURDIR)/leveldb/helpers)
 leveldb/libleveldb.a:
 	cd leveldb && $(MAKE) CC=$(CC) CXX=$(CXX) OPT="$(CFLAGS)" TARGET_OS=NATIVE_WINDOWS libleveldb.a libmemenv.a && cd ..
 
-obj/scrypt.o: scrypt.c
-	gcc -c $(CFLAGS) -o $@ $^
+obj/%-sse2.o: %-sse2.cpp
+	$(CXX) -c $(CFLAGS) -msse2 -mstackrealign -o $@ $<
 
 obj/%.o: %.cpp $(HEADERS)
 	$(CXX) -c $(CFLAGS) -o $@ $<

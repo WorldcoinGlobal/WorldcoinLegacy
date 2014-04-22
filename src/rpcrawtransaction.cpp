@@ -1,5 +1,5 @@
 // Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2009-2012 The worldcoin developers
+// Copyright (c) 2009-2012 The Bitcoin Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -204,6 +204,7 @@ Value listunspent(const Array& params, bool fHelp)
 
     Array results;
     vector<COutput> vecOutputs;
+    assert(pwalletMain != NULL);
     pwalletMain->AvailableCoins(vecOutputs, false);
     BOOST_FOREACH(const COutput& out, vecOutputs)
     {
@@ -468,7 +469,7 @@ Value signrawtransaction(const Array& params, bool fHelp)
         }
     }
 
-    const CKeyStore& keystore = (fGivenKeys ? tempKeystore : *pwalletMain);
+    const CKeyStore& keystore = ((fGivenKeys || !pwalletMain) ? tempKeystore : *pwalletMain);
 
     int nHashType = SIGHASH_ALL;
     if (params.size() > 3 && params[3].type() != null_type)

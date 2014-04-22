@@ -7,12 +7,12 @@
     <message>
         <location filename="../forms/aboutdialog.ui" line="+26"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>對話</translation>
     </message>
     <message>
         <location line="+125"/>
         <source>Information about program</source>
-        <translation type="unfinished"></translation>
+        <translation>顯示相關信息</translation>
     </message>
     <message>
         <location line="+91"/>
@@ -37,7 +37,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+105"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>確定</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="+21"/>
@@ -101,7 +101,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-10"/>
         <source>Adress for receiving Worldcoins</source>
-        <translation type="unfinished"></translation>
+        <translation>接受世界幣地址</translation>
     </message>
     <message>
         <location line="+272"/>
@@ -152,7 +152,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+162"/>
         <source>Change password</source>
-        <translation type="unfinished"></translation>
+        <translation>修改密碼</translation>
     </message>
     <message>
         <location line="+111"/>
@@ -302,7 +302,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+16"/>
         <source>Incoming News</source>
-        <translation type="unfinished"></translation>
+        <translation>流入信息</translation>
     </message>
 </context>
 <context>
@@ -310,7 +310,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location filename="../forms/editaddressdialog.ui" line="+171"/>
         <source>Edit record</source>
-        <translation type="unfinished"></translation>
+        <translation>編輯記錄</translation>
     </message>
     <message>
         <location line="+89"/>
@@ -330,12 +330,12 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+25"/>
         <source>Paste from clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>從剪貼板粘貼</translation>
     </message>
     <message>
         <location line="+24"/>
         <source>Alt+A</source>
-        <translation type="unfinished">Alt+A</translation>
+        <translation>Alt+A</translation>
     </message>
     <message>
         <location line="-122"/>
@@ -437,87 +437,87 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location filename="../forms/mainwindow.ui" line="+19"/>
         <source>MainWindow</source>
-        <translation type="unfinished"></translation>
+        <translation>主頁</translation>
     </message>
     <message>
         <location line="+266"/>
         <source>Messages from Worldcoin</source>
-        <translation type="unfinished"></translation>
+        <translation>世界幣訊息</translation>
     </message>
     <message>
         <location line="+85"/>
         <source>Worldcoin</source>
-        <translation type="unfinished">世界幣</translation>
+        <translation>世界幣</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>global wallet</source>
-        <translation type="unfinished"></translation>
+        <translation>環球錢包</translation>
     </message>
     <message>
         <location line="+51"/>
         <source>File</source>
-        <translation type="unfinished"></translation>
+        <translation>文件</translation>
     </message>
     <message>
         <location line="+52"/>
         <source>Operations</source>
-        <translation type="unfinished"></translation>
+        <translation>操作選項</translation>
     </message>
     <message>
         <location line="+52"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>設置</translation>
     </message>
     <message>
         <location line="+156"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Welcome to Worldcoin. This is your personal account&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;歡迎來到世界幣，這是你的個人賬戶&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location line="+62"/>
         <source>Overview</source>
-        <translation type="unfinished"></translation>
+        <translation>概況</translation>
     </message>
     <message>
         <location line="+110"/>
         <source>Mining</source>
-        <translation type="unfinished"></translation>
+        <translation>掘礦</translation>
     </message>
     <message>
         <location line="+53"/>
         <source>Send Coins</source>
-        <translation type="unfinished">付錢</translation>
+        <translation>發送貨幣</translation>
     </message>
     <message>
         <location line="+47"/>
         <source>Transactions</source>
-        <translation type="unfinished"></translation>
+        <translation>交易記錄</translation>
     </message>
     <message>
         <location line="+47"/>
         <source>Sign Message</source>
-        <translation type="unfinished"></translation>
+        <translation>訊息簽署</translation>
     </message>
     <message>
         <location line="+47"/>
         <source>Receive Coins</source>
-        <translation type="unfinished"></translation>
+        <translation>接受貨幣</translation>
     </message>
     <message>
         <location line="+47"/>
         <source>Address Book</source>
-        <translation type="unfinished">位址簿</translation>
+        <translation>位址簿</translation>
     </message>
     <message>
         <location line="+47"/>
         <source>Verify Message</source>
-        <translation type="unfinished"></translation>
+        <translation>驗證信息</translation>
     </message>
     <message>
         <location line="+200"/>
         <source>Synchronization</source>
-        <translation type="unfinished"></translation>
+        <translation>同步</translation>
     </message>
     <message>
         <location line="+45"/>
@@ -573,18 +573,18 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-8"/>
         <source>&amp;Send coins</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;發送貨幣</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>&amp;Receive coins</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;接受貨幣</translation>
     </message>
     <message>
         <location line="+14"/>
         <location line="+798"/>
         <source>&amp;Address Book</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;地址簿</translation>
     </message>
     <message>
         <location line="-778"/>
@@ -638,17 +638,17 @@ This product includes software developed by the OpenSSL Project for use in the O
         <location line="-747"/>
         <location line="+700"/>
         <source>&amp;Export...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;輸出...</translation>
     </message>
     <message>
         <location line="-699"/>
         <source>Export the data in the current tab to a file</source>
-        <translation type="unfinished">將目前分頁的資料匯出存成檔案</translation>
+        <translation>將目前分頁的資料匯出存成檔案</translation>
     </message>
     <message>
         <location line="+59"/>
         <source>Actions toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation>工具欄</translation>
     </message>
     <message>
         <location line="+204"/>
@@ -663,7 +663,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-341"/>
         <source>Send coins to a Worldcoin address</source>
-        <translation>付錢到世界幣位址</translation>
+        <translation>付錢到世界幣地址</translation>
     </message>
     <message>
         <location line="+54"/>
@@ -813,48 +813,48 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message numerus="yes">
         <location line="-47"/>
         <source>~%n block(s) remaining</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>~%n 剩餘區塊</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location line="+4"/>
         <source>%n blocks</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n 區塊</numerusform>
         </translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Processed %1 of %2 blocks of transaction history (%3% done).</source>
-        <translation type="unfinished"></translation>
+        <translation>以處理 %1 之 %2 交易歷史數據塊 (%3% 完成).</translation>
     </message>
     <message numerus="yes">
         <location line="+22"/>
         <source>%n second(s) ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n 秒之前</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location line="+4"/>
         <source>%n minute(s) ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n 分鐘之前</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location line="+4"/>
         <source>%n hour(s) ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n 小時之前</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location line="+4"/>
         <source>%n day(s) ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n 天之前</numerusform>
         </translation>
     </message>
     <message>
@@ -865,7 +865,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+16"/>
         <source>Last received block was generated %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>最後一個區塊已生成</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -909,27 +909,27 @@ Address: %4
     <message>
         <location line="+8"/>
         <source>Service messages</source>
-        <translation type="unfinished"></translation>
+        <translation>服務信息</translation>
     </message>
     <message>
         <location line="+42"/>
         <source>Send Worldcoins</source>
-        <translation type="unfinished"></translation>
+        <translation>發送貨幣</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Receive Worldcoins</source>
-        <translation type="unfinished"></translation>
+        <translation>接受貨幣</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Mining</source>
-        <translation type="unfinished"></translation>
+        <translation>掘礦</translation>
     </message>
     <message>
         <location line="+56"/>
         <source>Common, Network</source>
-        <translation type="unfinished"></translation>
+        <translation>普遍，網絡</translation>
     </message>
     <message>
         <location line="+38"/>
@@ -944,32 +944,32 @@ Address: %4
     <message>
         <location line="+23"/>
         <source>Backup Wallet</source>
-        <translation type="unfinished">錢包備份</translation>
+        <translation>錢包備份</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Wallet Data (*.dat)</source>
-        <translation type="unfinished">錢包資料檔 (*.dat)</translation>
+        <translation>錢包資料檔 (*.dat)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Backup Failed</source>
-        <translation type="unfinished">備份失敗</translation>
+        <translation>備份失敗</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>There was an error trying to save the wallet data to the new location.</source>
-        <translation type="unfinished">儲存錢包資料到新的地方失敗</translation>
+        <translation>儲存錢包資料到新的地點失敗</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Backup Successful</source>
-        <translation type="unfinished">備份成功</translation>
+        <translation>備份成功</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>The wallet data was successfully saved to the new location.</source>
-        <translation type="unfinished">錢包的資料已經成功儲存到新的地方了.</translation>
+        <translation>錢包的資料已經成功儲存到新的地點了.</translation>
     </message>
     <message>
         <location filename="../worldcoin.cpp" line="+109"/>
@@ -982,22 +982,22 @@ Address: %4
     <message>
         <location filename="../forms/message_box_dialog.ui" line="+374"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>好</translation>
     </message>
     <message>
         <location line="+82"/>
         <source>Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>確認</translation>
     </message>
     <message>
         <location line="+51"/>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location line="+76"/>
         <source>Don&apos;t show again</source>
-        <translation type="unfinished"></translation>
+        <translation>不再顯示</translation>
     </message>
 </context>
 <context>
@@ -1005,57 +1005,57 @@ Address: %4
     <message>
         <location filename="../forms/miningpage.ui" line="+159"/>
         <source>Form</source>
-        <translation type="unfinished">表單</translation>
+        <translation>表單</translation>
     </message>
     <message>
         <location line="+107"/>
         <source>Mining coins</source>
-        <translation type="unfinished"></translation>
+        <translation>掘礦</translation>
     </message>
     <message>
         <location line="+378"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>停止</translation>
     </message>
     <message>
         <location line="+38"/>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>啓動</translation>
     </message>
     <message>
         <location filename="../miningpage.cpp" line="+66"/>
         <source>Mining coins started!</source>
-        <translation type="unfinished"></translation>
+        <translation>掘礦已啓動</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Used threads %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 綫程被使用</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Mining coins stopped!</source>
-        <translation type="unfinished"></translation>
+        <translation>掘礦已終止</translation>
     </message>
     <message>
         <location line="+46"/>
         <source>Running mining coins...</source>
-        <translation type="unfinished"></translation>
+        <translation>掘礦中...</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Start error!</source>
-        <translation type="unfinished"></translation>
+        <translation>運行錯誤</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Stop mining coins...</source>
-        <translation type="unfinished"></translation>
+        <translation>掘礦停止中...</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Stop error!</source>
-        <translation type="unfinished"></translation>
+        <translation>終止錯誤</translation>
     </message>
 </context>
 <context>
@@ -1218,12 +1218,12 @@ Address: %4
     <message>
         <location line="+21"/>
         <source>Mining</source>
-        <translation type="unfinished"></translation>
+        <translation>掘礦</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>&amp;Start mining Worldcoins on application start</source>
-        <translation type="unfinished"></translation>
+        <translation>程序啓動時啓動掘礦</translation>
     </message>
     <message>
         <location line="+71"/>
@@ -1248,7 +1248,7 @@ Address: %4
     <message>
         <location line="+43"/>
         <source>Optional transaction fee per kB that helps make sure your transactions are processed quickly. Fee 0.01 recommended.</source>
-        <translation type="unfinished"></translation>
+        <translation>可選的交易費,以每kB繳納輸入數量，有助於確保快速處理您的交易。推薦 0.01/kB.</translation>
     </message>
     <message>
         <location line="+112"/>
@@ -1288,172 +1288,172 @@ Address: %4
     <message>
         <location filename="../forms/optionspage.ui" line="+159"/>
         <source>Form</source>
-        <translation type="unfinished">表單</translation>
+        <translation>表單</translation>
     </message>
     <message>
         <location line="+110"/>
         <source>Common settings, Network</source>
-        <translation type="unfinished"></translation>
+        <translation>普遍設置， 網絡</translation>
     </message>
     <message>
         <location line="+103"/>
         <source>Common</source>
-        <translation type="unfinished"></translation>
+        <translation>普遍</translation>
     </message>
     <message>
         <location line="+29"/>
         <source>Automatically start Worldcoin after logging in to the system.</source>
-        <translation type="unfinished">在登入系統後自動啓動世界幣.</translation>
+        <translation>在登入系統後自動啓動世界幣.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Start Worldcoin on system login</source>
-        <translation type="unfinished">系統登入時啟動世界幣</translation>
+        <translation>系統登入時啟動世界幣</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>&amp;Start mining worldcoins on start application</source>
-        <translation type="unfinished"></translation>
+        <translation>程序啓動時啓動掘礦</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>Show only a tray icon after minimizing the window.</source>
-        <translation type="unfinished">最小化視窗後只在通知區域顯示圖示</translation>
+        <translation>最小化視窗後只在通知區域顯示圖示</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Minimize to the tray instead of the taskbar</source>
-        <translation type="unfinished">最小化至通知區域而非工作列</translation>
+        <translation>最小化至通知區域而非工作列</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Quit in the menu.</source>
-        <translation type="unfinished">當視窗關閉時將其最小化, 而非結束應用程式. 當勾選這個選項時, 應用程式只能用選單中的結束來停止執行.</translation>
+        <translation>當視窗關閉時將其最小化, 而非結束應用程式. 當勾選這個選項時, 應用程式只能用選單中的結束來停止執行.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>M&amp;inimize on close</source>
-        <translation type="unfinished">關閉時最小化</translation>
+        <translation>關閉時最小化</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>&amp;Allow sounds</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;允許聲響</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>&amp;Check updates at startup</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;啓動時更新</translation>
     </message>
     <message>
         <location line="+36"/>
         <source>Display</source>
-        <translation type="unfinished"></translation>
+        <translation>顯示</translation>
     </message>
     <message>
         <location line="+60"/>
         <source>&amp;Unit to show amounts in:</source>
-        <translation type="unfinished">金額顯示單位:</translation>
+        <translation>金額顯示單位:</translation>
     </message>
     <message>
         <location line="+18"/>
         <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
-        <translation type="unfinished">選擇操作界面與付錢時預設顯示的細分單位.</translation>
+        <translation>選擇操作界面與付錢時預設顯示的細分單位.</translation>
     </message>
     <message>
         <location line="+45"/>
         <source>User Interface &amp;language:</source>
-        <translation type="unfinished">使用界面語言</translation>
+        <translation>使用界面語言</translation>
     </message>
     <message>
         <location line="+31"/>
         <source>The user interface language can be set here. This setting will take effect after restarting Worldcoin.</source>
-        <translation type="unfinished">可以在這裡設定使用者介面的語言. 這個設定在世界幣程式重啓後才會生效.</translation>
+        <translation>可以在這裡設定使用者介面的語言. 這個設定在世界幣程式重啓後才會生效.</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>Whether to show Worldcoin addresses in the transaction list or not.</source>
-        <translation type="unfinished">是否要在交易列表中顯示世界幣位址.</translation>
+        <translation>是否要在交易列表中顯示世界幣位址.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Display addresses in transaction list</source>
-        <translation type="unfinished">在交易列表顯示位址</translation>
+        <translation>在交易列表顯示位址</translation>
     </message>
     <message>
         <location line="+59"/>
         <source>Pay transaction fee</source>
-        <translation type="unfinished"></translation>
+        <translation>付交易費</translation>
     </message>
     <message>
         <location line="+56"/>
         <source>Network</source>
-        <translation type="unfinished">網路</translation>
+        <translation>網路</translation>
     </message>
     <message>
         <location line="+32"/>
         <source>Automatically open the Worldcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation type="unfinished">自動在路由器上開啟 Worldcoin 的客戶端通訊埠. 只有在你的路由器支援 UPnP 且開啟時才有作用.</translation>
+        <translation>自動在路由器上開啟世界幣客戶端通訊埠. 只有在你的路由器支援 UPnP 且開啟時才有作用.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Map port using &amp;UPnP</source>
-        <translation type="unfinished">用 &amp;UPnP 設定通訊埠對應</translation>
+        <translation>用 &amp;UPnP 設定通訊埠對應</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Connect to the Worldcoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
-        <translation type="unfinished">透過 SOCKS 代理伺服器連線至世界幣網路 (比如說要透過 Tor 連線).</translation>
+        <translation>透過 SOCKS 代理伺服器連線至世界幣網路 (比如說要透過 Tor 連線).</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Connect through SOCKS proxy:</source>
-        <translation type="unfinished">透過 SOCKS 代理伺服器連線:</translation>
+        <translation>透過 SOCKS 代理伺服器連線:</translation>
     </message>
     <message>
         <location line="+42"/>
         <source>Proxy &amp;IP:</source>
-        <translation type="unfinished">代理伺服器位址:</translation>
+        <translation>代理伺服器位址:</translation>
     </message>
     <message>
         <location line="+27"/>
         <source>IP address of the proxy (e.g. 127.0.0.1)</source>
-        <translation type="unfinished">代理伺服器的網際網路位址 (比如說 127.0.0.1)</translation>
+        <translation>代理伺服器的網際網路位址 (比如說 127.0.0.1)</translation>
     </message>
     <message>
         <location line="+30"/>
         <source>&amp;Port:</source>
-        <translation type="unfinished">通訊埠:</translation>
+        <translation>通訊埠:</translation>
     </message>
     <message>
         <location line="+27"/>
         <source>Port of the proxy (e.g. 9050)</source>
-        <translation type="unfinished">代理伺服器的通訊埠 (比如說 9050)</translation>
+        <translation>代理伺服器的通訊埠 (比如說 9050)</translation>
     </message>
     <message>
         <location line="+48"/>
         <source>SOCKS &amp;Version:</source>
-        <translation type="unfinished">SOCKS 協定版本:</translation>
+        <translation>SOCKS 協定版本:</translation>
     </message>
     <message>
         <location line="+33"/>
         <source>SOCKS version of the proxy (e.g. 5)</source>
-        <translation type="unfinished">代理伺服器的 SOCKS 協定版本 (比如說 5)</translation>
+        <translation>代理伺服器的 SOCKS 協定版本 (比如說 5)</translation>
     </message>
     <message>
         <location line="+128"/>
         <source>Reset all client options to default.</source>
-        <translation type="unfinished">回復所有客戶端軟體選項成預設值.</translation>
+        <translation>回復所有客戶端軟體選項成預設值.</translation>
     </message>
     <message>
         <location line="+22"/>
         <source>&amp;Reset Options</source>
-        <translation type="unfinished">選項回復</translation>
+        <translation>選項回復</translation>
     </message>
     <message>
         <location line="+51"/>
         <source>&amp;Apply</source>
-        <translation type="unfinished">套用</translation>
+        <translation>套用</translation>
     </message>
 </context>
 <context>
@@ -1466,14 +1466,14 @@ Address: %4
     <message>
         <location line="+128"/>
         <source>Account status</source>
-        <translation type="unfinished"></translation>
+        <translation>賬戶狀態</translation>
     </message>
     <message>
         <location line="+35"/>
         <location line="+46"/>
         <location line="+46"/>
         <source>0 Lrks</source>
-        <translation type="unfinished"></translation>
+        <translation>0 Lrks</translation>
     </message>
     <message>
         <location line="+64"/>
@@ -1488,7 +1488,7 @@ Address: %4
     <message>
         <location line="+175"/>
         <source>Last transactions</source>
-        <translation type="unfinished"></translation>
+        <translation>最近交易</translation>
     </message>
     <message>
         <location line="-128"/>
@@ -1666,57 +1666,57 @@ Address: %4
     <message>
         <location line="+72"/>
         <source>Send network alert</source>
-        <translation type="unfinished"></translation>
+        <translation>發送網路警報</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Send news</source>
-        <translation type="unfinished"></translation>
+        <translation>發送信息</translation>
     </message>
     <message>
         <location line="+22"/>
         <source>Header</source>
-        <translation type="unfinished"></translation>
+        <translation>標題</translation>
     </message>
     <message>
         <location line="+33"/>
         <source>Tray</source>
-        <translation type="unfinished"></translation>
+        <translation>最小化窗口</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>信息</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Date</source>
-        <translation type="unfinished">日期</translation>
+        <translation>日期</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Expires On</source>
-        <translation type="unfinished"></translation>
+        <translation>過期在</translation>
     </message>
     <message>
         <location line="+33"/>
         <source>ID</source>
-        <translation type="unfinished">識別碼</translation>
+        <translation>識別碼</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>語言</translation>
     </message>
     <message>
         <location line="+26"/>
         <source>Signature</source>
-        <translation type="unfinished">簽章</translation>
+        <translation>簽章</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation>發送</translation>
     </message>
     <message>
         <location line="-536"/>
@@ -1796,7 +1796,7 @@ Address: %4
     <message>
         <location line="-115"/>
         <source>Send Worldcoins</source>
-        <translation type="unfinished"></translation>
+        <translation>發送世界幣</translation>
     </message>
     <message>
         <location line="+137"/>
@@ -1901,7 +1901,7 @@ Address: %4
     <message>
         <location line="+94"/>
         <source>Send to multiple recipients at once</source>
-        <translation type="unfinished">一次付給多個人</translation>
+        <translation>一次付給多個人</translation>
     </message>
     <message>
         <location line="+92"/>
@@ -1940,27 +1940,27 @@ Address: %4
     <message>
         <location filename="../forms/servicemessagespage.ui" line="+159"/>
         <source>Form</source>
-        <translation type="unfinished">表單</translation>
+        <translation>表單</translation>
     </message>
     <message>
         <location line="+107"/>
         <source>Messages from Worldcoin</source>
-        <translation type="unfinished"></translation>
+        <translation>世界比信息</translation>
     </message>
     <message>
         <location line="+60"/>
         <source>Date</source>
-        <translation type="unfinished">日期</translation>
+        <translation>日期</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>Message content</source>
-        <translation type="unfinished"></translation>
+        <translation>信息内容</translation>
     </message>
     <message>
         <location filename="../servicemessagespage.cpp" line="+33"/>
         <source>17:56, 01.03.2012</source>
-        <translation type="unfinished"></translation>
+        <translation>17:56, 01.03.2012</translation>
     </message>
 </context>
 <context>
@@ -1968,130 +1968,130 @@ Address: %4
     <message>
         <location filename="../forms/signmessagepage.ui" line="+159"/>
         <source>Form</source>
-        <translation type="unfinished">表單</translation>
+        <translation>表單</translation>
     </message>
     <message>
         <location line="+110"/>
         <source>Sign Message</source>
-        <translation type="unfinished"></translation>
+        <translation>訊息簽署</translation>
     </message>
     <message>
         <location line="+73"/>
         <source>Signature</source>
-        <translation type="unfinished">簽章</translation>
+        <translation>簽章</translation>
     </message>
     <message>
         <location line="+25"/>
         <source>Choose an address from the address book</source>
-        <translation type="unfinished">從位址簿選一個位址</translation>
+        <translation>從位址簿選一個位址</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>Alt+A</source>
-        <translation type="unfinished">Alt+A</translation>
+        <translation>Alt+A</translation>
     </message>
     <message>
         <location line="+22"/>
         <source>Paste address from clipboard</source>
-        <translation type="unfinished">從剪貼簿貼上位址</translation>
+        <translation>從剪貼簿貼上位址</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>Alt+P</source>
-        <translation type="unfinished">Alt+P</translation>
+        <translation>Alt+P</translation>
     </message>
     <message>
         <location line="+22"/>
         <source>Address</source>
-        <translation type="unfinished">位址</translation>
+        <translation>位址</translation>
     </message>
     <message>
         <location line="+24"/>
         <source>The address to sign the message with (e.g. MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
-        <translation type="unfinished">用來簽署訊息的位址 (比如說 MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
+        <translation>用來簽署訊息的位址 (比如說 MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
     <message>
         <location line="+22"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>信息</translation>
     </message>
     <message>
         <location line="+18"/>
         <source>Enter the message you want to sign here</source>
-        <translation type="unfinished">在這裡輸入你想簽署的訊息</translation>
+        <translation>在這裡輸入你想簽署的訊息</translation>
     </message>
     <message>
         <location line="+30"/>
         <source>Copy the current signature to the system clipboard</source>
-        <translation type="unfinished">複製目前的簽章到系統剪貼簿</translation>
+        <translation>複製目前的簽章到系統剪貼簿</translation>
     </message>
     <message>
         <location line="+110"/>
         <source>Reset all sign message fields</source>
-        <translation type="unfinished">重置所有訊息簽署欄位</translation>
+        <translation>重置所有訊息簽署欄位</translation>
     </message>
     <message>
         <location line="+22"/>
         <source>Clear &amp;All</source>
-        <translation type="unfinished">全部清掉</translation>
+        <translation>全部清掉</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>Sign the message to prove you own this Worldcoin address</source>
-        <translation type="unfinished">簽署訊息是用來證明這個世界幣位址是你的</translation>
+        <translation>簽署訊息是用來證明這個世界幣位址是你的</translation>
     </message>
     <message>
         <location line="+22"/>
         <source>Sign &amp;Message</source>
-        <translation type="unfinished">訊息簽署</translation>
+        <translation>訊息簽署</translation>
     </message>
     <message>
         <location filename="../signmessagepage.cpp" line="+28"/>
         <source>Enter a Worldcoin address (e.g. MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
-        <translation type="unfinished">輸入世界幣位址 (比如說 MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
+        <translation>輸入世界幣位址 (比如說 MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Click &quot;Sign Message&quot; to generate signature</source>
-        <translation type="unfinished">按&quot;訊息簽署&quot;來產生簽章</translation>
+        <translation>按&quot;訊息簽署&quot;來產生簽章</translation>
     </message>
     <message>
         <location line="+12"/>
         <location line="+53"/>
         <source>The entered address is invalid.</source>
-        <translation type="unfinished">輸入的位址無效.</translation>
+        <translation>輸入的位址無效.</translation>
     </message>
     <message>
         <location line="-53"/>
         <location line="+53"/>
         <location line="+8"/>
         <source>Please check the address and try again.</source>
-        <translation type="unfinished">請檢查位址是否正確後再試一次.</translation>
+        <translation>請檢查位址是否正確後再試一次.</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>The entered address does not refer to a key.</source>
-        <translation type="unfinished">輸入的位址沒有指到任何密鑰.</translation>
+        <translation>輸入的位址沒有指到任何密鑰.</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Wallet unlock was cancelled.</source>
-        <translation type="unfinished">錢包解鎖已取消.</translation>
+        <translation>錢包解鎖已取消.</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Private key for the entered address is not available.</source>
-        <translation type="unfinished">沒有所輸入位址的密鑰.</translation>
+        <translation>沒有所輸入位址的密鑰.</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Message signing failed.</source>
-        <translation type="unfinished">訊息簽署失敗.</translation>
+        <translation>訊息簽署失敗.</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Message signed.</source>
-        <translation type="unfinished">訊息已簽署.</translation>
+        <translation>訊息已簽署.</translation>
     </message>
 </context>
 <context>
@@ -2105,7 +2105,7 @@ Address: %4
     <message>
         <location line="+105"/>
         <source>Edit record</source>
-        <translation type="unfinished"></translation>
+        <translation>編輯記錄</translation>
     </message>
     <message>
         <location line="+49"/>
@@ -2795,12 +2795,12 @@ Address: %4
     <message>
         <location filename="../forms/transactionspage.ui" line="+159"/>
         <source>Form</source>
-        <translation type="unfinished">表單</translation>
+        <translation>表單</translation>
     </message>
     <message>
         <location line="+101"/>
         <source>Transactions</source>
-        <translation type="unfinished"></translation>
+        <translation>交易記錄</translation>
     </message>
 </context>
 <context>
@@ -2808,116 +2808,116 @@ Address: %4
     <message>
         <location filename="../forms/verifymessagepage.ui" line="+159"/>
         <source>Form</source>
-        <translation type="unfinished">表單</translation>
+        <translation>表單</translation>
     </message>
     <message>
         <location line="+110"/>
         <source>Verify Message</source>
-        <translation type="unfinished"></translation>
+        <translation>驗證訊息</translation>
     </message>
     <message>
         <location line="+93"/>
         <source>Signature</source>
-        <translation type="unfinished">簽章</translation>
+        <translation>簽章</translation>
     </message>
     <message>
         <location line="+43"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>文字</translation>
     </message>
     <message>
         <location line="+45"/>
         <source>Address</source>
-        <translation type="unfinished">位址</translation>
+        <translation>地址</translation>
     </message>
     <message>
         <location line="+24"/>
         <source>The address the message was signed with (e.g. MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
-        <translation type="unfinished">簽署該訊息的位址 (比如說 MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
+        <translation>簽署該訊息的地址 (比如 MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
     <message>
         <location line="+22"/>
         <source>Choose an address from the address book</source>
-        <translation type="unfinished">從位址簿選一個位址</translation>
+        <translation>從位址簿選一個地址</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>Alt+A</source>
-        <translation type="unfinished">Alt+A</translation>
+        <translation>Alt+A</translation>
     </message>
     <message>
         <location line="+101"/>
         <source>Reset all verify message fields</source>
-        <translation type="unfinished">重置所有訊息驗證欄位</translation>
+        <translation>重置所有訊息驗證欄位</translation>
     </message>
     <message>
         <location line="+22"/>
         <source>Clear &amp;All</source>
-        <translation type="unfinished">全部清掉</translation>
+        <translation>全部清掉</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>Verify the message to ensure it was signed with the specified Worldcoin address</source>
-        <translation type="unfinished">驗證訊息是用來確認訊息是用指定的世界幣位址簽署的</translation>
+        <translation>驗證訊息是用來確認訊息是用指定的世界幣位址簽署的</translation>
     </message>
     <message>
         <location line="+22"/>
         <source>Verify &amp;Message</source>
-        <translation type="unfinished">訊息驗證</translation>
+        <translation>訊息驗證</translation>
     </message>
     <message>
         <location filename="../verifymessagepage.cpp" line="+28"/>
         <source>Enter a Worldcoin address (e.g. MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
-        <translation type="unfinished">輸入世界幣位址 (比如說 MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
+        <translation>輸入世界幣地址 (比如 MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Enter Worldcoin signature</source>
-        <translation type="unfinished">輸入世界幣簽章</translation>
+        <translation>輸入世界幣簽章</translation>
     </message>
     <message>
         <location line="+12"/>
         <location line="+45"/>
         <source>The entered address is invalid.</source>
-        <translation type="unfinished">輸入的位址無效.</translation>
+        <translation>輸入的位址無效.</translation>
     </message>
     <message>
         <location line="-45"/>
         <location line="+45"/>
         <location line="+8"/>
         <source>Please check the address and try again.</source>
-        <translation type="unfinished">請檢查位址是否正確後再試一次.</translation>
+        <translation>請檢查位址是否正確後再試一次.</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>The entered address does not refer to a key.</source>
-        <translation type="unfinished">輸入的位址沒有指到任何密鑰.</translation>
+        <translation>輸入的位址沒有指到任何密鑰.</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>The signature could not be decoded.</source>
-        <translation type="unfinished">無法將這個簽章解碼.</translation>
+        <translation>無法將這個簽章解碼.</translation>
     </message>
     <message>
         <location line="+0"/>
         <location line="+13"/>
         <source>Please check the signature and try again.</source>
-        <translation type="unfinished">請檢查簽章是否正確後再試一次.</translation>
+        <translation>請檢查簽章是否正確後再試一次.</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>The signature did not match the message digest.</source>
-        <translation type="unfinished">這個簽章與訊息的數位摘要不符.</translation>
+        <translation>這個簽章與訊息的數位摘要不符.</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Message verification failed.</source>
-        <translation type="unfinished">訊息驗證失敗.</translation>
+        <translation>訊息驗證失敗.</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Message verified.</source>
-        <translation type="unfinished">訊息已驗證.</translation>
+        <translation>訊息已驗證.</translation>
     </message>
 </context>
 <context>
@@ -2925,7 +2925,7 @@ Address: %4
     <message>
         <location filename="../walletmodel.cpp" line="+193"/>
         <source>Send Coins</source>
-        <translation>付錢</translation>
+        <translation>發送貨幣</translation>
     </message>
 </context>
 <context>
