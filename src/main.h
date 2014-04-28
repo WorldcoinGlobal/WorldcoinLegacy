@@ -102,6 +102,7 @@ extern bool fBenchmark;
 extern int nScriptCheckThreads;
 extern bool fTxIndex;
 extern unsigned int nCoinCacheSize;
+extern std::map<uint256, CBlock*> mapOrphanBlocks;
 
 // Settings
 extern int64 nTransactionFee;
@@ -1480,7 +1481,7 @@ public:
         catch (std::exception &e) {
             return error("%s() : deserialize or I/O error", __PRETTY_FUNCTION__);
         }
-		//print();
+
 		// Check the header
 		if (GetHash() != hashGenesisBlock)
 			if (!CheckProofOfWork(GetPoWHash(), nBits))
