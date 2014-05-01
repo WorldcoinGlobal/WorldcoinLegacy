@@ -395,7 +395,7 @@ bool inline CWorldcoinAddressVisitor::operator()(const CScriptID &id) const     
 bool inline CWorldcoinAddressVisitor::operator()(const CNoDestination &id) const { return false; }
 
 /** A base58-encoded secret key */
-class CWorldcoinSecret : public CBase58Data
+class CBitcoinSecret : public CBase58Data
 {
 public:
     enum
@@ -447,12 +447,12 @@ public:
         return SetString(strSecret.c_str());
     }
 
-    CWorldcoinSecret(const CKey& vchSecret)
+    CBitcoinSecret(const CKey& vchSecret)
     {
         SetKey(vchSecret);
     }
 
-    CWorldcoinSecret()
+    CBitcoinSecret()
     {
     }
 };
