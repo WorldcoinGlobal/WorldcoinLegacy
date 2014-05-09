@@ -51,7 +51,7 @@ unsigned int nCoinCacheSize = 5000;
 
 static const int64 nDiffChangeTarget = 600000;
 static const int64 patchBlockRewardDuration = 20160;
-static const int nSoftFork = 1285067;
+static const int nSoftFork = 1316550;
 
 /** Fees smaller than this (in satoshi) are considered zero fee (for transaction creation) */
 int64 CTransaction::nMinTxFee = 100000;
