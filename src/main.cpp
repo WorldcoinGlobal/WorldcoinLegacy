@@ -2804,8 +2804,12 @@ bool LoadBlockIndex()
 
 bool InitBlockIndex() {
     // Check whether we're already initialized
-    if (pindexGenesisBlock != NULL)
+    if (pindexGenesisBlock != NULL) {
+        // Check whether the master checkpoint key has changed and reset the sync checkpoint if needed.
+        if (!CheckCheckpointPubKey())
+            return error("LoadBlockIndex() : failed to reset checkpoint master pubkey");  
         return true;
+    }
 
     // Use the provided setting for -txindex in the new database
     fTxIndex = GetBoolArg("-txindex", false);
