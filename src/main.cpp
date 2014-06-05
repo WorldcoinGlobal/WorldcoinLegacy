@@ -51,7 +51,7 @@ unsigned int nCoinCacheSize = 5000;
 
 static const int64 nDiffChangeTarget = 600000;
 static const int64 patchBlockRewardDuration = 20160;
-static const int nSoftFork = 1285067;
+static const int nSoftFork = 1316550;
 
 /** Fees smaller than this (in satoshi) are considered zero fee (for transaction creation) */
 int64 CTransaction::nMinTxFee = 100000;
@@ -2238,6 +2238,7 @@ bool CBlock::AcceptBlock(CValidationState &state, CDiskBlockPos *dbp)
 
 		// Check that the block satisfies synchronized checkpoint
         if (IsSyncCheckpointEnforced() // checkpoint enforce mode
+            && !IsInitialBlockDownload()  // dont enforce checkpoints while blockchain is being downloaded for the first time
             && !CheckSyncCheckpoint(hash, pindexPrev))
             return error("AcceptBlock() : rejected by synchronized checkpoint");
 
@@ -2803,8 +2804,12 @@ bool LoadBlockIndex()
 
 bool InitBlockIndex() {
     // Check whether we're already initialized
-    if (pindexGenesisBlock != NULL)
+    if (pindexGenesisBlock != NULL) {
+        // Check whether the master checkpoint key has changed and reset the sync checkpoint if needed.
+        if (!CheckCheckpointPubKey())
+            return error("LoadBlockIndex() : failed to reset checkpoint master pubkey");  
         return true;
+    }
 
     // Use the provided setting for -txindex in the new database
     fTxIndex = GetBoolArg("-txindex", false);
