@@ -1,25 +1,25 @@
 Worldcoin integration/staging tree
 ================================
 
-http://www.worldcoinalliance.net
+http://www.worldcoinfoundation.org/
 
 Copyright (c) 2009-2013 Bitcoin Developers
 Copyright (c) 2011-2013 Litecoin Developers
-Copyright (c) 2013-2014 Worldcoin Developers
+Copyright (c) 2013 Worldcoin Developers
 
 What is Worldcoin?
 ----------------
 
-Worldcoin is an improved version of Bitcoin using Scrypt as a proof-of-work algorithm.
+Worldcoin is a lite version of Bitcoin using scrypt as a proof-of-work algorithm.
  - 30 second block targets
- - 20160 blocks to re-target difficulty
+ - 20160 blocks to retarget difficulty
  - starts at 64 coins per block
  - subsidy is reduced 1% every week to a minimum reward of 1 WDC per block
- - ~265 million total coins
+ - ~280 million total coins
 
 
-For more information, as well as an immediately usable, binary version of
-the Worldcoin client software, see http://www.worldcoinalliance.net.
+For more information, as well as an immediately useable, binary version of
+the Worldcoin client software, see http://www.worldcoinfoundation.org.
 
 License
 -------
