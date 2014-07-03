@@ -8,6 +8,11 @@
 #include "sync.h"
 #include "hash.h"
 
+#if defined(_MSC_VER)
+#include <BaseTsd.h>
+typedef SSIZE_T ssize_t;
+#endif
+
 #ifndef WIN32
 #include <sys/fcntl.h>
 #endif

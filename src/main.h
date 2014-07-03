@@ -15,7 +15,7 @@
 
 class CWallet;
 class CBlock;
-class CBlockIndex;
+//class CBlockIndex;
 class CKeyItem;
 class CReserveKey;
 
@@ -23,7 +23,7 @@ class CAddress;
 class CInv;
 class CNode;
 
-struct CBlockIndexWorkComparator;
+//struct CBlockIndexWorkComparator;
 
 /** The maximum allowed size for a serialized block, in bytes (network rule) */
 static const unsigned int MAX_BLOCK_SIZE = 1000000;                      // 1000KB block hard limit
@@ -78,7 +78,7 @@ extern CScript COINBASE_FLAGS;
 
 extern CCriticalSection cs_main;
 extern std::map<uint256, CBlockIndex*> mapBlockIndex;
-extern std::set<CBlockIndex*, CBlockIndexWorkComparator> setBlockIndexValid;
+
 extern uint256 hashGenesisBlock;
 extern CBlockIndex* pindexGenesisBlock;
 extern int nBestHeight;
@@ -703,7 +703,7 @@ public:
 
     CTxOutCompressor(CTxOut &txoutIn) : txout(txoutIn) { }
 
-    IMPLEMENT_SERIALIZE(({
+    IMPLEMENT_SERIALIZE({
         if (!fRead) {
             uint64 nVal = CompressAmount(txout.nValue);
             READWRITE(VARINT(nVal));
@@ -714,7 +714,7 @@ public:
         }
         CScriptCompressor cscript(REF(txout.scriptPubKey));
         READWRITE(cscript);
-    });)
+    };);
 };
 
 /** Undo information for a CTxIn
@@ -828,7 +828,7 @@ public:
             filein >> hashChecksum;
         }
         catch (std::exception &e) {
-            return error("%s() : deserialize or I/O error", __PRETTY_FUNCTION__);
+            return error("%s() : deserialize or I/O error", __FUNCTION__);
         }
 
         // Verify checksum
@@ -1479,7 +1479,7 @@ public:
             filein >> *this;
         }
         catch (std::exception &e) {
-            return error("%s() : deserialize or I/O error", __PRETTY_FUNCTION__);
+            return error("%s() : deserialize or I/O error", __FUNCTION__);
         }
 
 		// Check the header
@@ -2285,5 +2285,5 @@ public:
         READWRITE(txn);
     )
 };
-
+extern std::set<CBlockIndex*, CBlockIndexWorkComparator> setBlockIndexValid;
 #endif

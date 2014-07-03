@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "leveldb", "vs2010.vcxproj", "{814D9EBE-56C0-4BE4-AFB9-8626D798800E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Benchmark|Win32 = Benchmark|Win32
+		Benchmark|x64 = Benchmark|x64
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{814D9EBE-56C0-4BE4-AFB9-8626D798800E}.Benchmark|Win32.ActiveCfg = Benchmark|Win32
+		{814D9EBE-56C0-4BE4-AFB9-8626D798800E}.Benchmark|Win32.Build.0 = Benchmark|Win32
+		{814D9EBE-56C0-4BE4-AFB9-8626D798800E}.Benchmark|x64.ActiveCfg = Benchmark|x64
+		{814D9EBE-56C0-4BE4-AFB9-8626D798800E}.Benchmark|x64.Build.0 = Benchmark|x64
+		{814D9EBE-56C0-4BE4-AFB9-8626D798800E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{814D9EBE-56C0-4BE4-AFB9-8626D798800E}.Debug|Win32.Build.0 = Debug|Win32
+		{814D9EBE-56C0-4BE4-AFB9-8626D798800E}.Debug|x64.ActiveCfg = Debug|x64
+		{814D9EBE-56C0-4BE4-AFB9-8626D798800E}.Debug|x64.Build.0 = Debug|x64
+		{814D9EBE-56C0-4BE4-AFB9-8626D798800E}.Release|Win32.ActiveCfg = Release|Win32
+		{814D9EBE-56C0-4BE4-AFB9-8626D798800E}.Release|Win32.Build.0 = Release|Win32
+		{814D9EBE-56C0-4BE4-AFB9-8626D798800E}.Release|x64.ActiveCfg = Release|x64
+		{814D9EBE-56C0-4BE4-AFB9-8626D798800E}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

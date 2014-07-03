@@ -190,7 +190,7 @@ void OverviewPage::setWalletModel(WalletModel *model)
         ui->tableLastTransactionView->setColumnWidth(1, 120);
         ui->tableLastTransactionView->setColumnWidth(2, 120);
         ui->tableLastTransactionView->horizontalHeader()->setStretchLastSection(false);
-        ui->tableLastTransactionView->horizontalHeader()->setResizeMode(3, QHeaderView::ResizeToContents);
+		ui->tableLastTransactionView->horizontalHeader()->setSectionResizeMode(3, QHeaderView::ResizeToContents);
         ui->tableLastTransactionView->setColumnWidth(4, 120);
 
 //        ui->listTransactions->setModelColumn(TransactionTableModel::ToAddress);

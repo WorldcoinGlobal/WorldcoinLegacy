@@ -983,11 +983,11 @@ bool GetTransaction(const uint256 &hash, CTransaction &txOut, uint256 &hashBlock
                     fseek(file, postx.nTxOffset, SEEK_CUR);
                     file >> txOut;
                 } catch (std::exception &e) {
-                    return error("%s() : deserialize or I/O error", __PRETTY_FUNCTION__);
+                    return error("%s() : deserialize or I/O error", __FUNCTION__);
                 }
                 hashBlock = header.GetHash();
                 if (txOut.GetHash() != hash)
-                    return error("%s() : txid mismatch", __PRETTY_FUNCTION__);
+                    return error("%s() : txid mismatch", __FUNCTION__);
                 return true;
             }
         }
@@ -1373,8 +1373,17 @@ void CBlockHeader::UpdateTime(const CBlockIndex* pindexPrev)
 
 const CTxOut &CTransaction::GetOutputFor(const CTxIn& input, CCoinsViewCache& view)
 {
+#if !DEBUG
+    bool ret;
+#endif
     const CCoins &coins = view.GetCoins(input.prevout.hash);
+#if _DEBUG
     assert(coins.IsAvailable(input.prevout.n));
+#else
+    ret = coins.IsAvailable(input.prevout.n);
+    assert(ret);
+#endif
+	
     return coins.vout[input.prevout.n];
 }
 
@@ -1407,18 +1416,31 @@ unsigned int CTransaction::GetP2SHSigOpCount(CCoinsViewCache& inputs) const
 
 void CTransaction::UpdateCoins(CValidationState &state, CCoinsViewCache &inputs, CTxUndo &txundo, int nHeight, const uint256 &txhash) const
 {
+#if !_DEBUG
+    bool ret;
+#endif
     // mark inputs spent
     if (!IsCoinBase()) {
         BOOST_FOREACH(const CTxIn &txin, vin) {
             CCoins &coins = inputs.GetCoins(txin.prevout.hash);
             CTxInUndo undo;
+#if _DEBUG
             assert(coins.Spend(txin.prevout, undo));
+#else
+            ret = coins.Spend(txin.prevout, undo);
+            assert(ret);
+#endif
             txundo.vprevout.push_back(undo);
         }
     }
 
     // add outputs
+#if _DEBUG
     assert(inputs.SetCoins(txhash, CCoins(*this, nHeight)));
+#else
+    ret = inputs.SetCoins(txhash, CCoins(*this, nHeight));
+    assert(ret);
+#endif
 }
 
 bool CTransaction::HaveInputs(CCoinsViewCache &inputs) const
@@ -1797,8 +1819,13 @@ bool CBlock::ConnectBlock(CValidationState &state, CBlockIndex* pindex, CCoinsVi
             return state.Abort(_("Failed to write transaction index"));
 
     // add this block to the view's block chain
+#if _DEBUG
     assert(view.SetBestBlock(pindex));
-
+#else
+    bool ret;
+    ret = view.SetBestBlock(pindex);
+    assert(ret);
+#endif
     // Watch for transactions paying to me
     for (unsigned int i=0; i<vtx.size(); i++)
         SyncWithWallets(GetTxHash(i), vtx[i], this, true);
@@ -1888,7 +1915,15 @@ bool SetBestChain(CValidationState &state, CBlockIndex* pindexNew)
     // Flush changes to global coin state
     int64 nStart = GetTimeMicros();
     int nModified = view.GetCacheSize();
+
+#if _DEBUG
     assert(view.Flush());
+#else
+    bool ret;
+    ret = view.Flush();
+    assert(ret);
+#endif
+	
     int64 nTime = GetTimeMicros() - nStart;
     if (fBenchmark)
         printf("- Flush %i transactions: %.2fms (%.4fms/tx)\n", nModified, 0.001 * nTime, 0.001 * nTime / nModified);
@@ -3020,7 +3055,7 @@ bool LoadExternalBlockFile(FILE* fileIn, CDiskBlockPos *dbp)
                         break;
                 }
             } catch (std::exception &e) {
-                printf("%s() : Deserialize or I/O error caught during load\n", __PRETTY_FUNCTION__);
+                printf("%s() : Deserialize or I/O error caught during load\n", __FUNCTION__);
             }
         }
         fclose(fileIn);

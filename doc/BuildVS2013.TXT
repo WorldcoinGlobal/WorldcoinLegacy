@@ -1,0 +1,89 @@
+Build Instructions for building of Worldcoin with Visual Studio 2013
+
+To build Worldcoin with VS 2013, first thing you need to install is VS2013
+Because Worldcoin have dependency from Qt, you will need to install Qt 5.3.0 for VS2013 (qt-opensource-windows-x86-msvc2013-5.3.0.exe).
+Here is link to download Qt:
+http://download.qt-project.org/official_releases/qt/5.3/5.3.0/qt-opensource-windows-x86-msvc2013-5.3.0.exe
+
+
+1 . First is need to build the required dependencies. Here where you can download them:
+
+		- [openssl-1.0.1h](http://www.openssl.org/source/openssl-1.0.1h.tar.gz)
+		- [Qt 5.3.0](http://download.qt-project.org/official_releases/qt/5.3/5.3.0/qt-opensource-windows-x86-msvc2013-5.3.0.exe)
+		- [miniupnp-1.8](http://miniupnp.free.fr/files/download.php?file=miniupnpc-1.8.20131209.tar.gz)
+		- [boost-1.55](http://softlayer-dal.dl.sourceforge.net/project/boost/boost/1.55.0/boost_1_55_0.zip)
+		- [BerkeleyDB-6.0.30](http://download.oracle.com/otn/berkeley-db/db-6.0.30.zip)  
+		
+		I use [7-zip](http://www.7-zip.org/download.html) to extract archives on windows:
+		
+		Also you will need to have perl, python and nasm installed and ***in your path***:
+		
+		- [ActivePerl](http://www.activestate.com/activeperl/downloads)
+		- [Python](http://www.python.org/download/releases/)
+		- [nasm](http://sourceforge.net/projects/nasm/files/latest/download)
+		
+		- Your path contains all the locations for nasm, perl, and python.  Bring up a command prompt and try all three.
+		- You installed VS2013 to the default location on the C drive.
+		
+		OpenSSL
+		-------
+		1. Unzip openssl-1.0.1h.tar.gz, example: C:\openssl-1.0.1h
+		2. Open the Visual Studio Command Prompt (2013)
+			- On command prompt run: "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\vcvars32.bat"
+		3. cd to your OpenSSL source folder (example cd C:\openssl-1.0.1h)
+		4. Run the following:
+				perl Configure debug-VC-WIN32
+				ms\do_nasm
+				nmake -f ms\ntdll.mak
+		5. To test does OpenSSL is built correclty, run follow:
+				nmake -f ms\ntdll.mak test
+		
+		The outputs of the build (there also should be libeay32.lib and ssleay32.lib) in our case, by default it should be here: C:\openssl-1.0.1h\out32dll
+		
+		Berkeley DB
+		-----------
+		1. Unzip db-6.0.30.zip, example: C:\db-6.0.30
+		2. Start VS2013 and load C:\db-6.0.30\build_windows\Berkeley_DB.sln
+		3. Build loaded solution
+		
+		The outputs of the build: C:\db-6.0.30\build_windows\Win32\Release (there also should be libdb60.lib/libdb60.dll) and C:\db-6.0.30\build_windows\Win32\Debug (there also should be libdb60d.lib/libdb60d.dll) 
+		
+		Boost
+		-----
+		1. Unzip boost_1_55_0.zip, example: C:\boost_1_55_0
+		2. Open the Visual Studio Command Prompt (2013)
+			- On command prompt run: "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\vcvars32.bat"
+		3. Run: bootstrap
+		4. Run: b2 toolset=msvc-12.0 --build-type=complete
+		
+		The outputs of the build: c:\boost_1_55_0\bin.v2\libs\
+		
+		MiniUPnPc
+		---------
+		UPnP support is optional, make with `USE_UPNP=` to disable it.
+		
+		1. Unzip miniupnpc-1.8.20131209.tar.gz, example: C:\miniupnpc
+		2. Start VS2013 and load C:\miniupnpc\msvc\miniupnpc.sln
+		3. Build loaded solution
+		
+		The outputs of the build: C:\miniupnpc\msvc\Release and C:\miniupnpc\msvc\Debug (there should be miniupnpc.lib)
+		
+		In system environment variables please make sure that follow exist:
+		
+		OPENSSL=C:\openssl-1.0.1h
+		BOOST_ROOT=C:\boost_1_55_0
+		BERKELEY_DB=C:\db-6.0.30
+		MINIUPNPC=C:\miniupnpc
+		QTDIR=C:\Qt\Qt5.3.0\5.3\msvc2013
+
+
+2. Next need to convert worldcoin-qt.pro to worldcoin-qt.vcxproj
+	 Open worldcoin-qt.pro and edit TEMPLATE = vcapp
+	 Go to worldcoin-qt.pro folder location and run qmake
+	 worldcoin-qt.vcxproj should be generate, start VS2013 and load this file
+
+
+3. Make update of source in order to used Qt5 source.
+4. Make update of source in order to be compile under VS2013.
+
+5. Adapt all libs and libs paths and include paths to used corresponding system environment variables.

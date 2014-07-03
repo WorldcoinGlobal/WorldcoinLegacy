@@ -6,6 +6,9 @@
 #include <openssl/evp.h>
 #include <vector>
 #include <string>
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
 #ifdef WIN32
 #include <windows.h>
 #endif

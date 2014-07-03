@@ -148,10 +148,20 @@ public:
     }
 
     void SetSecretBytes(const unsigned char vch[32]) {
+#if !_DEBUG
+        bool ret;
+#endif
         BIGNUM bn;
         BN_init(&bn);
+#if _DEBUG
         assert(BN_bin2bn(vch, 32, &bn));
         assert(EC_KEY_regenerate_key(pkey, &bn));
+#else
+        ret = BN_bin2bn(vch, 32, &bn);
+        assert(ret);
+        ret = EC_KEY_regenerate_key(pkey, &bn);
+        assert(ret);
+#endif
         BN_clear_free(&bn);
     }
 

@@ -4,7 +4,9 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef WORLDCOIN_NET_H
 #define WORLDCOIN_NET_H
-
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
 #include <deque>
 #include <boost/array.hpp>
 #include <boost/foreach.hpp>
