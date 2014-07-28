@@ -535,7 +535,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-487"/>
         <source>Synchronizing with network...</source>
-        <translation>Synchronizing with network...</translation>
+        <translation>Syncing Worldcoin Network</translation>
     </message>
     <message>
         <location line="-343"/>

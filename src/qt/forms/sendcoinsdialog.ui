@@ -203,7 +203,7 @@
        <rect>
         <x>48</x>
         <y>7</y>
-        <width>125</width>
+        <width>161</width>
         <height>18</height>
        </rect>
       </property>
@@ -253,7 +253,7 @@
         <x>0</x>
         <y>0</y>
         <width>783</width>
-        <height>142</height>
+        <height>137</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -319,6 +319,12 @@
         </property>
         <item>
          <widget class="QLabel" name="label">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>25</height>
+           </size>
+          </property>
           <property name="font">
            <font>
             <pointsize>10</pointsize>
@@ -338,6 +344,12 @@
         </item>
         <item>
          <widget class="QLabel" name="labelBalance">
+          <property name="maximumSize">
+           <size>
+            <width>160</width>
+            <height>25</height>
+           </size>
+          </property>
           <property name="font">
            <font>
             <pointsize>10</pointsize>
@@ -378,6 +390,18 @@
       </item>
       <item>
        <widget class="QPushButton" name="clearButton">
+        <property name="minimumSize">
+         <size>
+          <width>160</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>160</width>
+          <height>25</height>
+         </size>
+        </property>
         <property name="font">
          <font>
           <pointsize>10</pointsize>
@@ -422,6 +446,18 @@ QPushButton:pressed:flat {
       </item>
       <item>
        <widget class="QPushButton" name="sendButton">
+        <property name="minimumSize">
+         <size>
+          <width>160</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>160</width>
+          <height>25</height>
+         </size>
+        </property>
         <property name="font">
          <font>
           <pointsize>10</pointsize>

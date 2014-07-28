@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>550</width>
-    <height>226</height>
+    <height>239</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -43,7 +43,16 @@ QLineEdit {
    <property name="spacing">
     <number>0</number>
    </property>
-   <property name="margin">
+   <property name="leftMargin">
+    <number>6</number>
+   </property>
+   <property name="topMargin">
+    <number>6</number>
+   </property>
+   <property name="rightMargin">
+    <number>6</number>
+   </property>
+   <property name="bottomMargin">
     <number>6</number>
    </property>
    <item>
@@ -64,7 +73,16 @@ QLineEdit {
       <property name="spacing">
        <number>0</number>
       </property>
-      <property name="margin">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
        <number>0</number>
       </property>
       <item>
@@ -90,7 +108,16 @@ QLineEdit {
          <bool>true</bool>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_19">
-         <property name="margin">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
           <number>0</number>
          </property>
          <item>
@@ -236,13 +263,13 @@ QPushButton:hover {
          <number>25</number>
         </property>
         <property name="topMargin">
-         <number>9</number>
+         <number>30</number>
         </property>
         <property name="rightMargin">
          <number>25</number>
         </property>
         <property name="bottomMargin">
-         <number>9</number>
+         <number>0</number>
         </property>
         <item>
          <widget class="QLabel" name="warningLabel">
@@ -272,13 +299,16 @@ QPushButton:hover {
          <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
         </property>
         <property name="horizontalSpacing">
-         <number>9</number>
+         <number>5</number>
         </property>
         <property name="verticalSpacing">
-         <number>9</number>
+         <number>0</number>
         </property>
         <property name="leftMargin">
          <number>25</number>
+        </property>
+        <property name="topMargin">
+         <number>20</number>
         </property>
         <property name="rightMargin">
          <number>25</number>
@@ -290,7 +320,7 @@ QPushButton:hover {
          <widget class="QLabel" name="passLabel1">
           <property name="font">
            <font>
-            <pointsize>10</pointsize>
+            <pointsize>9</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -315,9 +345,12 @@ QPushButton:hover {
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="passLabel2">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
           <property name="font">
            <font>
-            <pointsize>10</pointsize>
+            <pointsize>9</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -337,20 +370,6 @@ QPushButton:hover {
           </property>
           <property name="echoMode">
            <enum>QLineEdit::Password</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="passLabel3">
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>Repeat new passphrase</string>
           </property>
          </widget>
         </item>
@@ -384,6 +403,38 @@ QPushButton:hover {
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="passLabel3">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>300</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="lineWidth">
+           <number>1</number>
+          </property>
+          <property name="text">
+           <string>Repeat new passphrase</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+          <property name="margin">
+           <number>0</number>
           </property>
          </widget>
         </item>

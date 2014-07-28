@@ -290,7 +290,7 @@
        <rect>
         <x>81</x>
         <y>6</y>
-        <width>103</width>
+        <width>241</width>
         <height>18</height>
        </rect>
       </property>
@@ -761,8 +761,8 @@ QPushButton:pressed:flat {
   </layout>
  </widget>
  <resources>
-  <include location="../res.qrc"/>
   <include location="../worldcoin.qrc"/>
+  <include location="../res.qrc"/>
  </resources>
  <connections>
   <connection>
