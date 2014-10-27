@@ -1,40 +1,99 @@
-IDI_ICON1 ICON DISCARDABLE "icons/worldcoin.ico"
-IDI_ICON2 ICON DISCARDABLE "icons/worldcoin_testnet.ico"
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
 
-#include <windows.h>             // needed for VERSIONINFO
-#include "../../clientversion.h" // holds the needed client version information
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
 
-#define VER_PRODUCTVERSION     CLIENT_VERSION_MAJOR,CLIENT_VERSION_MINOR,CLIENT_VERSION_REVISION,CLIENT_VERSION_BUILD
-#define VER_PRODUCTVERSION_STR STRINGIZE(CLIENT_VERSION_MAJOR) "." STRINGIZE(CLIENT_VERSION_MINOR) "." STRINGIZE(CLIENT_VERSION_REVISION) "." STRINGIZE(CLIENT_VERSION_BUILD)
-#define VER_FILEVERSION        VER_PRODUCTVERSION
-#define VER_FILEVERSION_STR    VER_PRODUCTVERSION_STR
-//#define COPYRIGHT_STR          
-#define COPYRIGHT_STR          "2013-2014 Worldcoin"
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON                    "icons/worldcoin.ico"
+IDI_ICON2               ICON                    "icons/worldcoin_testnet.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
 
 VS_VERSION_INFO VERSIONINFO
-FILEVERSION     VER_FILEVERSION
-PRODUCTVERSION  VER_PRODUCTVERSION
-FILEOS          VOS_NT_WINDOWS32
-FILETYPE        VFT_APP
+ FILEVERSION 1,0,0,0
+ PRODUCTVERSION 1,0,0,0
+ FILEFLAGSMASK 0x0L
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
 BEGIN
     BLOCK "StringFileInfo"
     BEGIN
-        BLOCK "040904E4" // U.S. English - multilingual (hex)
+        BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName",        "Worldcoin"
-            VALUE "FileDescription",    "Worldcoin-Qt (OSS GUI client for Worldcoin)"
-            VALUE "FileVersion",        VER_FILEVERSION_STR
-            VALUE "InternalName",       "worldcoin-qt"
-            VALUE "LegalCopyright",     COPYRIGHT_STR
-            VALUE "LegalTrademarks1",   "Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
-            VALUE "OriginalFilename",   "worldcoin-qt.exe"
-            VALUE "ProductName",        "Worldcoin-Qt"
-            VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
+            VALUE "CompanyName", "Worldcoin"
+            VALUE "FileDescription", "Worldcoin-Qt (OSS GUI client for Worldcoin)"
+            VALUE "FileVersion", "1.0.0.0"
+            VALUE "InternalName", "worldcoin-qt"
+            VALUE "LegalCopyright", "2013-2014 Worldcoin"
+            VALUE "LegalTrademarks1", "Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
+            VALUE "OriginalFilename", "worldcoin-qt.exe"
+            VALUE "ProductName", "Worldcoin-Qt"
+            VALUE "ProductVersion", "1.0.0.0"
         END
     END
-
     BLOCK "VarFileInfo"
     BEGIN
-        VALUE "Translation", 0x0, 1252 // language neutral - multilingual (decimal)
+        VALUE "Translation", 0x409, 1252
     END
 END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

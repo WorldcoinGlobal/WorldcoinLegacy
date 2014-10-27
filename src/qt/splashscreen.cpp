@@ -36,7 +36,7 @@ SplashScreen::SplashScreen(const QPixmap &pixmap, Qt::WindowFlags f) :
     }
 
     QPainter pixPaint(&newPixmap);
-    pixPaint.setPen(QColor(0,200,20));
+    pixPaint.setPen(QColor(100,100,100));
 
     // check font size and drawing with
     pixPaint.setFont(QFont(font, 33*fontFactor));

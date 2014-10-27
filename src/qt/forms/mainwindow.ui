@@ -819,7 +819,7 @@ QPushButton:hover {
            </font>
           </property>
           <property name="text">
-           <string>MINOR BETA 1.0.0.0</string>
+           <string>VERSION PLACEHOLDER</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

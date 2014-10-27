@@ -247,7 +247,7 @@ WorldcoinGUI::WorldcoinGUI(bool fIsTestnet, QWidget *parent) :
 
     // Install event filter to be able to catch status tip events (QEvent::StatusTip)
     this->installEventFilter(this);
-    //ui->wMining->installEventFilter(this);
+//    ui->wMining->installEventFilter(this);
     ui->wHome->installEventFilter(this);
     //ui->checkBox->installEventFilter(this);
     gotoOverviewPage();
@@ -627,7 +627,7 @@ void WorldcoinGUI::setNumBlocks(int count, int nTotalBlocks)
     switch (blockSource) {
     case BLOCK_SOURCE_NONE:
     case BLOCK_SOURCE_NETWORK:
-        importText = tr("Syncing Worldcoin Network...");
+        importText = tr("Synchronizing with network...");
         break;
     case BLOCK_SOURCE_DISK:
         importText = tr("Importing blocks from disk...");
@@ -989,8 +989,8 @@ bool WorldcoinGUI::eventFilter(QObject *object, QEvent *event)
         if (progressBarLabel->isVisible() || progressBar->isVisible())
             return true;
     }
-   // if (object == ui->wMining && event->type() == QEvent::MouseButtonPress)
-   //     onMiningClicked();
+//    if (object == ui->wMining && event->type() == QEvent::MouseButtonPress)
+  //      onMiningClicked();
     if (object == ui->wHome && event->type() == QEvent::MouseButtonPress)
         gotoOverviewPage();
     //if (object == ui->checkBox && event->type() == QEvent::MouseButtonPress)
