@@ -138,5 +138,11 @@
         <file>res/connection_3.png</file>
         <file>res/connection_4.png</file>
         <file>res/connection_5.png</file>
+	<file>res/update/black.png</file>
+	<file>res/update/yellow.png</file>
+	<file>res/update/green.png</file>
+	<file>res/update/red.png</file>
+	<file>res/update/orange.png</file>
+	<file>res/update/blue.png</file>
     </qresource>
 </RCC>

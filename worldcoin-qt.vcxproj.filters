@@ -273,6 +273,18 @@
     <ClCompile Include="src\qt\worldcoinunits.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="build\moc_updatecontroller.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build\moc_updatedialog.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qt\updatecontroller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qt\updatedialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="src\qt\aboutdialog.h">
@@ -531,6 +543,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <CustomBuild Include="src\qt\worldcoinunits.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\qt\forms\updatepage.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\qt\updatedialog.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\qt\updatecontroller.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>

@@ -6,6 +6,8 @@
 #include <QMap>
 #include <QBitmap>
 
+#include "updatecontroller.h"
+
 class TransactionTableModel;
 class ClientModel;
 class WalletModel;
@@ -20,6 +22,7 @@ class RPCConsole;
 class SignMessagePage;
 class VerifyMessagePage;
 class OptionsDialog;
+class UpdateDialog;
 
 QT_BEGIN_NAMESPACE
 class QLabel;
@@ -86,6 +89,8 @@ private:
     ClientModel *clientModel;
     WalletModel *walletModel;
 
+    UpdateController *updateController;
+
     QStackedWidget *centralWidget;
 
     OverviewPage *overviewPage;
@@ -97,6 +102,7 @@ private:
     SignMessagePage* signMessagePage;
     VerifyMessagePage* verifyMessagePage;
     OptionsDialog* optionsDialog;
+    UpdateDialog* updateDialog;
 
     QLabel *labelEncryptionIcon;
     QLabel *labelWorldIcon;
@@ -130,6 +136,13 @@ private:
     RPCConsole *rpcConsole;
 
     QMovie *syncIconMovie;
+
+    // Used for animation of update icon
+    QTimer animationTimer;
+
+    // Used to defined current action
+    UpdateController::eTypeUpdate updateType;
+
     /** Keep track of previous number of blocks, to detect progress */
     int prevBlocks;
 
@@ -237,6 +250,15 @@ private slots:
 
     void onMiningClicked();
     void on_bHelp_clicked();
+
+    // Call when update version is available
+    void onUpdateVersion(int typeUpdate);
+    // Used for update of icon
+    void updateStatusIcon();
+    // Call when upgrade button is clicked
+    void onUpdateButton();
+    // Call when install process is finished
+    void onInstallFinish();
 };
 
 #endif // WORLDCOINGUI_H

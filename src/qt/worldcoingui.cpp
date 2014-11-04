@@ -36,6 +36,8 @@
 #include "init.h"
 #include "util.h"
 #include "message_box_dialog.h"
+#include "updatedialog.h"
+
 
 #ifdef Q_OS_MAC
 #include "macdockiconhandler.h"
@@ -90,11 +92,17 @@ WorldcoinGUI::WorldcoinGUI(bool fIsTestnet, QWidget *parent) :
     trayIcon(0),
     notificator(0),
     rpcConsole(0),
-    prevBlocks(0)
+    prevBlocks(0),
+    updateController(0),
+    updateType(UpdateController::eUpToDate)
 {
-    //restoreWindowGeometry();
+    //restoreWindowGeometry(); 
 
     ui->setupUi(this);
+
+    // Add start normal icon
+    ui->buttonUpdate->setProperty("typeUpdate", UpdateController::eUpToDate);
+
     setWindowFlags(Qt::CustomizeWindowHint | Qt::FramelessWindowHint | Qt::Window);
 
     ui->wCaption->installEventFilter(new DialogMoveHandler(this));
@@ -161,6 +169,10 @@ WorldcoinGUI::WorldcoinGUI(bool fIsTestnet, QWidget *parent) :
     verifyMessagePage = new VerifyMessagePage(this);
     optionsDialog = new OptionsDialog(this);
 
+    updateController = new UpdateController();
+    updateDialog = new UpdateDialog(this);
+    updateDialog->setModel(updateController);
+
     // centralWidget = new QStackedWidget(this);
     centralWidget = ui->stackedWidget;
     centralWidget->addWidget(overviewPage);
@@ -172,6 +184,7 @@ WorldcoinGUI::WorldcoinGUI(bool fIsTestnet, QWidget *parent) :
     centralWidget->addWidget(signMessagePage);
     centralWidget->addWidget(verifyMessagePage);
     centralWidget->addWidget(optionsDialog);
+    centralWidget->addWidget(updateDialog);
 
     QSizeGrip* grip = new QSizeGrip(this);
     grip->setStyleSheet("width: 6px; height: 6px; image: url(:/res/sizegrip.png);");
@@ -251,6 +264,20 @@ WorldcoinGUI::WorldcoinGUI(bool fIsTestnet, QWidget *parent) :
     ui->wHome->installEventFilter(this);
     //ui->checkBox->installEventFilter(this);
     gotoOverviewPage();
+
+    // Slot is call when update is available
+    connect(updateController, SIGNAL(updateVersion(int)), this, SLOT(onUpdateVersion(int)));
+    // Slot is call when install is finished
+    connect(updateController, SIGNAL(installFinish()), this, SLOT(onInstallFinish()));
+
+    // Timer need for animation
+    animationTimer.setInterval(500);
+    animationTimer.stop();
+
+    // Connect timer timeout with slot for animation
+    connect(&animationTimer, SIGNAL(timeout()), this, SLOT(updateStatusIcon()));
+    // Connect udpate button with slot for update
+    connect(ui->buttonUpdate, SIGNAL(clicked()), this, SLOT(onUpdateButton()));
 }
 
 void WorldcoinGUI::RunMiningAsStartup()
@@ -990,7 +1017,7 @@ bool WorldcoinGUI::eventFilter(QObject *object, QEvent *event)
             return true;
     }
 //    if (object == ui->wMining && event->type() == QEvent::MouseButtonPress)
-  //      onMiningClicked();
+  //        onMiningClicked();
     if (object == ui->wHome && event->type() == QEvent::MouseButtonPress)
         gotoOverviewPage();
     //if (object == ui->checkBox && event->type() == QEvent::MouseButtonPress)
@@ -1307,4 +1334,60 @@ void WorldcoinGUI::onMiningClicked()
 void WorldcoinGUI::on_bHelp_clicked()
 {    
     rpcConsole->show();
+}
+void WorldcoinGUI::onUpdateVersion(int typeUpdate)
+{
+    // Set type of update
+    updateType = (UpdateController::eTypeUpdate) typeUpdate;
+
+    animationTimer.start();
+}
+
+void WorldcoinGUI::updateStatusIcon()
+{
+    switch (updateType)
+    {
+        case UpdateController::eLow:
+            if (ui->buttonUpdate->property("typeUpdate").toInt() == UpdateController::eLow)
+                ui->buttonUpdate->setProperty("typeUpdate", 5);
+            else
+                ui->buttonUpdate->setProperty("typeUpdate", UpdateController::eLow);
+            break;
+        case UpdateController::eMedium:
+            if (ui->buttonUpdate->property("typeUpdate").toInt() == UpdateController::eMedium)
+                ui->buttonUpdate->setProperty("typeUpdate", 5);
+            else
+                ui->buttonUpdate->setProperty("typeUpdate", UpdateController::eMedium);
+            break;
+        case UpdateController::eHigh:
+            if (ui->buttonUpdate->property("typeUpdate").toInt() == UpdateController::eHigh)
+                ui->buttonUpdate->setProperty("typeUpdate", 5);
+            else
+                ui->buttonUpdate->setProperty("typeUpdate", UpdateController::eHigh);
+            break;
+        case UpdateController::eCritical:
+            if (ui->buttonUpdate->property("typeUpdate").toInt() == UpdateController::eCritical)
+                ui->buttonUpdate->setProperty("typeUpdate", 5);
+            else
+                ui->buttonUpdate->setProperty("typeUpdate", UpdateController::eCritical);
+            break;
+        default:
+            break;
+    }
+
+    style()->unpolish(ui->buttonUpdate);
+    style()->polish(ui->buttonUpdate);
+}
+void WorldcoinGUI::onUpdateButton()
+{
+    centralWidget->setCurrentWidget(updateDialog);
+}
+void WorldcoinGUI::onInstallFinish()
+{
+    // When install is finished stop timer for animation and set normal update icon
+    animationTimer.stop();
+    ui->buttonUpdate->setProperty("typeUpdate", UpdateController::eUpToDate);
+
+    style()->unpolish(ui->buttonUpdate);
+    style()->polish(ui->buttonUpdate);
 }

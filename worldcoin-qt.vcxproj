@@ -173,6 +173,7 @@
     <ClCompile Include="src\protocol.cpp" />
     <ClCompile Include="src\qt\qvalidatedlineedit.cpp" />
     <ClCompile Include="src\qt\qvaluecombobox.cpp" />
+    <ClCompile Include="src\qt\updatecontroller.cpp" />
     <ClCompile Include="src\rpcblockchain.cpp" />
     <ClCompile Include="src\qt\rpcconsole.cpp" />
     <ClCompile Include="src\rpcdump.cpp" />
@@ -208,8 +209,19 @@
     <ClCompile Include="src\worldcoinrpc.cpp" />
     <ClCompile Include="src\qt\worldcoinstrings.cpp" />
     <ClCompile Include="src\qt\worldcoinunits.cpp" />
+    <ClCompile Include="src\qt\updatedialog.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <CustomBuild Include="src\qt\updatecontroller.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">src\qt\updatecontroller.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe  -DUNICODE -DWIN32 -DQT_GUI -DBOOST_THREAD_USE_LIB -DBOOST_SPIRIT_THREADSAFE -DUSE_UPNP=1 -DSTATICLIB -DUSE_IPV6=1 -DWIN32 -DWIN32_LEAN_AND_MEAN -D_MT -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -D_WIN32 -I$(QTDIR)/mkspecs/win32-msvc2013 -I. -I.\src -I.\src\json -I.\src\qt -I.\..\src\leveldb\include -I.\src\leveldb\helpers -I$(QTDIR)/include -I$(QTDIR)/include/QtWidgets -I$(QTDIR)/include/QtNetwork -I$(QTDIR)/include/QtGui -I$(QTDIR)/include/QtANGLE -I$(QTDIR)/include/QtCore src\qt\updatecontroller.h -o build\moc_updatecontroller.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MOC src\qt\updatecontroller.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">build\moc_updatecontroller.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">src\qt\updatecontroller.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe  -DUNICODE -DWIN32 -DQT_GUI -DBOOST_THREAD_USE_LIB -DBOOST_SPIRIT_THREADSAFE -DUSE_UPNP=1 -DSTATICLIB -DUSE_IPV6=1 -DWIN32 -DWIN32_LEAN_AND_MEAN -D_MT -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -D_WIN32 -I$(QTDIR)/mkspecs/win32-msvc2013 -I. -I.\src -I.\src\json -I.\src\qt -I.\..\src\leveldb\include -I.\src\leveldb\helpers -I$(QTDIR)/include -I$(QTDIR)/include/QtWidgets -I$(QTDIR)/include/QtNetwork -I$(QTDIR)/include/QtGui -I$(QTDIR)/include/QtANGLE -I$(QTDIR)/include/QtCore src\qt\updatecontroller.h -o build\moc_updatecontroller.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MOC src\qt\updatecontroller.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">build\moc_updatecontroller.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
     <CustomBuild Include="src\qt\aboutdialog.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">src\qt\aboutdialog.h;%(AdditionalInputs)</AdditionalInputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe  -DUNICODE -DWIN32 -DQT_GUI -DBOOST_THREAD_USE_LIB -DBOOST_SPIRIT_THREADSAFE -DUSE_UPNP=1 -DSTATICLIB -DUSE_IPV6=1 -DWIN32 -DWIN32_LEAN_AND_MEAN -D_MT -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -D_WIN32 -I$(QTDIR)/mkspecs/win32-msvc2013 -I. -I.\src -I.\src\json -I.\src\qt -I.\..\src\leveldb\include -I.\src\leveldb\helpers -I$(QTDIR)/include -I$(QTDIR)/include/QtWidgets -I$(QTDIR)/include/QtNetwork -I$(QTDIR)/include/QtGui -I$(QTDIR)/include/QtANGLE -I$(QTDIR)/include/QtCore src\qt\aboutdialog.h -o build\moc_aboutdialog.cpp</Command>
@@ -240,6 +252,7 @@
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MOC src\qt\addresstablemodel.h</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">build\moc_addresstablemodel.cpp;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="build\ui_updatepage.h" />
     <ClInclude Include="src\addrman.h" />
     <ClInclude Include="src\alert.h" />
     <ClInclude Include="src\allocators.h" />
@@ -638,6 +651,16 @@
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MOC src\qt\worldcoinunits.h</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">build\moc_worldcoinunits.cpp;%(Outputs)</Outputs>
     </CustomBuild>
+    <CustomBuild Include="src\qt\updatedialog.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">src\qt\updatedialog.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe  -DUNICODE -DWIN32 -DQT_GUI -DBOOST_THREAD_USE_LIB -DBOOST_SPIRIT_THREADSAFE -DUSE_UPNP=1 -DSTATICLIB -DUSE_IPV6=1 -DWIN32 -DWIN32_LEAN_AND_MEAN -D_MT -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -D_WIN32 -I$(QTDIR)/mkspecs/win32-msvc2013 -I. -I.\src -I.\src\json -I.\src\qt -I.\..\src\leveldb\include -I.\src\leveldb\helpers -I$(QTDIR)/include -I$(QTDIR)/include/QtWidgets -I$(QTDIR)/include/QtNetwork -I$(QTDIR)/include/QtGui -I$(QTDIR)/include/QtANGLE -I$(QTDIR)/include/QtCore src\qt\updatedialog.h -o build\moc_updatedialog.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MOC src\qt\updatedialog.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">build\moc_updatedialog.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">src\qt\updatedialog.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe  -DUNICODE -DWIN32 -DQT_GUI -DBOOST_THREAD_USE_LIB -DBOOST_SPIRIT_THREADSAFE -DUSE_UPNP=1 -DSTATICLIB -DUSE_IPV6=1 -DWIN32 -DWIN32_LEAN_AND_MEAN -D_MT -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -D_WIN32 -I$(QTDIR)/mkspecs/win32-msvc2013 -I. -I.\src -I.\src\json -I.\src\qt -I.\..\src\leveldb\include -I.\src\leveldb\helpers -I$(QTDIR)/include -I$(QTDIR)/include/QtWidgets -I$(QTDIR)/include/QtNetwork -I$(QTDIR)/include/QtGui -I$(QTDIR)/include/QtANGLE -I$(QTDIR)/include/QtCore src\qt\updatedialog.h -o build\moc_updatedialog.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MOC src\qt\updatedialog.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">build\moc_updatedialog.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="build\moc_aboutdialog.cpp" />
@@ -678,6 +701,8 @@
     <ClCompile Include="build\moc_worldcoinamountfield.cpp" />
     <ClCompile Include="build\moc_worldcoingui.cpp" />
     <ClCompile Include="build\moc_worldcoinunits.cpp" />
+    <ClCompile Include="build\moc_updatecontroller.cpp" />
+    <ClCompile Include="build\moc_updatedialog.cpp" />
     <CustomBuild Include="build\overviewpage.moc">
       <FileType>Document</FileType>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">src\qt\overviewpage.cpp;%(AdditionalInputs)</AdditionalInputs>
@@ -1310,6 +1335,17 @@
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">UIC %(FullPath)</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">build\ui_%(Filename).h;%(Outputs)</Outputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(FullPath);qvalidatedlineedit.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\uic.exe %(FullPath) -o build\ui_%(Filename).h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">UIC %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">build\ui_%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="src\qt\forms\updatepage.ui">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(FullPath);%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\uic.exe %(FullPath) -o build\ui_%(Filename).h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">UIC %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">build\ui_%(Filename).h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(FullPath);%(AdditionalInputs)</AdditionalInputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\uic.exe %(FullPath) -o build\ui_%(Filename).h</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">UIC %(FullPath)</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">build\ui_%(Filename).h;%(Outputs)</Outputs>

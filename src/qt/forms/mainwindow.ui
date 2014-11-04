@@ -911,6 +911,59 @@ QPushButton:hover {
            </property>
           </widget>
          </widget>
+         <widget class="QPushButton" name="buttonUpdate">
+          <property name="geometry">
+           <rect>
+            <x>760</x>
+            <y>5</y>
+            <width>25</width>
+            <height>26</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>25</width>
+            <height>26</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>25</width>
+            <height>26</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+             QPushButton#buttonUpdate[typeUpdate=&quot;0&quot;]{
+             image: url(:/res/update/blue.png);
+             border: 0px solid gray;
+             }
+             QPushButton#buttonUpdate[typeUpdate=&quot;1&quot;]{
+             image: url(:/res/update/green.png);
+             border: 0px solid gray;
+             }
+             QPushButton#buttonUpdate[typeUpdate=&quot;2&quot;]{
+             image: url(:/res/update/yellow.png);
+             border: 0px solid gray;
+             }
+             QPushButton#buttonUpdate[typeUpdate=&quot;3&quot;]{
+             image: url(:/res/update/orange.png);
+             border: 0px solid gray;
+             }
+             QPushButton#buttonUpdate[typeUpdate=&quot;4&quot;]{
+             image: url(:/res/update/red.png);
+             border: 0px solid gray;
+             }
+             QPushButton#buttonUpdate[typeUpdate=&quot;5&quot;]{
+             image: url(:/res/update/black.png);
+             border: 0px solid gray;
+             }
+           </string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
         </widget>
        </item>
       </layout>
