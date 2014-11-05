@@ -3,6 +3,8 @@
  */
 
 #include <QApplication>
+#include <QCryptographicHash>
+#include <QFile>
 
 #include "worldcoingui.h"
 #include "clientmodel.h"
@@ -35,6 +37,8 @@ Q_IMPORT_PLUGIN(qtwcodecs)
 Q_IMPORT_PLUGIN(qkrcodecs)
 Q_IMPORT_PLUGIN(qtaccessiblewidgets)
 #endif
+
+const QString c_controlKey = "dt56vgt55f1";
 
 // Declare meta types used for QMetaObject::invokeMethod
 Q_DECLARE_METATYPE(bool*)
@@ -124,6 +128,24 @@ int main(int argc, char *argv[])
 
     Q_INIT_RESOURCE(worldcoin);
     QApplication app(argc, argv);
+
+    // Checking that instance is not loaded directly
+        QStringList args = app.arguments();
+        QString arg;
+        arg += QDate::currentDate().toString("yyyy-MM-dd");
+        arg += QString::number(QTime::currentTime().hour());
+        arg += QString::number(QTime::currentTime().minute());
+        arg += c_controlKey;
+        QByteArray key(arg.toLatin1());
+        QString hash = QString(QCryptographicHash::hash(key,QCryptographicHash::Sha1).toBase64());
+        if((args.size() < 2) || (args.at(1) != hash))
+        {
+          int mcode = 1300001;
+
+          QMessageBox::critical(0, QObject::tr("WorldcoinBC"), QString("The panel can't be started directly, please use WorldcoinBC executable instead"), QMessageBox::Ok);
+          return mcode;
+        }
+    //
 
     // Register meta types used for QMetaObject::invokeMethod
     qRegisterMetaType< bool* >();
@@ -260,6 +282,21 @@ int main(int argc, char *argv[])
                 // worldcoin: URIs
                 QObject::connect(paymentServer, SIGNAL(receivedURI(QString)), &window, SLOT(handleURI(QString)));
                 QTimer::singleShot(100, paymentServer, SLOT(uiReady()));
+
+    //-- Copy new version of wizard if available
+                QFile installerl("Temp/WorldcoinBC");
+                if(installerl.exists())
+                {
+                  if(installerl.copy("./WorldcoinBC"))
+                  installerl.remove();
+                }
+                QFile installerw("Temp/WorldcoinBC.exe");
+                if(installerw.exists())
+                {
+                  if(installerw.copy("./WorldcoinBC.exe"))
+                    installerw.remove();
+                }
+                //--
 
                 app.exec();
 

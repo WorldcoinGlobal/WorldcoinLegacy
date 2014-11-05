@@ -3,12 +3,12 @@ TARGET = worldcoin-qt
 macx:TARGET = "Worldcoin-Qt"
 VERSION = 1.0.0.0
 INCLUDEPATH += src src/json src/qt /usr/include/miniupnpc
-QT += core gui network
+QT += core gui network multimedia
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE
 CONFIG += no_include_pwd
-CONFIG += thread
-CONFIG += static
+CONFIG += thread C++11
+#CONFIG += static
 
 # for boost 1.37, add -mt to the boost libraries
 # use: qmake BOOST_LIB_SUFFIX=-mt
@@ -219,7 +219,9 @@ HEADERS += src/qt/worldcoingui.h \
     src/qt/message_box_dialog.h \
     src/qt/signmessagepage.h \
     src/qt/verifymessagepage.h \
-    src/qt/notification.h
+    src/qt/notification.h \
+    src/qt/updatedialog.h \
+    src/qt/updatecontroller.h
 
 SOURCES += src/qt/worldcoin.cpp \
     src/qt/worldcoingui.cpp \
@@ -292,7 +294,10 @@ SOURCES += src/qt/worldcoin.cpp \
     src/qt/signmessagepage.cpp \
     src/qt/verifymessagepage.cpp \
     src/qt/notification.cpp \
-    src/checkpointsync.cpp
+    src/checkpointsync.cpp \
+    src/qt/updatedialog.cpp \
+    src/qt/updatecontroller.cpp
+
 
 RESOURCES += \
     src/qt/worldcoin.qrc \
@@ -316,7 +321,8 @@ FORMS += src/qt/forms/sendcoinsdialog.ui \
     src/qt/forms/signmessagepage.ui \
     src/qt/forms/verifymessagepage.ui \
     src/qt/forms/optionspage.ui \
-    src/qt/forms/notification.ui
+    src/qt/forms/notification.ui \
+    src/qt/forms/updatepage.ui
 
 contains(USE_QRCODE, 1) {
 HEADERS += src/qt/qrcodedialog.h

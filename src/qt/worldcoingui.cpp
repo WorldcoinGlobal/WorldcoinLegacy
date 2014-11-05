@@ -1259,7 +1259,12 @@ void WorldcoinGUI::encryptWallet(bool status)
 
 void WorldcoinGUI::backupWallet()
 {
-	QString saveDir = QStandardPaths::StandardLocation(QStandardPaths::DocumentsLocation);
+//	QString saveDir = QStandardPaths::StandardLocation(QStandardPaths::DocumentsLocation);
+    QStringList saveDirs = QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation);
+    QString saveDir;
+    if(saveDirs.size())
+      saveDir = saveDirs.at(0);
+
     QString filename = QFileDialog::getSaveFileName(this, tr("Backup Wallet"), saveDir, tr("Wallet Data (*.dat)"));
     if(!filename.isEmpty()) {
         if(!walletModel->backupWallet(filename)) {

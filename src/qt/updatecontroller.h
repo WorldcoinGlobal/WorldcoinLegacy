@@ -40,7 +40,7 @@ public:
     virtual ~UpdateController();
 
     // Method used for getting and parsing of version log
-    void getVersions(QMap<QString, QMap<QString, QString>> &feauture, QStringList &listGroup);
+    void getVersions(QMap<QString, QMap<QString, QString> > &feauture, QStringList &listGroup);
 
    // Method used to return type of version
    eTypeVersion getTypeVersion(const QString& version);

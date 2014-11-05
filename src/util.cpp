@@ -542,7 +542,7 @@ void ParseParameters(int argc, const char* const argv[])
 {
     mapArgs.clear();
     mapMultiArgs.clear();
-    for (int i = 1; i < argc; i++)
+    for (int i = 2; i < argc; i++) // First is hash code used for startup only
     {
         std::string str(argv[i]);
         std::string strValue;
