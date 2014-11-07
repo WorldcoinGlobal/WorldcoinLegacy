@@ -1166,6 +1166,7 @@ bool CWallet::SelectCoins(int64 nTargetValue, set<pair<const CWalletTx*,unsigned
 bool CWallet::CreateTransaction(const vector<pair<CScript, int64> >& vecSend,
                                 CWalletTx& wtxNew, CReserveKey& reservekey, int64& nFeeRet, std::string& strFailReason, const CCoinControl* coinControl)
 {
+
     int64 nValue = 0;
     BOOST_FOREACH (const PAIRTYPE(CScript, int64)& s, vecSend)
     {
@@ -1183,7 +1184,6 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64> >& vecSend,
     }
 
     wtxNew.BindWallet(this);
-
     {
         LOCK2(cs_main, cs_wallet);
         {
@@ -1216,6 +1216,7 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64> >& vecSend,
                     strFailReason = _("Insufficient funds");
                     return false;
                 }
+
                 BOOST_FOREACH(PAIRTYPE(const CWalletTx*, unsigned int) pcoin, setCoins)
                 {
                     int64 nCredit = pcoin.first->vout[pcoin.second].nValue;
@@ -1289,19 +1290,19 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64> >& vecSend,
                 else
                     reservekey.ReturnKey();
 
-                // Fill vin
+               // Fill vin
                 BOOST_FOREACH(const PAIRTYPE(const CWalletTx*,unsigned int)& coin, setCoins)
-                    wtxNew.vin.push_back(CTxIn(coin.first->GetHash(),coin.second));
+                   wtxNew.vin.push_back(CTxIn(coin.first->GetHash(),coin.second));
 
                 // Sign
+
                 int nIn = 0;
                 BOOST_FOREACH(const PAIRTYPE(const CWalletTx*,unsigned int)& coin, setCoins)
                     if (!SignSignature(*this, *coin.first, wtxNew, nIn++))
                     {
-                        strFailReason = _("Signing transaction failed");
-                        return false;
+                       strFailReason = _("Signing transaction failed");
+                       return false;
                     }
-
                 // Limit size
                 unsigned int nBytes = ::GetSerializeSize(*(CTransaction*)&wtxNew, SER_NETWORK, PROTOCOL_VERSION);
                 if (nBytes >= MAX_STANDARD_TX_SIZE)
@@ -1321,12 +1322,12 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64> >& vecSend,
                     continue;
                 }
 
-                // Fill vtxPrev by copying from previous transactions vtxPrev
+              // Fill vtxPrev by copying from previous transactions vtxPrev
                 wtxNew.AddSupportingTransactions();
                 wtxNew.fTimeReceivedIsTxTime = true;
 
                 break;
-            }
+            }           
         }
     }
     return true;

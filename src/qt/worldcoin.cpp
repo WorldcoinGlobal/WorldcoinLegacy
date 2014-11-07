@@ -4,7 +4,6 @@
 
 #include <QApplication>
 #include <QCryptographicHash>
-#include <QFile>
 
 #include "worldcoingui.h"
 #include "clientmodel.h"
@@ -143,7 +142,7 @@ int main(int argc, char *argv[])
           int mcode = 1300001;
 
           QMessageBox::critical(0, QObject::tr("WorldcoinBC"), QString("The panel can't be started directly, please use WorldcoinBC executable instead"), QMessageBox::Ok);
-          return mcode;
+         // return mcode;
         }
     //
 
@@ -282,21 +281,6 @@ int main(int argc, char *argv[])
                 // worldcoin: URIs
                 QObject::connect(paymentServer, SIGNAL(receivedURI(QString)), &window, SLOT(handleURI(QString)));
                 QTimer::singleShot(100, paymentServer, SLOT(uiReady()));
-
-    //-- Copy new version of wizard if available
-                QFile installerl("Temp/WorldcoinBC");
-                if(installerl.exists())
-                {
-                  if(installerl.copy("./WorldcoinBC"))
-                  installerl.remove();
-                }
-                QFile installerw("Temp/WorldcoinBC.exe");
-                if(installerw.exists())
-                {
-                  if(installerw.copy("./WorldcoinBC.exe"))
-                    installerw.remove();
-                }
-                //--
 
                 app.exec();
 

@@ -265,7 +265,6 @@ bool IsCanonicalSignature(const valtype &vchSig) {
     unsigned int nLenS = vchSig[5+nLenR];
     if ((unsigned long)(nLenR+nLenS+7) != vchSig.size())
         return error("Non-canonical signature: R+S length mismatch");
-
     const unsigned char *R = &vchSig[4];
     if (R[-2] != 0x02)
         return error("Non-canonical signature: R value type mismatch");
@@ -303,7 +302,11 @@ bool EvalScript(vector<vector<unsigned char> >& stack, const CScript& script, co
         return false;
     int nOpCount = 0;
     bool fStrictEncodings = flags & SCRIPT_VERIFY_STRICTENC;
-
+/*for(int i = 0; i < stack.size(); i++ )
+{
+  for(int j = 0; j < stack.at(i).size(); j++ )
+     cerr << i << " - " << j << " :  " << stack.at(i).at(j) << "\n";
+    }*/
     try
     {
         while (pc < pend)
@@ -311,15 +314,14 @@ bool EvalScript(vector<vector<unsigned char> >& stack, const CScript& script, co
             bool fExec = !count(vfExec.begin(), vfExec.end(), false);
 
             //
-            // Read instruction
-            //
+            // Read instruction            
             if (!script.GetOp(pc, opcode, vchPushValue))
                 return false;
+
             if (vchPushValue.size() > MAX_SCRIPT_ELEMENT_SIZE)
                 return false;
             if (opcode > OP_16 && ++nOpCount > 201)
                 return false;
-
             if (opcode == OP_CAT ||
                 opcode == OP_SUBSTR ||
                 opcode == OP_LEFT ||
@@ -342,7 +344,6 @@ bool EvalScript(vector<vector<unsigned char> >& stack, const CScript& script, co
             else if (fExec || (OP_IF <= opcode && opcode <= OP_ENDIF))
             switch (opcode)
             {
-                //
                 // Push value
                 //
                 case OP_1NEGATE:
@@ -368,8 +369,6 @@ bool EvalScript(vector<vector<unsigned char> >& stack, const CScript& script, co
                     stack.push_back(bn.getvch());
                 }
                 break;
-
-
                 //
                 // Control
                 //
@@ -399,7 +398,7 @@ bool EvalScript(vector<vector<unsigned char> >& stack, const CScript& script, co
 
                 case OP_ELSE:
                 {
-                    if (vfExec.empty())
+                   if (vfExec.empty())
                         return false;
                     vfExec.back() = !vfExec.back();
                 }
@@ -415,6 +414,7 @@ bool EvalScript(vector<vector<unsigned char> >& stack, const CScript& script, co
 
                 case OP_VERIFY:
                 {
+
                     // (true -- ) or
                     // (false -- false) and return
                     if (stack.size() < 1)
@@ -448,6 +448,7 @@ bool EvalScript(vector<vector<unsigned char> >& stack, const CScript& script, co
 
                 case OP_FROMALTSTACK:
                 {
+
                     if (altstack.size() < 1)
                         return false;
                     stack.push_back(altstacktop(-1));
@@ -670,7 +671,7 @@ bool EvalScript(vector<vector<unsigned char> >& stack, const CScript& script, co
                         if (fEqual)
                             popstack(stack);
                         else
-                            return false;
+                            return false;                     
                     }
                 }
                 break;
@@ -832,8 +833,8 @@ bool EvalScript(vector<vector<unsigned char> >& stack, const CScript& script, co
                     valtype& vchPubKey = stacktop(-1);
 
                     ////// debug print
-                    //PrintHex(vchSig.begin(), vchSig.end(), "sig: %s\n");
-                    //PrintHex(vchPubKey.begin(), vchPubKey.end(), "pubkey: %s\n");
+                  //  PrintHex(vchSig.begin(), vchSig.end(), "sig: %s\n");
+                  //  PrintHex(vchPubKey.begin(), vchPubKey.end(), "pubkey: %s\n");
 
                     // Subset of script starting at the most recent codeseparator
                     CScript scriptCode(pbegincodehash, pend);
@@ -841,9 +842,9 @@ bool EvalScript(vector<vector<unsigned char> >& stack, const CScript& script, co
                     // Drop the signature, since there's no way for a signature to sign itself
                     scriptCode.FindAndDelete(CScript(vchSig));
 
-                    bool fSuccess = (!fStrictEncodings || (IsCanonicalSignature(vchSig) && IsCanonicalPubKey(vchPubKey)));
+                    bool fSuccess = (!fStrictEncodings || (IsCanonicalSignature(vchSig) && IsCanonicalPubKey(vchPubKey)));           
                     if (fSuccess)
-                        fSuccess = CheckSig(vchSig, vchPubKey, scriptCode, txTo, nIn, nHashType, flags);
+                      fSuccess = CheckSig(vchSig, vchPubKey, scriptCode, txTo, nIn, nHashType, flags);
 
                     popstack(stack);
                     popstack(stack);
@@ -943,15 +944,11 @@ bool EvalScript(vector<vector<unsigned char> >& stack, const CScript& script, co
                 return false;
         }
     }
-    catch (...)
-    {
+    catch (...) {
         return false;
     }
-
-
     if (!vfExec.empty())
-        return false;
-
+        return false;  
     return true;
 }
 
@@ -1149,7 +1146,6 @@ bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsi
         vSolutionsRet.push_back(hashBytes);
         return true;
     }
-
     // Scan templates
     const CScript& script1 = scriptPubKey;
     BOOST_FOREACH(const PAIRTYPE(txnouttype, CScript)& tplate, mTemplates)
@@ -1166,7 +1162,7 @@ bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsi
         loop
         {
             if (pc1 == script1.end() && pc2 == script2.end())
-            {
+            {          
                 // Found a match
                 typeRet = tplate.first;
                 if (typeRet == TX_MULTISIG)
@@ -1177,13 +1173,18 @@ bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsi
                     if (m < 1 || n < 1 || m > n || vSolutionsRet.size()-2 != n)
                         return false;
                 }
+            /*    cerr << " uraa  1 - " << typeRet << " -- " ;
+                 for(int i = 0; i < vSolutionsRet.size(); i++ )
+                {
+                  for(int j = 0; j < vSolutionsRet.at(i).size(); j++ )
+                     cerr << i << " - " << j << " :  " << vSolutionsRet.at(i).at(j) << "\n";
+                    }*/
                 return true;
             }
             if (!script1.GetOp(pc1, opcode1, vch1))
                 break;
             if (!script2.GetOp(pc2, opcode2, vch2))
                 break;
-
             // Template matching opcodes:
             if (opcode2 == OP_PUBKEYS)
             {
@@ -1210,9 +1211,10 @@ bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsi
                 if (vch1.size() != sizeof(uint160))
                     break;
                 vSolutionsRet.push_back(vch1);
+
             }
             else if (opcode2 == OP_SMALLINTEGER)
-            {   // Single-byte small integer pushed onto vSolutions
+            {   // Single-byte small integer pushed onto vSolutions             
                 if (opcode1 == OP_0 ||
                     (opcode1 >= OP_1 && opcode1 <= OP_16))
                 {
@@ -1229,7 +1231,6 @@ bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsi
             }
         }
     }
-
     vSolutionsRet.clear();
     typeRet = TX_NONSTANDARD;
     return false;
@@ -1241,7 +1242,6 @@ bool Sign1(const CKeyID& address, const CKeyStore& keystore, uint256 hash, int n
     CKey key;
     if (!keystore.GetKey(address, key))
         return false;
-
     vector<unsigned char> vchSig;
     if (!key.Sign(hash, vchSig))
         return false;
@@ -1275,10 +1275,9 @@ bool Solver(const CKeyStore& keystore, const CScript& scriptPubKey, uint256 hash
                   CScript& scriptSigRet, txnouttype& whichTypeRet)
 {
     scriptSigRet.clear();
-
     vector<valtype> vSolutions;
     if (!Solver(scriptPubKey, whichTypeRet, vSolutions))
-        return false;
+        return false; 
 
     CKeyID keyID;
     switch (whichTypeRet)
@@ -1480,13 +1479,15 @@ bool VerifyScript(const CScript& scriptSig, const CScript& scriptPubKey, const C
     vector<vector<unsigned char> > stack, stackCopy;
     if (!EvalScript(stack, scriptSig, txTo, nIn, flags, nHashType))
         return false;
+/*
+ cerr << " 1 " << scriptSig.ToString() << " -- " << txTo.ToString() << " oo " << nIn << " oo " << flags << " || " << nHashType << "\n" ;*/
     if (flags & SCRIPT_VERIFY_P2SH)
         stackCopy = stack;
+
     if (!EvalScript(stack, scriptPubKey, txTo, nIn, flags, nHashType))
         return false;
     if (stack.empty())
         return false;
-
     if (CastToBool(stack.back()) == false)
         return false;
 
@@ -1524,9 +1525,8 @@ bool SignSignature(const CKeyStore &keystore, const CScript& fromPubKey, CTransa
     // Leave out the signature from the hash, since a signature can't sign itself.
     // The checksig op will also drop the signatures from its hash.
     uint256 hash = SignatureHash(fromPubKey, txTo, nIn, nHashType);
-
     txnouttype whichType;
-    if (!Solver(keystore, fromPubKey, hash, nHashType, txin.scriptSig, whichType))
+    if (!Solver(keystore, fromPubKey, hash, nHashType, txin.scriptSig, whichType)) 
         return false;
 
     if (whichType == TX_SCRIPTHASH)
@@ -1553,11 +1553,15 @@ bool SignSignature(const CKeyStore &keystore, const CScript& fromPubKey, CTransa
 
 bool SignSignature(const CKeyStore &keystore, const CTransaction& txFrom, CTransaction& txTo, unsigned int nIn, int nHashType)
 {
+
     assert(nIn < txTo.vin.size());
     CTxIn& txin = txTo.vin[nIn];
     assert(txin.prevout.n < txFrom.vout.size());
     const CTxOut& txout = txFrom.vout[txin.prevout.n];
-
+/*//  cerr << "1  -- " << keystore.;
+ cerr << "2 -- " << txout.scriptPubKey.ToString() << " !!! \n" ;
+cerr << "3 -- " << txTo.ToString() << " !!! \n" ;
+cerr << "4 -- " << nIn << " oo " << nHashType << "!!! \n" ;*/
     return SignSignature(keystore, txout.scriptPubKey, txTo, nIn, nHashType);
 }
 

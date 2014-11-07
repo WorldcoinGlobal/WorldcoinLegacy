@@ -1,3 +1,6 @@
+#include <QApplication>
+#include <QFile>
+
 #include "updatecontroller.h"
 #include "qsettings.h"
 #include "qprocess.h"
@@ -16,6 +19,9 @@ namespace UpdateController_NS
 
     // Period definition in configuration file
     static const QString CONFIG_PERIOD = "Period";
+
+    // Default temporary directory for wizard upgrade
+    static const QString TEMP_DIR = "Temp";
 
     // Update app name
 #ifdef WIN32
@@ -43,16 +49,15 @@ UpdateController::UpdateController() : QObject()
 {
     // Connect timer timeout with slot for checking of udpate
     connect(&m_timer, SIGNAL(timeout()), this, SLOT(checkUpdate()));
-
+    m_upgradeEnabled = false;
     // Connect timer timeout with slot for checking of udpate
-    connect(m_process, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(onProcessFinish(int, QProcess::ExitStatus)));
-
     // Initialize objects from QSettings
     m_settingsConfig = new QSettings(CONFIG_FILE_NAME, QSettings::IniFormat);
     m_settingsVersion = new QSettings(VERSION_LOG_FILE_NAME, QSettings::IniFormat);
 
     m_process = new QProcess(this);
-
+    connect(m_process, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(onProcessFinish(int, QProcess::ExitStatus)));
+    connect(m_process, SIGNAL(error(QProcess::ProcessError)), this, SLOT(onProcessError(QProcess::ProcessError)));
     // Get period from configuration file
     double nPeriod = getPeriodFromConfig();
 
@@ -61,6 +66,8 @@ UpdateController::UpdateController() : QObject()
 
     // Set proper interval on timer and start it
     m_timer.setInterval(nPeriodInMs);
+     QTimer::singleShot(10000, this, SLOT(checkUpdate()));
+  //   m_timer.setInterval(5000);
     m_timer.start();
 }
 
@@ -86,6 +93,19 @@ double UpdateController::getPeriodFromConfig()
 
 void UpdateController::checkUpdate()
 {
+    //-- Copy new version of wizard if available
+  QFile installer(QString("%1/%2/%3").arg(qApp->applicationDirPath()).arg(TEMP_DIR).arg(UPDATE_APP));
+  QFile curinstaller(QString("%1/%2").arg(qApp->applicationDirPath()).arg(UPDATE_APP));
+  if(installer.exists())
+  {
+    if(curinstaller.remove())
+    {
+      if(installer.copy(QString("%1/%2").arg(qApp->applicationDirPath()).arg(UPDATE_APP)))
+        installer.remove();
+    }
+  }
+  //--
+
     // Set current action to be check for update
     m_action = eCheckUpdate;
     // Check for update
@@ -96,8 +116,10 @@ void UpdateController::checkUpdate()
     runProcess(arguments);
 }
 
-void UpdateController::makeUpgrate()
+void UpdateController::makeUpgrade()
 {
+   if(!m_upgradeEnabled)
+     return;
     // Set current action to be install
     m_action = eInstall;
     // Start upgrade
@@ -106,19 +128,28 @@ void UpdateController::makeUpgrate()
     // Call process for installing
     arguments << INSTALL_ARG;
     runProcess(arguments);
+
+    QProcess::startDetached(UPDATE_APP, arguments);
+    QTimer::singleShot(0, qApp, SLOT(quit()));
 }
 
 void UpdateController::runProcess(const QStringList &arguments)
 {
     // Start process with proper arguments
     if (m_process != 0)
-        m_process->start(UPDATE_APP, arguments);
+        m_process->start(QString("./%1").arg(UPDATE_APP), arguments);
 }
-void UpdateController::onProcessFinish(int exitCode, QProcess::ExitStatus exitStatus)
+
+void UpdateController::onProcessError(QProcess::ProcessError error)
+{
+  qDebug(QString::number(error).toLatin1());
+//-- Dummy for future handling
+}
+
+void UpdateController::onProcessFinish(int /*exitCode*/, QProcess::ExitStatus /*exitStatus*/)
 {
     // Get standard output
     QByteArray result = m_process->readAllStandardOutput();
-
     // Call method that is responsible for processing of this output
     processOutput(result);
 }
@@ -148,7 +179,12 @@ void UpdateController::parseVersion(const QString& receivedVersion)
     updateType = checkVersion(receivedVersion);
     
     if (updateType != eUpToDate)
+    {
         emit updateVersion((int)updateType);
+        m_upgradeEnabled = true;
+    }
+    else
+        m_upgradeEnabled = false;
 }
 void UpdateController::processInstall(const QString& receivedInstallResult)
 {
@@ -160,8 +196,8 @@ UpdateController::eTypeUpdate UpdateController::checkVersion(const QString& inVe
     // Received version: example "1.0.2|Crypto Punisher|4|2"
     QStringList listVersion = inVersion.split("|");
 
-    // TODO: Get current version for app
     QString currentVersion = getCurrentVersion();
+
     if (compareVersions(listVersion[0].toUtf8().data(), currentVersion.toUtf8().data()) == 0)
     {
         // Return last element from list

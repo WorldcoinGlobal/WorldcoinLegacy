@@ -46,7 +46,7 @@ public:
    eTypeVersion getTypeVersion(const QString& version);
 
    // Method used to start upgrade
-   void makeUpgrate();
+   void makeUpgrade();
 
 private slots:
     // Slot is called when need to check for updates
@@ -54,6 +54,9 @@ private slots:
 
     // Slot is call when process is finished
     void onProcessFinish(int exitCode, QProcess::ExitStatus exitStatus);
+
+    // Slot called when an error is detected when launching process
+    void onProcessError(QProcess::ProcessError error);
 
 signals:
     // Signal is emit when process for update is finished and will be catch in GUI
@@ -101,6 +104,9 @@ private:
 
     // Used to defined current action
     eTypeAction m_action;
+
+    // If up to date then upgrade button is disabled
+    bool m_upgradeEnabled;
 };
 #endif // UPDATECONTROLLER_H
 

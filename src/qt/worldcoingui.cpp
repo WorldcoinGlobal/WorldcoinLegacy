@@ -1346,6 +1346,19 @@ void WorldcoinGUI::onUpdateVersion(int typeUpdate)
     updateType = (UpdateController::eTypeUpdate) typeUpdate;
 
     animationTimer.start();
+
+    // In case when update is critical need to show message box
+    // Case when user click on OK it will make upgrade of WorldCoin, otherwise it will abort WorldCoin
+    if (typeUpdate == UpdateController::eCritical)
+    {
+       bool resMsg;
+       message(tr("Critical update"), tr("There is critical update of WorldCoin, you need to upgrade it, or WorldCoin will be abort!"),
+           CClientUIInterface::ICON_WARNING | CClientUIInterface::BTN_OK | CClientUIInterface::BTN_CANCEL | CClientUIInterface::MODAL, &resMsg);
+       if (resMsg)
+           updateController->makeUpgrade();
+        else
+           close();
+    }
 }
 
 void WorldcoinGUI::updateStatusIcon()

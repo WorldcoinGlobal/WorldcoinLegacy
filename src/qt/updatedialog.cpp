@@ -111,5 +111,5 @@ void UpdateDialog::addFeature(const QString &feauture)
 void UpdateDialog::onUpgradeButton()
 {
     // Call method from model used for upgrade
-    model->makeUpgrate();
+    model->makeUpgrade();
 }

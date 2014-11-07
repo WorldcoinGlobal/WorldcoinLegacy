@@ -801,25 +801,25 @@ QPushButton:hover {
          <widget class="QLabel" name="label_20">
           <property name="geometry">
            <rect>
-            <x>745</x>
+            <x>715</x>
             <y>48</y>
-            <width>151</width>
-            <height>17</height>
+            <width>181</width>
+            <height>20</height>
            </rect>
           </property>
           <property name="font">
            <font>
             <family>Miriam</family>
-            <pointsize>10</pointsize>
-            <weight>50</weight>
-            <italic>false</italic>
-            <bold>false</bold>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <italic>true</italic>
+            <bold>true</bold>
             <underline>false</underline>
             <strikeout>false</strikeout>
            </font>
           </property>
           <property name="text">
-           <string>VERSION PLACEHOLDER</string>
+           <string>1.0.0  -  Drunk Turtle</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

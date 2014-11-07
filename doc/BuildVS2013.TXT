@@ -13,6 +13,7 @@ http://download.qt-project.org/official_releases/qt/5.3/5.3.0/qt-opensource-wind
 		- [miniupnp-1.8](http://miniupnp.free.fr/files/download.php?file=miniupnpc-1.8.20131209.tar.gz)
 		- [boost-1.55](http://softlayer-dal.dl.sourceforge.net/project/boost/boost/1.55.0/boost_1_55_0.zip)
 		- [BerkeleyDB-6.0.30](http://download.oracle.com/otn/berkeley-db/db-6.0.30.zip)  
+		- [leveldb] (it is part from Worldcoin source, check worldcoin\src\leveldb\)
 		
 		I use [7-zip](http://www.7-zip.org/download.html) to extract archives on windows:
 		
@@ -68,6 +69,14 @@ http://download.qt-project.org/official_releases/qt/5.3/5.3.0/qt-opensource-wind
 		
 		The outputs of the build: C:\miniupnpc\msvc\Release and C:\miniupnpc\msvc\Debug (there should be miniupnpc.lib)
 		
+		leveldb
+		---------
+		
+		2. Start VS2013 and load worldcoin\src\leveldb\vs2010.sln
+		3. Build loaded solution
+		
+		The outputs of the build: worldcoin\src\leveldb\Release and worldcoin\src\leveldb\Debug (there should be leveldb.lib)
+		
 		In system environment variables please make sure that follow exist:
 		
 		OPENSSL=C:\openssl-1.0.1h
@@ -80,7 +89,7 @@ http://download.qt-project.org/official_releases/qt/5.3/5.3.0/qt-opensource-wind
 2. Next need to convert worldcoin-qt.pro to worldcoin-qt.vcxproj
 	 Open worldcoin-qt.pro and edit TEMPLATE = vcapp
 	 Go to worldcoin-qt.pro folder location and run qmake
-	 worldcoin-qt.vcxproj should be generate, start VS2013 and load this file
+	 worldcoin-qt.vcxproj should be generate (inside src) , start VS2013 and load this file
 
 
 3. Make update of source in order to used Qt5 source.

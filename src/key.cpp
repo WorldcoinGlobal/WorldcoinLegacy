@@ -162,7 +162,7 @@ public:
         ret = EC_KEY_regenerate_key(pkey, &bn);
         assert(ret);
 #endif
-        BN_clear_free(&bn);
+        BN_clear_free(&bn);      
     }
 
     void GetPrivKey(CPrivKey &privkey, bool fCompressed) {
@@ -206,7 +206,7 @@ public:
     bool Sign(const uint256 &hash, std::vector<unsigned char>& vchSig) {
         unsigned int nSize = ECDSA_size(pkey);
         vchSig.resize(nSize); // Make sure it is big enough
-        assert(ECDSA_sign(0, (unsigned char*)&hash, sizeof(hash), &vchSig[0], &nSize, pkey));
+       /* assert(*/ECDSA_sign(0, (unsigned char*)&hash, sizeof(hash), &vchSig[0], &nSize, pkey)/*)*/;
         vchSig.resize(nSize); // Shrink to fit actual size
         return true;
     }
@@ -333,6 +333,11 @@ bool CKey::Sign(const uint256 &hash, std::vector<unsigned char>& vchSig) const {
         return false;
     CECKey key;
     key.SetSecretBytes(vch);
+  /*  unsigned char* keyy;
+key.GetSecretBytes(keyy);
+
+for(int i = 0; i < 31; i++)
+  std::cerr << i << " - " << keyy[i];*/
     return key.Sign(hash, vchSig);
 }
 
