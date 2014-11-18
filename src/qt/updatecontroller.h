@@ -82,7 +82,7 @@ private:
 
     // Method used for compare versions
     // In case when return 0 means first version is fresher, -1 means are equal, and 1 means that second is fresher
-    int compareVersions(char* firstVer, char* secondVer);
+    int compareVersions(const QString &firstVer, const QString &secondVer);
 
     // Method used for get current app version
     QString getCurrentVersion();
@@ -92,9 +92,6 @@ private:
 
     // Used for manipulation with settings from config
     QSettings *m_settingsConfig;
-
-    // Used for manipulation with settings version log file
-    QSettings *m_settingsVersion;
 
     // Used for checking of updaptes
     QTimer m_timer;

@@ -2,6 +2,7 @@
 #include "ui_aboutdialog.h"
 
 #include <QDesktopWidget>
+#include <QSettings>
 
 #include "clientmodel.h"
 #include "dialog_move_handler.h"
@@ -9,6 +10,7 @@
 // Copyright year (2009-this)
 // Todo: update this when changing our copyright comments in the source
 const int ABOUTDIALOG_COPYRIGHT_YEAR = 2014;
+const QString defWorldcoinConf = "WorldcoinBC.cfg";
 
 AboutDialog::AboutDialog(QWidget *parent) :
     QDialog(parent),
@@ -29,7 +31,11 @@ void AboutDialog::setModel(ClientModel *model)
 {
     if(model)
     {
-        ui->versionLabel->setText(model->formatFullVersion());
+       // ui->versionLabel->setText(model->formatFullVersion());
+       QSettings settings(defWorldcoinConf, QSettings::IniFormat);
+       settings.beginGroup("Version");
+       ui->lblVersion->setText(settings.value("CurrentVersion", "1.0.0").toString());
+       settings.endGroup();
     }
 }
 

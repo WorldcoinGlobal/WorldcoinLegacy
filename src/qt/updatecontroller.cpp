@@ -44,7 +44,6 @@ using namespace UpdateController_NS;
 UpdateController::UpdateController() : QObject()
 , m_action(eNone)
 , m_settingsConfig(0)
-, m_settingsVersion(0)
 , m_process(0)
 {
     // Connect timer timeout with slot for checking of udpate
@@ -53,7 +52,6 @@ UpdateController::UpdateController() : QObject()
     // Connect timer timeout with slot for checking of udpate
     // Initialize objects from QSettings
     m_settingsConfig = new QSettings(CONFIG_FILE_NAME, QSettings::IniFormat);
-    m_settingsVersion = new QSettings(VERSION_LOG_FILE_NAME, QSettings::IniFormat);
 
     m_process = new QProcess(this);
     connect(m_process, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(onProcessFinish(int, QProcess::ExitStatus)));
@@ -175,9 +173,7 @@ void UpdateController::parseVersion(const QString& receivedVersion)
 {
     // Emit signal about type of update, will be catch in GUI
     UpdateController::eTypeUpdate updateType = eUpToDate;
-    
     updateType = checkVersion(receivedVersion);
-    
     if (updateType != eUpToDate)
     {
         emit updateVersion((int)updateType);
@@ -193,12 +189,14 @@ void UpdateController::processInstall(const QString& receivedInstallResult)
 }
 UpdateController::eTypeUpdate UpdateController::checkVersion(const QString& inVersion)
 {
+ /*qDebug("aaaa");
+ qDebug(inVersion.toLatin1());*/
     // Received version: example "1.0.2|Crypto Punisher|4|2"
     QStringList listVersion = inVersion.split("|");
 
     QString currentVersion = getCurrentVersion();
 
-    if (compareVersions(listVersion[0].toUtf8().data(), currentVersion.toUtf8().data()) == 0)
+    if (compareVersions(listVersion[0], currentVersion) == 0)
     {
         // Return last element from list
         return (eTypeUpdate)(listVersion[3].toInt());
@@ -206,27 +204,19 @@ UpdateController::eTypeUpdate UpdateController::checkVersion(const QString& inVe
     else
         return eUpToDate;
 }
-int UpdateController::compareVersions(char* firstVer, char* secondVer)
+int UpdateController::compareVersions(const QString& firstVer, const QString& secondVer)
 {
-    int a1 = 0;
-    int b1 = 0;
+    QStringList fVer = firstVer.split(".");
+    QStringList sVer = secondVer.split(".");
+    quint64 i1Ver = fVer[0].toInt() * 10000  +  fVer[1].toInt() * 100 + fVer[2].toInt();
+    quint64 i2Ver = sVer[0].toInt() * 10000  +  sVer[1].toInt() * 100 + sVer[2].toInt();
     int ret;
 
-    int a = strlen(firstVer);
-    int b = strlen(secondVer);
-    if (b > a) 
-        a = b;
-    
-    for (int i = 0; i < a; i++) 
-    {
-        a1 += firstVer[i];
-        b1 += secondVer[i];
-    }
-    if (b1 > a1) 
+    if (i2Ver > i1Ver)
         ret = 1; // second version is fresher
-    else if (b1 == a1) 
+    else if (i2Ver == i1Ver)
         ret = -1; // versions is equal
-    else 
+    else
         ret = 0; // first version is fresher
 
     return ret;
@@ -240,22 +230,23 @@ QString UpdateController::getCurrentVersion()
 void UpdateController::getVersions(QMap<QString, QMap<QString, QString>> &feauture, QStringList &listGroup)
 {
     QMap<QString, QMap<QString, QString>> returnMap;
-    QStringList groups = m_settingsVersion->childGroups();
+    QSettings  m_settingsVersion(VERSION_LOG_FILE_NAME, QSettings::IniFormat);
+    QStringList groups = m_settingsVersion.childGroups();
     QStringList retGroups;
 
     // We need from latest to the oldest
     for (int i = groups.size() - 1; i >= 0; i--)
     { 
-        m_settingsVersion->beginGroup(groups.at(i));
+        m_settingsVersion.beginGroup(groups.at(i));
         retGroups.append(groups.at(i));
-        QStringList groupKeys = m_settingsVersion->allKeys();
+        QStringList groupKeys = m_settingsVersion.allKeys();
         QMap<QString, QString> mapGroupKeys;
         for (int j = 0; j < groupKeys.size(); j++)
         {
-            mapGroupKeys[groupKeys.at(j)] = m_settingsVersion->value(groupKeys.at(j)).toString();
+            mapGroupKeys[groupKeys.at(j)] = m_settingsVersion.value(groupKeys.at(j)).toString();
         }
 
-        m_settingsVersion->endGroup();
+        m_settingsVersion.endGroup();
 
         returnMap[groups.at(i)] = mapGroupKeys;
     }
@@ -267,7 +258,7 @@ void UpdateController::getVersions(QMap<QString, QMap<QString, QString>> &feautu
 UpdateController::eTypeVersion UpdateController::getTypeVersion(const QString& version)
 {
     QString currentVersion = getCurrentVersion();
-    int resCompare = compareVersions(version.toUtf8().data(), currentVersion.toUtf8().data());
+    int resCompare = compareVersions(version, currentVersion);
     if (resCompare == 0)
         return eNew;
     else if (resCompare == -1)

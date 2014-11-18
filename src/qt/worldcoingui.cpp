@@ -79,6 +79,8 @@
 
 #include <iostream>
 
+const QString defWorldcoinConf = "WorldcoinBC.cfg";
+
 const QString WorldcoinGUI::DEFAULT_WALLET = "~Default";
 
 WorldcoinGUI::WorldcoinGUI(bool fIsTestnet, QWidget *parent) :
@@ -102,6 +104,13 @@ WorldcoinGUI::WorldcoinGUI(bool fIsTestnet, QWidget *parent) :
 
     // Add start normal icon
     ui->buttonUpdate->setProperty("typeUpdate", UpdateController::eUpToDate);
+
+    QString version;
+    QSettings settings(defWorldcoinConf, QSettings::IniFormat);
+    settings.beginGroup("Version");
+    version = QString("%1 - %2").arg(settings.value("CurrentVersion").toString()).arg(settings.value("CurrentVersionName").toString());
+    ui->lblVersion->setText(version);
+    settings.endGroup();
 
     setWindowFlags(Qt::CustomizeWindowHint | Qt::FramelessWindowHint | Qt::Window);
 
@@ -171,7 +180,7 @@ WorldcoinGUI::WorldcoinGUI(bool fIsTestnet, QWidget *parent) :
 
     updateController = new UpdateController();
     updateDialog = new UpdateDialog(this);
-    updateDialog->setModel(updateController);
+  //  updateDialog->setModel(updateController);
 
     // centralWidget = new QStackedWidget(this);
     centralWidget = ui->stackedWidget;
@@ -1342,9 +1351,9 @@ void WorldcoinGUI::on_bHelp_clicked()
 }
 void WorldcoinGUI::onUpdateVersion(int typeUpdate)
 {
+    updateDialog->setModel(updateController);
     // Set type of update
     updateType = (UpdateController::eTypeUpdate) typeUpdate;
-
     animationTimer.start();
 
     // In case when update is critical need to show message box

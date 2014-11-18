@@ -142,7 +142,7 @@ int main(int argc, char *argv[])
           int mcode = 1300001;
 
           QMessageBox::critical(0, QObject::tr("WorldcoinBC"), QString("The panel can't be started directly, please use WorldcoinBC executable instead"), QMessageBox::Ok);
-         // return mcode;
+          return mcode;
         }
     //
 
