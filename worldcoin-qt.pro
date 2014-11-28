@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET = worldcoin-qt
 macx:TARGET = "Worldcoin-Qt"
-VERSION = 1.0.0.0
+VERSION = 1.0.1.0
 INCLUDEPATH += src src/json src/qt /usr/include/miniupnpc
 QT += core gui network multimedia
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -35,6 +35,14 @@ contains(RELEASE, 1) {
         # Linux: static link and extra security (see: https://wiki.debian.org/Hardening)
         LIBS += -Wl,-Bstatic -Wl,-z,relro -Wl,-z,now
     }
+}
+
+!win32:!macx { # Q_OS_LINUX not recognized so we define a macro manually
+  DEFINES += OS_LINUX
+#Link to static libraries to avoid problems with soname versioning
+  LIBS = -L$$PWD/../Openssl/lib -L$$PWD/../Boost/lib -ldl -lboost_system -lboost_filesystem -lboost_program_options -lboost_thread $$LIBS
+  INCLUDEPATH = $$PWD/../Openssl/include $$PWD/../Boost/include $$INCLUDEPATH
+
 }
 
 !win32 {
@@ -105,6 +113,7 @@ LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
 !win32 {
     # we use QMAKE_CXXFLAGS_RELEASE even without RELEASE=1 because we use RELEASE to indicate linking preferences not -O preferences
     genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\" libleveldb.a libmemenv.a
+    QMAKE_LFLAGS += -Wl,--rpath=\\\$\$ORIGIN/
 } else {
     # make an educated guess about what the ranlib command is called
     isEmpty(QMAKE_RANLIB) {

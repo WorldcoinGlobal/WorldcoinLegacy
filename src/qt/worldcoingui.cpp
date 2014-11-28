@@ -180,7 +180,7 @@ WorldcoinGUI::WorldcoinGUI(bool fIsTestnet, QWidget *parent) :
 
     updateController = new UpdateController();
     updateDialog = new UpdateDialog(this);
-  //  updateDialog->setModel(updateController);
+    updateDialog->setModel(updateController);
 
     // centralWidget = new QStackedWidget(this);
     centralWidget = ui->stackedWidget;
