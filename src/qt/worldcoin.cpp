@@ -133,7 +133,7 @@ int main(int argc, char *argv[])
         QString arg;
         arg += QDate::currentDate().toString("yyyy-MM-dd");
         arg += QString::number(QTime::currentTime().hour());
-        arg += QString::number(QTime::currentTime().minute());
+  //      arg += QString::number(QTime::currentTime().minute());
         arg += c_controlKey;
         QByteArray key(arg.toLatin1());
         QString hash = QString(QCryptographicHash::hash(key,QCryptographicHash::Sha1).toBase64());
