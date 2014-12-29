@@ -165,7 +165,16 @@
    <property name="spacing">
     <number>0</number>
    </property>
-   <property name="margin">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
     <number>0</number>
    </property>
    <item>
@@ -205,7 +214,16 @@
       <bool>true</bool>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_30">
-      <property name="margin">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
        <number>0</number>
       </property>
       <item>
@@ -324,7 +342,16 @@ QCheckBox::indicator:checked:pressed {
       <property name="spacing">
        <number>0</number>
       </property>
-      <property name="margin">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
        <number>0</number>
       </property>
       <item>
@@ -385,14 +412,23 @@ QCheckBox::indicator:checked:pressed {
              </sizepolicy>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_21">
-             <property name="margin">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
               <number>0</number>
              </property>
              <item>
               <widget class="QCheckBox" name="worldcoinAtStartup">
                <property name="font">
                 <font>
-                 <pointsize>10</pointsize>
+                 <pointsize>9</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -409,7 +445,7 @@ QCheckBox::indicator:checked:pressed {
               <widget class="QCheckBox" name="autoMining">
                <property name="font">
                 <font>
-                 <pointsize>10</pointsize>
+                 <pointsize>9</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -426,7 +462,7 @@ QCheckBox::indicator:checked:pressed {
               <widget class="QCheckBox" name="minimizeToTray">
                <property name="font">
                 <font>
-                 <pointsize>10</pointsize>
+                 <pointsize>9</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -443,7 +479,7 @@ QCheckBox::indicator:checked:pressed {
               <widget class="QCheckBox" name="minimizeOnClose">
                <property name="font">
                 <font>
-                 <pointsize>10</pointsize>
+                 <pointsize>9</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -460,7 +496,7 @@ QCheckBox::indicator:checked:pressed {
               <widget class="QCheckBox" name="allowSounds">
                <property name="font">
                 <font>
-                 <pointsize>10</pointsize>
+                 <pointsize>9</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -480,7 +516,7 @@ QCheckBox::indicator:checked:pressed {
                </property>
                <property name="font">
                 <font>
-                 <pointsize>10</pointsize>
+                 <pointsize>9</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -544,7 +580,16 @@ QCheckBox::indicator:checked:pressed {
              <property name="spacing">
               <number>6</number>
              </property>
-             <property name="margin">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
               <number>0</number>
              </property>
              <item>
@@ -556,7 +601,16 @@ QCheckBox::indicator:checked:pressed {
                 </size>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_31" stretch="0,2,1">
-                <property name="margin">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
                  <number>0</number>
                 </property>
                 <item>
@@ -619,7 +673,16 @@ QCheckBox::indicator:checked:pressed {
                 </size>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_32">
-                <property name="margin">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
                  <number>0</number>
                 </property>
                 <item>
@@ -690,7 +753,7 @@ QCheckBox::indicator:checked:pressed {
               <widget class="QCheckBox" name="displayAddresses">
                <property name="font">
                 <font>
-                 <pointsize>10</pointsize>
+                 <pointsize>9</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -833,14 +896,23 @@ QCheckBox::indicator:checked:pressed {
              <property name="spacing">
               <number>6</number>
              </property>
-             <property name="margin">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
               <number>0</number>
              </property>
              <item>
               <widget class="QCheckBox" name="mapPortUpnp">
                <property name="font">
                 <font>
-                 <pointsize>10</pointsize>
+                 <pointsize>9</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -866,7 +938,7 @@ QCheckBox::indicator:checked:pressed {
                </property>
                <property name="font">
                 <font>
-                 <pointsize>10</pointsize>
+                 <pointsize>9</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -888,7 +960,16 @@ QCheckBox::indicator:checked:pressed {
                 </size>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_34" stretch="0,2,0,0,0,1">
-                <property name="margin">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
                  <number>0</number>
                 </property>
                 <item>
@@ -1020,7 +1101,16 @@ QCheckBox::indicator:checked:pressed {
                 </size>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_35">
-                <property name="margin">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
                  <number>0</number>
                 </property>
                 <item>
@@ -1143,7 +1233,16 @@ QCheckBox::indicator:checked:pressed {
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
-        <property name="margin">
+        <property name="leftMargin">
+         <number>9</number>
+        </property>
+        <property name="topMargin">
+         <number>9</number>
+        </property>
+        <property name="rightMargin">
+         <number>9</number>
+        </property>
+        <property name="bottomMargin">
          <number>9</number>
         </property>
         <item>
@@ -1299,6 +1398,11 @@ QPushButton:pressed:flat {
  </widget>
  <customwidgets>
   <customwidget>
+   <class>QValidatedLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>qvalidatedlineedit.h</header>
+  </customwidget>
+  <customwidget>
    <class>WorldcoinAmountField</class>
    <extends>QSpinBox</extends>
    <header>worldcoinamountfield.h</header>
@@ -1308,11 +1412,6 @@ QPushButton:pressed:flat {
    <class>QValueComboBox</class>
    <extends>QComboBox</extends>
    <header>qvaluecombobox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>QValidatedLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>qvalidatedlineedit.h</header>
   </customwidget>
  </customwidgets>
  <resources>

@@ -12,7 +12,7 @@ const std::string CLIENT_NAME("WorldcoinAlliance");
 
 // Client version number
 // -Alpha, -Beta, -RC, -Release
-#define CLIENT_VERSION_SUFFIX   "-Beta"
+#define CLIENT_VERSION_SUFFIX   "-Release"
 
 
 // The following part of the code determines the CLIENT_BUILD variable.
@@ -38,8 +38,8 @@ const std::string CLIENT_NAME("WorldcoinAlliance");
 // This version is no longer the git ID, but the alpha name for the wallet version 2014 
 #define GIT_ARCHIVE 1
 #ifdef GIT_ARCHIVE
-#    define GIT_COMMIT_ID "Drunk Turtle"
-#    define GIT_COMMIT_DATE "Mon, 27 OCT 2012 11:46:02 -0600"
+#    define GIT_COMMIT_ID "Polished Turtle Shield"
+#    define GIT_COMMIT_DATE "Mon, 29 DIC 2014 07:16:02 -0400"
 #endif
 
 #define BUILD_DESC_FROM_COMMIT(maj,min,rev,build,commit) \
