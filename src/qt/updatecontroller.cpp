@@ -176,12 +176,14 @@ void UpdateController::parseVersion(const QString& receivedVersion)
     updateType = checkVersion(receivedVersion);
     if (updateType != eUpToDate)
     {
-        emit updateVersion((int)updateType);
+      //  emit updateVersion((int)updateType);
         m_upgradeEnabled = true;
     }
     else
         m_upgradeEnabled = false;
+    emit updateVersion((int)updateType);
 }
+
 void UpdateController::processInstall(const QString& receivedInstallResult)
 {
     // Emit signal when install is finished, will be catch in GUI

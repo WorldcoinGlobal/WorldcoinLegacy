@@ -19,7 +19,7 @@ public:
     ~UpdateDialog();
 
     // Method is used for set of model for the update page
-    void setModel(UpdateController *model);
+    void setModel(UpdateController *model1);
 private slots:
     // Slot is call when user click on upgrade button
     void onUpgradeButton();

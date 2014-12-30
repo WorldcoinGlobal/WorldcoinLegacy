@@ -20,10 +20,10 @@ UpdateDialog::~UpdateDialog()
 {
 }
 
-void UpdateDialog::setModel(UpdateController *model)
+void UpdateDialog::setModel(UpdateController *model1)
 {
-    this->model = model;
-
+    this->model = model1;
+    ui->textEditVersions->clear();
     QTextCursor cursor(ui->textEditVersions->textCursor());
 
     QMap<QString, QMap<QString, QString>> versions;
