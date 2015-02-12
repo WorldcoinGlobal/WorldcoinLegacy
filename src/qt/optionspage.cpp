@@ -97,6 +97,10 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
 
     showNotification(ui->verticalLayout, 2,
                      tr("Optional transaction fee per kB that helps make sure your transactions are processed quickly. Fee 0.01 recommended."), true);
+
+    ui->checkUpdatesAtStartup->hide();
+    ui->autoMining->hide();
+    ui->worldcoinAtStartup->hide();
 }
 
 OptionsDialog::~OptionsDialog()

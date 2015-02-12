@@ -800,7 +800,9 @@ void WorldcoinGUI::message(const QString &title, const QString &message, unsigne
     }
 
     // Display message
-    if (style & CClientUIInterface::MODAL) {
+
+/***** BZ DISABLED TEMPORARY UNTIL WE FIGURE OUT MESSAGES
+       if (style & CClientUIInterface::MODAL) {
         // Check for buttons, use OK as default, if none was supplied
         QMessageBox::StandardButton buttons;
         if (!(buttons = (QMessageBox::StandardButton)(style & CClientUIInterface::BTN_MASK)))
@@ -812,7 +814,7 @@ void WorldcoinGUI::message(const QString &title, const QString &message, unsigne
             *ret = r == QMessageBox::Ok;
     }
     else
-        notificator->notify((Notificator::Class)nNotifyIcon, strTitle, message);
+        notificator->notify((Notificator::Class)nNotifyIcon, strTitle, message);******/
 }
 
 void WorldcoinGUI::changeEvent(QEvent *e)
