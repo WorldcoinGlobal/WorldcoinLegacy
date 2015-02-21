@@ -5,12 +5,12 @@
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
         <source>About Worldcoin</source>
-        <translation>За Биткоин</translation>
+        <translation>За Worldcoin</translation>
     </message>
     <message>
         <location line="+39"/>
         <source>&lt;b&gt;Worldcoin&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;Биткоин&lt;/b&gt; версия</translation>
+        <translation>&lt;b&gt;Worldcoin&lt;/b&gt; версия</translation>
     </message>
     <message>
         <location line="+57"/>
@@ -68,7 +68,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location filename="../addressbookpage.cpp" line="+63"/>
         <source>These are your Worldcoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>Това са вашите Биткоин адреси за получаване на плащания. За по-лесно проследяване на плащанията и повишена анонимност можете да използвате нов адрес за всяко плащане.</translation>
+        <translation>Това са вашите Worldcoin адреси за получаване на плащания. За по-лесно проследяване на плащанията и повишена анонимност можете да използвате нов адрес за всяко плащане.</translation>
     </message>
     <message>
         <location filename="../forms/addressbookpage.ui" line="+14"/>
@@ -108,7 +108,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-44"/>
         <source>Verify a message to ensure it was signed with a specified Worldcoin address</source>
-        <translation>Проверете съобщение, за да сте сигурни че е подписано с определен Биткоин адрес</translation>
+        <translation>Проверете съобщение, за да сте сигурни че е подписано с определен Worldcoin адрес</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -375,7 +375,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+4"/>
         <source>Show information about Worldcoin</source>
-        <translation>Показва информация за Биткоин</translation>
+        <translation>Показва информация за Worldcoin</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -420,7 +420,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-347"/>
         <source>Send coins to a Worldcoin address</source>
-        <translation>Изпращане към Биткоин адрес</translation>
+        <translation>Изпращане към Worldcoin адрес</translation>
     </message>
     <message>
         <location line="+49"/>
@@ -456,7 +456,7 @@ This product includes software developed by the OpenSSL Project for use in the O
         <location line="-165"/>
         <location line="+530"/>
         <source>Worldcoin</source>
-        <translation>Биткоин</translation>
+        <translation>Worldcoin</translation>
     </message>
     <message>
         <location line="-530"/>
@@ -481,7 +481,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+22"/>
         <source>&amp;About Worldcoin</source>
-        <translation>&amp;За Биткоин</translation>
+        <translation>&amp;За Worldcoin</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -542,7 +542,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message numerus="yes">
         <location line="+141"/>
         <source>%n active connection(s) to Worldcoin network</source>
-        <translation><numerusform>%n връзка към Биткоин мрежата</numerusform><numerusform>%n връзки към Биткоин мрежата</numerusform></translation>
+        <translation><numerusform>%n връзка към Worldcoin мрежата</numerusform><numerusform>%n връзки към Worldcoin мрежата</numerusform></translation>
     </message>
     <message>
         <location line="+22"/>
@@ -734,7 +734,7 @@ Address: %4
     <message>
         <location line="-5"/>
         <source>The entered address &quot;%1&quot; is not a valid Worldcoin address.</source>
-        <translation>&quot;%1&quot; не е валиден Биткоин адрес.</translation>
+        <translation>&quot;%1&quot; не е валиден Worldcoin адрес.</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -821,7 +821,7 @@ Address: %4
     <message>
         <location line="+3"/>
         <source>&amp;Start Worldcoin on system login</source>
-        <translation>&amp;Пускане на Биткоин при вход в системата</translation>
+        <translation>&amp;Пускане на Worldcoin при вход в системата</translation>
     </message>
     <message>
         <location line="+35"/>
@@ -926,7 +926,7 @@ Address: %4
     <message>
         <location line="+13"/>
         <source>The user interface language can be set here. This setting will take effect after restarting Worldcoin.</source>
-        <translation>Промяната на езика ще влезе в сила след рестартиране на Биткоин.</translation>
+        <translation>Промяната на езика ще влезе в сила след рестартиране на Worldcoin.</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -1445,7 +1445,7 @@ Address: %4
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
         <source>Enter a Worldcoin address (e.g. MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
-        <translation>Въведете Биткоин адрес (например MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
+        <translation>Въведете Worldcoin адрес (например MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
 </context>
 <context>
@@ -1546,7 +1546,7 @@ Address: %4
     <message>
         <location line="+40"/>
         <source>Verify the message to ensure it was signed with the specified Worldcoin address</source>
-        <translation>Проверете съобщение, за да сте сигурни че е подписано с определен Биткоин адрес</translation>
+        <translation>Проверете съобщение, за да сте сигурни че е подписано с определен Worldcoin адрес</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1562,7 +1562,7 @@ Address: %4
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
         <source>Enter a Worldcoin address (e.g. MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
-        <translation>Въведете Биткоин адрес (например MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
+        <translation>Въведете Worldcoin адрес (например MNS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -1572,7 +1572,7 @@ Address: %4
     <message>
         <location line="+3"/>
         <source>Enter Worldcoin signature</source>
-        <translation>Биткоин подпис</translation>
+        <translation>Worldcoin подпис</translation>
     </message>
     <message>
         <location line="+82"/>
@@ -2184,7 +2184,7 @@ Address: %4
     <message>
         <location filename="../worldcoinstrings.cpp" line="+94"/>
         <source>Worldcoin version</source>
-        <translation>Биткоин версия</translation>
+        <translation>Worldcoin версия</translation>
     </message>
     <message>
         <location line="+102"/>
