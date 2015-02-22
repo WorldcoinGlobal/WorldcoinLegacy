@@ -291,18 +291,22 @@ void Notificator::notify(Class cls, const QString &title, const QString &text, c
     {
 #ifdef USE_DBUS
     case Freedesktop:
+     //    QMessageBox::critical(parent, "freedesktop", text, QMessageBox::Ok, QMessageBox::Ok);
         notifyDBus(cls, title, text, icon, millisTimeout);
         break;
 #endif
     case QSystemTray:
+     //  QMessageBox::critical(parent, "fsystem trayp", text, QMessageBox::Ok, QMessageBox::Ok);
         notifySystray(cls, title, text, icon, millisTimeout);
         break;
 #ifdef Q_OS_MAC
     case UserNotificationCenter:
+    //    QMessageBox::critical(parent, "usernot", text, QMessageBox::Ok, QMessageBox::Ok);
         notifyMacUserNotificationCenter(cls, title, text, icon);
         break;
     case Growl12:
     case Growl13:
+     //   QMessageBox::critical(parent, "grwol", text, QMessageBox::Ok, QMessageBox::Ok);
         notifyGrowl(cls, title, text, icon);
         break;
 #endif
